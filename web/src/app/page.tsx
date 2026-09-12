@@ -1,18 +1,18 @@
 "use client";
 
 import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { Cloud, Cpu, Database, Shield, Sparkles, Workflow } from "lucide-react";
+import { Bot, Cloud, Database, Flame, Shield, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 const ecosystemCards = [
   { name: "Azure", icon: Cloud },
-  { name: "Google Cloud", icon: Cloud },
+  { name: "Google Cloud (GCP)", icon: Cloud },
+  { name: "Firebase", icon: Flame },
   { name: "OpenAI", icon: Sparkles },
-  { name: "Anthropic", icon: Shield },
-  { name: "DeepSeek", icon: Cpu },
+  { name: "Anthropic", icon: Bot },
   { name: "PostgreSQL", icon: Database },
-  { name: "Redis", icon: Workflow },
   { name: "Stripe", icon: Shield },
 ];
 
@@ -69,20 +69,8 @@ export default function HomePage() {
 
       <section className="mt-14">
         <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-stone-500">Compatible Ecosystem</h3>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
-          {ecosystemCards.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.name}
-                className="flex items-center gap-3 rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm font-medium text-stone-700 shadow-sm"
-              >
-                <Icon className="h-4 w-4 text-stone-500" />
-                <span>{item.name}</span>
-              </div>
-            );
-          })}
-        </div>
+        <p className="mt-2 text-sm text-stone-600">Unified with a modern, continuously moving infrastructure card wall.</p>
+        <InfiniteMovingCards className="mt-4" items={ecosystemCards} />
       </section>
     </main>
   );
