@@ -78,7 +78,7 @@ export default function HomePage() {
         <p className="max-w-2xl text-sm text-slate-300 md:text-base">Unified Infrastructure &amp; Financial AI Workspace</p>
 
         <div className="w-full pt-6">
-          <LogoCarousel columnCount={4} logos={sampleLogos} />
+          <LogoCarousel columnCount={3} logos={sampleLogos} />
         </div>
       </motion.div>
     </AuroraBackground>

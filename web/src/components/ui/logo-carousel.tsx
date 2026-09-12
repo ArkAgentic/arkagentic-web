@@ -1,8 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useMemo, useState } from "react";
 
 export interface Logo {
   id: number;
@@ -13,34 +12,51 @@ export interface Logo {
 type LogoCarouselProps = {
   logos: Logo[];
   columnCount?: number;
-  className?: string;
 };
 
-export function LogoCarousel({ logos, columnCount = 4, className }: LogoCarouselProps) {
-  const items = [...logos, ...logos];
-  const cardWidth = Math.max(140, Math.floor(860 / Math.max(1, columnCount)));
+export function LogoCarousel({ logos, columnCount = 3 }: LogoCarouselProps) {
+  const [tick, setTick] = useState(0);
+  const slots = useMemo(() => {
+    const count = Math.max(1, columnCount * 2);
+    return Array.from({ length: count }, (_, index) => index);
+  }, [columnCount]);
+
+  useEffect(() => {
+    if (logos.length <= 1) return;
+    const timer = setInterval(() => {
+      setTick((current) => current + 1);
+    }, 1700);
+    return () => clearInterval(timer);
+  }, [logos.length]);
+
+  if (logos.length === 0) return null;
 
   return (
-    <div className={cn("relative w-full max-w-5xl overflow-hidden rounded-2xl border border-white/15 bg-slate-900/45 p-4 backdrop-blur-sm", className)}>
-      <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.18),transparent_45%)]" />
-      <motion.div
-        className="relative z-10 flex w-max gap-3"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 22, ease: "linear", repeat: Number.POSITIVE_INFINITY }}
-      >
-        {items.map((logo, index) => (
-          <div
-            key={`${logo.id}-${index}`}
-            className="flex shrink-0 items-center gap-3 rounded-xl border border-white/15 bg-slate-950/70 px-4 py-3 text-slate-100 shadow-[0_0_24px_rgba(56,189,248,0.12)]"
-            style={{ width: `${cardWidth}px` }}
-          >
-            {logo.img({ className: "h-5 w-5 text-cyan-200" })}
-            <span className="text-sm font-medium text-slate-200">{logo.name}</span>
-          </div>
-        ))}
-      </motion.div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-950 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-950 to-transparent" />
+    <div className="mx-auto w-full max-w-4xl">
+      <div className="grid grid-cols-2 gap-x-10 gap-y-8 md:grid-cols-3 md:gap-x-16 md:gap-y-10">
+        {slots.map((slotIndex) => {
+          const logoIndex = (tick + slotIndex * 2) % logos.length;
+          const logo = logos[logoIndex];
+
+          return (
+            <div key={slotIndex} className="relative flex min-h-[96px] items-center justify-center overflow-hidden md:min-h-[120px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`${logo.id}-${tick}-${slotIndex}`}
+                  initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -24, filter: "blur(10px)" }}
+                  transition={{ type: "spring", stiffness: 180, damping: 22, mass: 0.8 }}
+                  className="flex flex-col items-center justify-center gap-2"
+                >
+                  {logo.img({ className: "h-12 w-12 text-white/90 md:h-16 md:w-16" })}
+                  <span className="text-xs font-medium tracking-wide text-slate-200/85 md:text-sm">{logo.name}</span>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
