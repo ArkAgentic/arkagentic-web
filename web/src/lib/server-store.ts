@@ -324,7 +324,7 @@ function ensureMemorySeed() {
 
   const founder: UserRecord = {
     id: "usr_founder01",
-    email: (process.env.FOUNDER_ADMIN_EMAIL || "founder@arkagentic.com").toLowerCase(),
+    email: (process.env.FOUNDER_ADMIN_EMAIL || "charles.zhang@arkagentic.com").toLowerCase(),
     name: "Founder",
     role: "admin",
     status: "active",

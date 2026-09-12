@@ -481,7 +481,7 @@ const state = {
     users: [
       {
         userId: "usr_founder01",
-        email: "founder@arkagentic.com",
+        email: "charles.zhang@arkagentic.com",
         registeredAt: "2026-07-01",
         totalDepositedUsd: 24000,
         currentBalanceUsd: 11830.52,
