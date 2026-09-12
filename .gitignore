@@ -1,3 +1,5 @@
 
 services/ledgerly/node_modules
 **/node_modules/
+
+.firebase/
