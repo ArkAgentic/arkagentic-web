@@ -48,5 +48,4 @@ jobs:
           az containerapp update \
             --name "$AZURE_CONTAINER_APP" \
             --resource-group "$RESOURCE_GROUP" \
-            --image "$IMAGE_SHA" \
-            --target-port 3000
+            --image "$IMAGE_SHA"
