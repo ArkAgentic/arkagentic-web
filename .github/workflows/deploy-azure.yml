@@ -36,7 +36,7 @@ jobs:
           IMAGE_SHA="$ACR_LOGIN_SERVER/$IMAGE_NAME:${{ github.sha }}"
           IMAGE_LATEST="$ACR_LOGIN_SERVER/$IMAGE_NAME:latest"
 
-          docker build -f "" -t "" -t "" ""
+          docker build -f "$DOCKERFILE_PATH" -t "$IMAGE_SHA" -t "$IMAGE_LATEST" "$BUILD_CONTEXT"
           docker push "$IMAGE_SHA"
           docker push "$IMAGE_LATEST"
 
