@@ -381,4 +381,34 @@ body {
   }
 }
 
+:root {
+  --aurora-gradient: repeating-linear-gradient(
+    100deg,
+    #3b82f6 10%,
+    #22c55e 15%,
+    #a855f7 20%,
+    #06b6d4 25%,
+    #f59e0b 30%
+  );
+  --white-gradient: repeating-linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.08) 7%,
+    transparent 10%,
+    transparent 12%,
+    rgba(255, 255, 255, 0.08) 16%
+  );
+}
 
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.animate-aurora {
+  animation: aurora 60s linear infinite;
+}
