@@ -1,0 +1,384 @@
+{
+  "generatedAt": "2026-09-02T07:45:25.626Z",
+  "appBase": "https://arkagentic.com",
+  "targetModel": "ark-gpt-4o",
+  "userId": "usr_1fbd238812a44601",
+  "keyPrefix": "sk-ark-4cefe",
+  "holderSummary": {
+    "total": 140,
+    "success": 117,
+    "fallbackHeaderCount": 0,
+    "statusCounts": {
+      "200": 117,
+      "429": 23
+    },
+    "errorTypeCounts": {},
+    "actualModelCounts": {},
+    "samples": [
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 4873,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334194,\"id\":\"chatcmpl-EJZhqF8h8mBuL07fdWWv6bkHZRPgZ\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"5aDZ5iEvzNq\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_85fa909971\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{\"protected"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 4797,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334194,\"id\":\"chatcmpl-EJZhqKplvaP4XWD6UN8DbS7AHQtyt\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"uhqUUN8RafE\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_85fa909971\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{\"protected"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 4795,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334194,\"id\":\"chatcmpl-EJZhqbD5EG5IQQ0vC7LlKCKVKukJO\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"ZmcDqyYkrIL\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_85fa909971\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{\"protected"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 5379,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334195,\"id\":\"chatcmpl-EJZhr1DaCfQsnynBJLmZZxPYK9XP8\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"IMw8adzAkOu\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_85fa909971\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{\"protected"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 5292,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334194,\"id\":\"chatcmpl-EJZhqAjO42Yiz8FYVbNEPcy2yIo6P\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"jtRgyrbk49G\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_85fa909971\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 5291,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334194,\"id\":\"chatcmpl-EJZhqTDMUlrx6mslttOgVeY3hmJvE\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"I4a1pdRPHtr\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_88b25a3fbc\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{\"protected"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 5378,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334194,\"id\":\"chatcmpl-EJZhqmF4J9LDwhnybeEVPGTLrKmRb\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"vt0Ezfh9NWB\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_85fa909971\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{\"protected"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 5380,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334195,\"id\":\"chatcmpl-EJZhrx7e2iLuROs5NTe1aCQHxQpo9\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"1DSthfsdN6v\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_85fa909971\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 5571,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334194,\"id\":\"chatcmpl-EJZhqGhir1RRh648sSsVGpzpJkIfc\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"U9axZnkNgX3\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_85fa909971\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{\"protected"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 5386,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334195,\"id\":\"chatcmpl-EJZhrfqCbvGVkmtxJoxAFBdapNAd0\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"FbiZS3wwwKH\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_85fa909971\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      }
+    ]
+  },
+  "nonStreamProbeSummary": {
+    "total": 80,
+    "success": 0,
+    "fallbackHeaderCount": 0,
+    "statusCounts": {
+      "402": 80
+    },
+    "errorTypeCounts": {
+      "insufficient_balance": 80
+    },
+    "actualModelCounts": {},
+    "samples": [
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2242,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      },
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2245,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      },
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2245,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      },
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2496,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      },
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2584,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      },
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2600,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      },
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2614,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      },
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2633,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      },
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2661,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      },
+      {
+        "ok": false,
+        "status": 402,
+        "latencyMs": 2663,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "modelField": null,
+        "errorType": "insufficient_balance",
+        "bodySample": "{\"error\":{\"message\":\"Insufficient balance. Please recharge your account at /pricing\",\"type\":\"insufficient_balance\",\"code\":\"balance_depleted\"}}"
+      }
+    ]
+  },
+  "streamProbeSummary": {
+    "total": 40,
+    "success": 30,
+    "fallbackHeaderCount": 0,
+    "statusCounts": {
+      "200": 30,
+      "-1": 10
+    },
+    "errorTypeCounts": {
+      "client_timeout": 10
+    },
+    "actualModelCounts": {},
+    "samples": [
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1257,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334211,\"id\":\"chatcmpl-EJZi7fIjLIzNZeE7veqoMwj4ipz4u\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"MJgUAAwqnL9\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_1bb99812b9\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{\"protected"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1204,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334210,\"id\":\"chatcmpl-EJZi6KNWhzwUIzccc5KquWTCQHwMV\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"rnCmhFbP2YH\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_1bb99812b9\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{\"protected"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1360,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334210,\"id\":\"chatcmpl-EJZi6q1Cge97HAhR3e717wBkNhHnp\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"iy1nucnm4Z6\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_88b25a3fbc\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1239,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334211,\"id\":\"chatcmpl-EJZi78sH2UFbSSSzLIObnd91YncNJ\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"NGnON9HqZOQ\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_1bb99812b9\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1297,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334211,\"id\":\"chatcmpl-EJZi7kB08vozutobzM0EBvNmqPAKs\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"hzW5a5KZ6XS\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_1bb99812b9\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1354,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334211,\"id\":\"chatcmpl-EJZi76kosKKsBLgEiaRuY5WVMUyOY\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"3ILfcabgCuO\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_1bb99812b9\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1237,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334211,\"id\":\"chatcmpl-EJZi7QkojTQyxb1Cq0m0XpQOLW5Cu\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"PtxcobvwK7X\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_1bb99812b9\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1337,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334211,\"id\":\"chatcmpl-EJZi7LMudHTSPudjvDm4jL6i2KUdX\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"UURADXq9M3l\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_1bb99812b9\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1559,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334211,\"id\":\"chatcmpl-EJZi7g6dzaX6pUbG0DSiQODxNCz3G\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"wMWISaXraAe\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_1bb99812b9\"}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "latencyMs": 1176,
+        "headers": {
+          "content-type": "text/event-stream; charset=utf-8"
+        },
+        "modelField": null,
+        "errorType": null,
+        "bodySample": "data: {\"choices\":[],\"created\":0,\"id\":\"\",\"model\":\"\",\"object\":\"\",\"prompt_filter_results\":[{\"prompt_index\":0,\"content_filter_results\":{\"hate\":{\"filtered\":false,\"severity\":\"safe\"},\"jailbreak\":{\"detected\":false,\"filtered\":false},\"self_harm\":{\"filtered\":false,\"severity\":\"safe\"},\"sexual\":{\"filtered\":false,\"severity\":\"safe\"},\"violence\":{\"filtered\":false,\"severity\":\"safe\"}}}]}\n\ndata: {\"choices\":[{\"content_filter_results\":{},\"delta\":{\"content\":\"\",\"refusal\":null,\"role\":\"assistant\"},\"finish_reason\":null,\"index\":0,\"logprobs\":null}],\"created\":1788334210,\"id\":\"chatcmpl-EJZi6batEm2vyZ3JLgDGi3mB06L6k\",\"model\":\"gpt-4o-2024-11-20\",\"obfuscation\":\"yoChY5DVglF\",\"object\":\"chat.completion.chunk\",\"service_tier\":\"default\",\"system_fingerprint\":\"fp_1bb99812b9\"}\n\ndata: {\"choices\":[{\"content_filter_result\":{\"error\":{\"c"
+      }
+    ]
+  },
+  "verification": {
+    "fallback_header_nonstream": false,
+    "fallback_header_stream": false,
+    "fallback_header_any": false
+  }
+}

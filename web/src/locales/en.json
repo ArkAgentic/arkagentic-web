@@ -1,0 +1,1235 @@
+{
+  "nav": {
+    "products": "API Gateway",
+    "solutions": "Solutions",
+    "docs": "Docs",
+    "about": "About Us",
+    "getStarted": "Get Started",
+    "console": "Console",
+    "profile": "Profile",
+    "billing": "Billing",
+    "signOut": "Sign Out",
+    "pricing": "Pricing"
+  },
+  "home": {
+    "hero": {
+      "primary": "Global AI Compute Infrastructure",
+      "accent": "Enterprise LLM API Gateway",
+      "subtitle": "Empowering domestic compute expansion worldwide while delivering ultra-low latency access to top-tier global LLMs with enterprise-grade availability.",
+      "cta_primary": "Open Gateway Console",
+      "cta_secondary": "Developer Docs"
+    },
+    "features": {
+      "card1": {
+        "title": "Cross-Border Access & Compute Export",
+        "desc": "Unified OpenAI-compatible API bridging domestic compute exports with instant access to top global models."
+      },
+      "card2": {
+        "title": "Unified Model Hub & High Availability",
+        "desc": "Access all top-tier global LLMs via a single API Key, backed by dynamic load balancing and zero-downtime failover."
+      },
+      "card3": {
+        "title": "Zero-Data Retention & API Governance",
+        "desc": "Enterprise quota management, real-time telemetry billing, and strict zero-data retention security."
+      }
+    }
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Three production-grade products built on the same Warm Premium design system and engineering backbone.",
+    "cards": {
+      "gateway": {
+        "title": "OpenAI-Compatible API Gateway",
+        "summary": "One endpoint for top domestic and global models with policy routing and low-latency response."
+      },
+      "rag": {
+        "title": "RAG Microservice",
+        "summary": "Production-ready retrieval stack for support, operations, and knowledge workflows."
+      },
+      "aaas": {
+        "title": "AaaS Delivery Architecture",
+        "summary": "Composable modules that move teams from prototype to production quickly."
+      }
+    }
+  },
+  "solutions": {
+    "title": "Solutions",
+    "subtitle": "Scenario-driven solution architecture for developers, startups, and enterprise AI teams.",
+    "items": [
+      "Global expansion with domestic model access",
+      "Private enterprise agent deployment",
+      "Cross-border RAG customer support"
+    ]
+  },
+  "about": {
+    "title": "About ArkAgentic",
+    "subtitle": "We build reliable, transparent, and scalable AI infrastructure so companies can safely access top global and China-native models, then convert AI capability into measurable business outcomes.",
+    "sections": {
+      "what": {
+        "title": "What We Build",
+        "body": "ArkAgentic provides a production-grade OpenAI-compatible gateway and model routing platform. China-based teams can reliably use top global models, while global teams can efficiently access leading China-native models. We focus on resilient routing, transparent pricing, observability, and governance for long-term operation."
+      },
+      "story": {
+        "title": "Our Story",
+        "body": "Our founding team brings over a decade of management and execution experience across major technology companies, investment banking, and consulting. Across real-world projects, we repeatedly saw the same blocker: organizations wanted AI adoption, but were constrained by integration complexity, unstable routing, unpredictable cost, and cross-region model access. ArkAgentic was built to productize that infrastructure complexity."
+      },
+      "mission": {
+        "title": "Our Mission",
+        "body": "Help more organizations and individuals benefit from trustworthy AI. We believe AI value should be measured by practical outcomes: higher operating efficiency, lower cost, faster decision-making, and sustainable customer growth."
+      },
+      "smb": {
+        "title": "AI Growth for SMBs",
+        "body": "Beyond the gateway platform, we work with small and mid-sized businesses to deploy AI and agentic workflows across core operations. We deliver repeatable solutions for efficiency, cost optimization, and growth conversion, so AI becomes a compounding capability rather than a one-off experiment."
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "support": "Support: support@arkagentic.com",
+      "business": "Business: hello@arkagentic.com"
+    }
+  },
+  "docs": {
+    "title": "API Reference",
+    "subtitle": "Stripe/OpenAI-style documentation for fast onboarding: one OpenAI-compatible endpoint, predictable auth, and production-ready request patterns.",
+    "contents": "Contents",
+    "sections": {
+      "quickstart": "Quickstart",
+      "authentication": "Authentication",
+      "model-hub": "Model Hub",
+      "chat-completions": "Chat Completions",
+      "embeddings": "Embeddings",
+      "error-codes": "Error Codes"
+    },
+    "quickstart": {
+      "body": "Export your API key and call ArkAgentic in minutes. Use the same client SDKs you already use for OpenAI."
+    },
+    "auth": {
+      "body": "Pass your key in the Authorization header using Bearer Token format."
+    },
+    "modelHub": {
+      "body": "Unified routing across OpenAI, Claude, Gemini and top domestic models."
+    },
+    "chat": {
+      "body1": "Endpoint: POST /v1/chat/completions",
+      "body2": "OpenAI-compatible schema with stable request/response contracts for Node.js and Python SDKs."
+    },
+    "embeddings": {
+      "body": "Endpoint: POST /v1/embeddings for RAG indexing and retrieval pipelines."
+    },
+    "error": {
+      "table": {
+        "code": "Code",
+        "meaning": "Meaning",
+        "troubleshooting": "Troubleshooting"
+      },
+      "rows": {
+        "401": {
+          "msg": "Invalid API key",
+          "tip": "Check ARK_API_KEY and Bearer prefix"
+        },
+        "429": {
+          "msg": "Rate limit exceeded",
+          "tip": "Apply backoff or increase quota"
+        },
+        "503": {
+          "msg": "Upstream unavailable",
+          "tip": "Retry with fallback model route"
+        }
+      }
+    },
+    "try": {
+      "title": "Try It Out",
+      "apiKey": "API Key",
+      "model": "Model",
+      "prompt": "Prompt",
+      "promptDefault": "Give me a concise hello message.",
+      "send": "Send Request",
+      "streaming": "Streaming...",
+      "keyHintEmpty": "Enter an API key to test requests.",
+      "keyHintInvalid": "Use a key with prefix sk-ark-.",
+      "keyHintReady": "Ready to send a mock streaming request.",
+      "livePreview": "Live Preview",
+      "previewPlaceholder": "// Click Send Request to stream mock JSON response"
+    },
+    "page": {
+      "subtitle": "Welcome to ArkAgentic Developer API docs. Integrate global SOTA models with one endpoint."
+    }
+  },
+  "console": {
+    "common": {
+      "loadingOverview": "Loading overview...",
+      "loadingBilling": "Loading billing..."
+    },
+    "nav": {
+      "title": "Console",
+      "overview": "Overview",
+      "topup": "Prepaid Top-up",
+      "keys": "API Keys",
+      "billing": "Usage & Billing",
+      "models": "Model Hub",
+      "setupGuide": "Set Up Guide",
+      "profile": "Profile",
+      "admin": "Admin Overview",
+      "backToWebsite": "Back"
+    },
+    "overview": {
+      "metrics": {
+        "requests24h": "Requests (24h)",
+        "requestsPerMin": "Request/min",
+        "tokenUsage": "Token Usage",
+        "p95Latency": "p95 Latency"
+      },
+      "trafficTitle": "Traffic Overview",
+      "trafficDesc": "Realtime request trend (API client contract mock)"
+    },
+    "keys": {
+      "title": "API Keys",
+      "subtitle": "{count} keys · OpenAI-compatible authentication",
+      "maxPerAccount": "Max {max} keys per account",
+      "newKey": "Create Key",
+      "maxLimitReached": "Reached maximum API key limit ({max}/{max})",
+      "copy": "Copy",
+      "copied": "Copied",
+      "disable": "Disable",
+      "enable": "Enable",
+      "quota": "Quota",
+      "created": "Created",
+      "securityTitle": "Security Controls",
+      "securityDesc": "Configure IP allowlist, per-key quotas, and environment-specific access policies.",
+      "show": "Show",
+      "hide": "Hide",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "unlimited": "Unlimited",
+      "form": {
+        "name": "Key Name",
+        "namePlaceholder": "Production / Sandbox / Team",
+        "spendLimit": "Spend Limit (USD)",
+        "spendLimitPlaceholder": "Numbers only",
+        "creating": "Creating..."
+      },
+      "errors": {
+        "copyUnavailable": "Unable to copy this key right now. Please regenerate if needed",
+        "limitMustBeNumber": "Spend limit must be a valid number",
+        "limitBelowUsed": "Spend limit cannot be lower than used amount",
+        "operationFailed": "Operation failed, please try again"
+      },
+      "table": {
+        "title": "Key Management",
+        "name": "Key Name",
+        "masked": "Key Value",
+        "usageLimit": "Used / Limit",
+        "lastUsed": "Last Used",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "status": {
+        "active": "Active",
+        "disabled": "Disabled"
+      },
+      "setup": {
+        "title": "Set Up Guide",
+        "step1": "Copy your full API key from this page",
+        "step2": "Use endpoint https://arkagentic.com/v1/chat/completions",
+        "step3": "Set model to ark-gpt-4o (or another enabled model)"
+      }
+    },
+    "setupGuide": {
+      "title": "Set Up Guide",
+      "subtitle": "Everything you need to go from a new API key to a successful first request.",
+      "flow": {
+        "title": "Integration Flow",
+        "step1": {
+          "title": "Step 01 | Credential Preparation",
+          "pre": "Go to ",
+          "link": "API Keys",
+          "post": " to create a key and securely store the full key string."
+        },
+        "step2": {
+          "title": "Step 02 | Base Configuration",
+          "desc": "Replace your client Base URL with https://arkagentic.com/v1 (OpenAI SDK compatible)."
+        },
+        "step3": {
+          "title": "Step 03 | Model Selection",
+          "pre": "Go to ",
+          "link": "Model Hub",
+          "post": " and choose the required model ID for your request body."
+        },
+        "step4": {
+          "title": "Step 04 | Call Verification",
+          "pre": "Go to ",
+          "link": "Prepaid Top-up",
+          "post": " to ensure available balance, then run the code sample below."
+        }
+      },
+      "examplesTitle": "Request Examples",
+      "code": {
+        "copy": "Copy Code",
+        "copied": "Copied!"
+      },
+      "response": {
+        "title": "Response Example (200 OK)"
+      },
+      "troubleshootingTitle": "Troubleshooting",
+      "troubleshooting": {
+        "columns": {
+          "error": "Error Code",
+          "cause": "Common Cause",
+          "fix": "How to Fix"
+        },
+        "rows": {
+          "invalidKey": {
+            "cause": "Masked key copied, typo, or key is disabled",
+            "fix": "Copy full key again and ensure status is Active"
+          },
+          "modelNotSupported": {
+            "cause": "Model id typo or wrong host/path",
+            "fix": "Use any enabled model from Model Hub (for example, ark-gpt-4o) and endpoint https://arkagentic.com/v1/chat/completions"
+          },
+          "insufficientBalance": {
+            "cause": "Account balance is too low",
+            "fix": "Go to Prepaid Top-up and recharge, then retry"
+          },
+          "retryable": {
+            "cause": "Temporary upstream/network issue or rate limiting",
+            "fix": "Retry with exponential backoff and keep request id for support"
+          }
+        }
+      },
+      "nextTitle": "Next Steps",
+      "nextLinks": {
+        "apiKeys": "Go to API Keys",
+        "topup": "Go to Prepaid Top-up",
+        "models": "Go to Model Hub"
+      }
+    },
+    "billing": {
+      "cards": {
+        "balance": "Current Balance",
+        "monthToDate": "This Month",
+        "avgDaily": "Average / Day"
+      },
+      "topupTitle": "Prepaid Top-up",
+      "topupDesc": "Transparent pricing: pay fixed amount and receive credited balance with bonus on eligible plans.",
+      "success": "Recharge successful. Credited balance has been added to your account.",
+      "badges": {
+        "starter": "Starter",
+        "tier2": "Unlock 10% Discount Tier",
+        "tier3": "Unlock VIP 20% tier"
+      },
+      "creatingCheckout": "Creating checkout...",
+      "topupButton": "Top up {amount}",
+      "historyTitle": "Deposit / Billing History",
+      "usageLogsTitle": "Usage Logs",
+      "table": {
+        "invoice": "Invoice ID",
+        "time": "Time",
+        "usage": "Usage / Tokens",
+        "amount": "Amount ($)",
+        "paid": "Paid Amount ($)",
+        "credited": "Credited Amount ($)",
+        "model": "Model",
+        "promptTokens": "Prompt Tokens",
+        "completionTokens": "Completion Tokens",
+        "method": "Payment Method",
+        "status": "Status"
+      },
+      "status": {
+        "success": "Success",
+        "pending": "Pending",
+        "failed": "Failed"
+      },
+      "topupPreset": "Preset recharge amount",
+      "redeem": {
+        "title": "Redeem Code Recharge",
+        "desc": "Apply enterprise redeem codes for direct balance credit.",
+        "placeholder": "Enter redeem code",
+        "action": "Redeem",
+        "redeeming": "Redeeming...",
+        "success": "Redeemed successfully: +{amount}",
+        "failed": "Redeem failed"
+      },
+      "chart": {
+        "title": "30-Day Usage Trend",
+        "empty": "No usage data in the last 30 days.",
+        "caption": "Daily billed amount trend (latest 30 days)."
+      },
+      "breakdown": {
+        "title": "Model Usage Breakdown",
+        "desc": "Calls, tokens, billed amount, and share by model in the recent 30 days.",
+        "empty": "No model usage in the last 30 days.",
+        "calls": "Calls: {count}"
+      },
+      "empty": "No billing records yet.",
+      "method": {
+        "stripe": "Stripe",
+        "card": "Card",
+        "alipay": "Alipay",
+        "wechatPay": "WeChat Pay",
+        "redeemCode": "Redeem Code",
+        "system": "System Settlement"
+      },
+      "pagination": {
+        "prev": "Previous",
+        "next": "Next",
+        "page": "Page {page} / {total}"
+      },
+      "topupButtonWithCredit": "Top up {paid} (credit {credited})",
+      "topupFootnote": "Bonus credit is deposited directly into your account balance and can be used across all AI models.",
+      "fxDisclaimer": "Chinese users are charged in CNY with a fixed rate (1 USD = 7.2 CNY). Account credits remain in USD.",
+      "checkoutFailed": "Unable to start checkout. Please try again.",
+      "largeTopupHint": {
+        "before": "For recharges above $500 or enterprise bank transfer invoicing, contact",
+        "after": "."
+      },
+      "planLine": "Pay {paid} | Credit {credited}",
+      "planBonus": "Includes {bonus} bonus credit",
+      "plans": {
+        "starter": {
+          "badge": "Starter Plan"
+        },
+        "growth": {
+          "badge": "Bonus +10% Credit"
+        },
+        "enterprise": {
+          "badge": "Best Value +15% Credit"
+        }
+      }
+    },
+    "models": {
+      "title": "Model Hub",
+      "subtitle": "Global + China bi-directional AI routing with auto-sync mock pipeline.",
+      "sync": "Sync from /api/v1/models/sync",
+      "syncing": "Syncing...",
+      "filters": {
+        "all": "All",
+        "global": "Global Mainstream",
+        "china": "China Top AI",
+        "chat": "Chat & Reasoning",
+        "rag": "RAG & Embeddings",
+        "audio": "Audio & Multimodal"
+      },
+      "new": "New",
+      "autoAdded": "Auto-Added",
+      "active": "Active",
+      "disabled": "Disabled",
+      "notActive": "Not Active",
+      "context": "Context",
+      "inputPrice": "Input Price",
+      "outputPrice": "Output Price",
+      "latency": "Latency",
+      "estimatorTitle": "Cost Estimator (User Price)",
+      "promptTokens": "Prompt Tokens",
+      "completionTokens": "Completion Tokens",
+      "estimatedCharge": "Estimated Charge",
+      "subtitleLive": "Live 13-model catalog with automatic silent sync.",
+      "refresh": "Refresh",
+      "searchPlaceholder": "Search by model name or ID",
+      "loading": "Loading model data...",
+      "empty": "No models matched your search.",
+      "pricingDetailsButton": "Pricing & Tier Details",
+      "discountApplied": "tier rate applied",
+      "copyModelId": "Copy model ID",
+      "summary": {
+        "activeModels": "models active",
+        "currentTier": "Current tier"
+      },
+      "tiers": {
+        "standard": "Standard",
+        "vip": "VIP",
+        "enterprise": "Enterprise"
+      },
+      "inputs": {
+        "audioSeconds": "Audio Duration (seconds)",
+        "characters": "Characters",
+        "generatedImages": "Generated Images"
+      },
+      "badges": {
+        "text": "Text",
+        "code": "Code",
+        "reasoning": "Reasoning",
+        "thinking": "Thinking",
+        "embedding": "Embedding",
+        "rerank": "Rerank",
+        "imageGen": "Image Gen",
+        "audioStt": "Audio STT",
+        "audioTts": "Audio TTS"
+      },
+      "formula": {
+        "unavailable": "Pricing config is not available.",
+        "input": "Input:",
+        "output": "Output:",
+        "stt": "STT:",
+        "tts": "TTS:",
+        "image": "Image:",
+        "tokensPerSecond": "tokens/s",
+        "characters": "chars",
+        "tokenPerCharacter": "token/char",
+        "perImage": "image"
+      },
+      "modal": {
+        "title": "Pricing & Tier Details",
+        "subtitle": "Model charges are computed by input and output tokens. 1M token price is shown on every card.",
+        "close": "Close",
+        "inputTitle": "Input Tokens",
+        "inputDesc": "Tokens consumed from your prompt, context, and tool metadata.",
+        "outputTitle": "Output Tokens",
+        "outputDesc": "Tokens generated by the model response.",
+        "formulaTitle": "Estimator Formula",
+        "formulaDesc": "(Input Tokens × Input $/1M) + (Output Tokens × Output $/1M).",
+        "residencyTitle": "Data Residency & Security",
+        "residencyDesc": "All models are hosted on ArkAgentic Enterprise Cloud. No training on prompt data and no non-compliant cross-border transfer.",
+        "tierTitle": "Tier ladder (live configured rates)",
+        "tierStandard": "Standard (tier_1)",
+        "tierVip": "VIP (tier_2)",
+        "tierEnterprise": "Enterprise (tier_3)",
+        "currentTier": "Your current tier"
+      },
+      "errors": {
+        "load": "Failed to load latest model data."
+      },
+      "toast": {
+        "copied": "Copied to clipboard!",
+        "copyFailed": "Copy failed."
+      },
+      "residency": {
+        "tooltip": "Inference runs entirely within ArkAgentic Enterprise Cloud. Customer data is neither stored nor transmitted across restricted borders.",
+        "tooltipUsEast": "Inference executed in enterprise-grade US East cluster with Zero Data Retention.",
+        "tooltipGlobal": "Inference executed in ArkAgentic Global Cluster with Zero Data Retention."
+      },
+      "styleSelector": {
+        "label": "Style",
+        "optionA": "A",
+        "optionB": "B",
+        "optionC": "C"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageLabel": "Page",
+        "pageSize": "Per page"
+      },
+      "enterpriseTrust": {
+        "label": "Enterprise Security Zero Data Retention",
+        "tooltip": "All model inferences on ArkAgentic are executed with Zero Prompt Logging. Your enterprise data is never saved or used for training."
+      }
+    }
+  },
+  "footer": {
+    "products": "Products",
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "companyLegal": "Company & Legal",
+    "copyright": "© 2026 ArkAgentic Inc. All rights reserved.",
+    "modelHub": "Model Hub",
+    "apiGateway": "API Gateway",
+    "ragMicroservices": "RAG Microservices",
+    "systemStatus": "System Status",
+    "chinaOutbound": "China Outbound",
+    "globalAccessChina": "Global Access to China AI",
+    "enterpriseSecurity": "Enterprise Security",
+    "apiReference": "API Reference",
+    "quickstart": "Quickstart",
+    "sdks": "SDKs",
+    "documentation": "Documentation",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "auth": {
+    "common": {
+      "fullNamePlaceholder": "Full name",
+      "emailPlaceholder": "you@company.com",
+      "passwordPlaceholder": "Password"
+    },
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Access your ArkAgentic console with warm premium account security.",
+      "google": "Continue with Google",
+      "github": "Continue with GitHub",
+      "submit": "Sign In",
+      "noAccount": "No account yet?",
+      "getStarted": "Sign up now",
+      "submitting": "Signing in...",
+      "accountPlaceholder": "Account",
+      "forgotPassword": "Forgot password?"
+    },
+    "signup": {
+      "title": "Get Started",
+      "subtitle": "Create your account to unlock console, billing, and model routing controls.",
+      "google": "Sign up with Google",
+      "github": "Sign up with GitHub",
+      "submit": "Create Account",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign In"
+    },
+    "forgot": {
+      "title": "Forgot Password",
+      "subtitle": "Enter your account email and we will send a one-time reset link.",
+      "submit": "Send Reset Link",
+      "submitting": "Sending...",
+      "success": "If that email exists, we sent a reset link.",
+      "error": "Unable to send reset email. Please try again.",
+      "backToLogin": "Back to Sign In"
+    },
+    "reset": {
+      "title": "Reset Password",
+      "subtitle": "Set a new password for your account.",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm new password",
+      "submit": "Update Password",
+      "submitting": "Updating...",
+      "success": "Password updated. Redirecting to sign in...",
+      "invalidToken": "Reset link is invalid or missing.",
+      "passwordTooShort": "Password must be at least 8 characters.",
+      "passwordMismatch": "Passwords do not match.",
+      "failed": "Password reset failed. Please try again.",
+      "backToLogin": "Back to Sign In"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "ArkAgentic provides an enterprise-grade privacy program designed for Australian, United States, and global compliance requirements across AI inference operations.",
+    "badges": {
+      "au": "🇦🇺 Australia APPs Compliant",
+      "us": "🇺🇸 SOC2 Standards",
+      "eu": "🇪🇺 GDPR Ready",
+      "zdr": "🛡️ Zero Data Retention"
+    },
+    "sections": {
+      "baseline": {
+        "title": "Enterprise Security & Zero Data Retention Baseline",
+        "p1": "ArkAgentic enforces in-memory (RAM-only) processing for model inference. Prompt and completion payloads are processed for response generation and destroyed immediately after completion.",
+        "p2": "No persistent disk write retention, no prompt log storage, and 100% prohibition on using customer prompts or completions for AI model training are enforced as platform baseline controls."
+      },
+      "compliance": {
+        "title": "Global Regulatory Compliance Framework",
+        "intro": "Our compliance controls are aligned to major privacy and security frameworks used by enterprise legal and procurement teams:",
+        "items": [
+          "Australia Privacy Act 1988 and Australian Privacy Principles (APPs): transparent processing controls and data sovereignty alignment.",
+          "United States standards: architecture aligned with SOC 2 Type II controls and CCPA/CPRA requirements, with US East data sovereignty routing controls.",
+          "EU GDPR alignment: support for GDPR Article 28 processor obligations and enterprise DPA (Data Processing Addendum) workflows.",
+          "International security references: ISO/IEC 27001 and ISO/IEC 27018 cloud data protection practices."
+        ]
+      },
+      "dataProcessed": {
+        "title": "Data We Process",
+        "items": [
+          "User Identity Data: Name, Email, and Account Tier for registration, authentication, and account administration.",
+          "Billing and Telemetry Metadata: token counts, API latency, and anti-abuse diagnostics for billing, quota control, and reliability operations. Prompt content itself is excluded from telemetry storage."
+        ]
+      },
+      "residency": {
+        "title": "Data Residency & Cross-Border Guardrails",
+        "body": "Inference traffic is routed by approved Enterprise Cloud Regions (for example, US East) with strict controls that prohibit non-compliant cross-border transfer unless legal and compliance review is explicitly satisfied."
+      },
+      "rights": {
+        "title": "Data Subject Rights & Enterprise Requests",
+        "body": "Customers may request data access, export, correction, and deletion. Enterprise customers can initiate DPA-linked legal review and processing records requests through ArkAgentic privacy operations."
+      },
+      "contact": {
+        "title": "DPO & Privacy Contact",
+        "body": "For privacy incidents, legal requests, or regulator-facing compliance communications, contact our privacy operations team.",
+        "email": "privacy@arkagentic.com"
+      }
+    }
+  },
+  "admin": {
+    "nav": {
+      "overview": "Overview",
+      "usage": "Usage Logs",
+      "channels": "Channels",
+      "routes": "Routes"
+    },
+    "common": {
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "active": "Active",
+      "inactive": "Inactive",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "creating": "Creating...",
+      "exportCsv": "Export CSV",
+      "exporting": "Exporting...",
+      "prev": "Prev",
+      "next": "Next",
+      "page": "Page",
+      "showing": "Showing",
+      "of": "of"
+    },
+    "overview": {
+      "loading": "Loading admin dashboard...",
+      "metrics": {
+        "totalUsers": "Total Registered Users",
+        "grossDeposits": "Gross Deposits Flow",
+        "totalBalance": "Total User Balance",
+        "netProfit": "Cumulative Net Profit"
+      },
+      "usersSection": {
+        "title": "User & Funds Management",
+        "searchLabel": "Search users",
+        "searchPlaceholder": "User ID / Email",
+        "disable": "Disable",
+        "enable": "Enable",
+        "table": {
+          "userId": "User ID",
+          "email": "Email",
+          "registeredAt": "Registered At",
+          "totalDeposited": "Total Deposited ($)",
+          "currentBalance": "Current Balance ($)",
+          "tier": "Tier",
+          "status": "Status",
+          "actions": "Actions"
+        }
+      },
+      "keysSection": {
+        "title": "API Keys & Gateway Monitoring",
+        "searchLabel": "Search keys",
+        "searchPlaceholder": "User ID / Key Prefix / Status",
+        "table": {
+          "userId": "User ID",
+          "keyPrefix": "API Key Prefix",
+          "quota": "Quota Limit",
+          "status": "Status"
+        }
+      }
+    },
+    "usage": {
+      "loading": "Loading usage logs...",
+      "title": "Realtime Usage Logs",
+      "searchLabel": "Search logs",
+      "searchPlaceholder": "User / Model / Request ID",
+      "range": {
+        "24h": "24H",
+        "7d": "7D",
+        "30d": "30D",
+        "all": "All"
+      },
+      "table": {
+        "timestamp": "Timestamp",
+        "user": "User",
+        "model": "Model",
+        "tokens": "Token Usage",
+        "charge": "Customer Charge ($)",
+        "profit": "Net Profit ($)"
+      }
+    },
+    "channels": {
+      "title": "Upstream Channels",
+      "subtitle": "Manage upstream endpoints, encrypted credentials, and live health metrics.",
+      "loading": "Loading channels...",
+      "confirmDelete": "Delete this channel? Routes linked to this channel will be removed.",
+      "stats": {
+        "total": "Total Channels",
+        "healthyEnabled": "Healthy & Enabled",
+        "lastRefresh": "Last Refresh"
+      },
+      "actions": {
+        "refresh": "Refresh",
+        "refreshing": "Refreshing...",
+        "newChannel": "New Channel",
+        "ping": "Ping",
+        "pinging": "Pinging...",
+        "saveChanges": "Save Changes",
+        "createChannel": "Create Channel"
+      },
+      "table": {
+        "name": "Name",
+        "type": "Type",
+        "baseUrl": "Base URL",
+        "apiKey": "API Key",
+        "latency": "Latency",
+        "health": "Health",
+        "enabled": "Enabled",
+        "actions": "Actions"
+      },
+      "healthStates": {
+        "healthy": "Healthy",
+        "degraded": "Degraded",
+        "unreachable": "Unreachable",
+        "unknown": "Unknown"
+      },
+      "modal": {
+        "newTitle": "New Channel",
+        "editTitle": "Edit Channel",
+        "type": "Type",
+        "name": "Name",
+        "baseUrl": "Base URL",
+        "apiKey": "API Key",
+        "apiKeyOptional": "API Key (Leave empty to keep existing key)",
+        "timeoutMs": "Timeout (ms)",
+        "modelMapping": "Model Mapping (JSON)"
+      },
+      "errors": {
+        "load": "Failed to load channels",
+        "save": "Save failed",
+        "delete": "Delete failed",
+        "ping": "Health check failed",
+        "apiKeyRequired": "API key is required for new channel"
+      }
+    },
+    "routes": {
+      "title": "Model Routes & Priority",
+      "subtitle": "Manage Ark model routing with unified priority controls. New routes automatically sync to Model Hub cards.",
+      "loading": "Loading routes...",
+      "empty": "No routes configured.",
+      "confirmDelete": "Delete this route?",
+      "create": {
+        "title": "Create Route",
+        "modelPlaceholder": "ark model id (e.g. ark-qwen-3.5-max)",
+        "overridePlaceholder": "upstream model override (e.g. gpt-4o / Qwen/Qwen3.5-397B)",
+        "add": "Add Route",
+        "expand": "Expand",
+        "collapse": "Collapse"
+      },
+      "table": {
+        "priority": "Priority",
+        "channel": "Target Channel",
+        "override": "Upstream Override",
+        "enabled": "Enabled",
+        "actions": "Actions",
+        "modelId": "Ark Model ID"
+      },
+      "actions": {
+        "up": "Up",
+        "down": "Down",
+        "save": "Save"
+      },
+      "errors": {
+        "load": "Failed to load routes",
+        "create": "Create route failed",
+        "toggle": "Toggle failed",
+        "delete": "Delete failed",
+        "priority": "Priority change failed",
+        "swap": "No temporary free priority slot. Please adjust priorities manually.",
+        "update": "Update route failed",
+        "noEnabledChannels": "No enabled channels available. Please enable a channel first."
+      }
+    }
+  },
+  "home.usecases.items.0.desc": "Help multinational enterprises reduce model orchestration and compute access costs.",
+  "home.usecases.items.1.desc": "Precisely match frontier AI leadership talent for technology organizations.",
+  "home.usecases.items.2.desc": "Build secure, controllable knowledge bases and intelligent business flows.",
+  "home.hero.primary": "Global AI Compute Infrastructure",
+  "home.hero.accent": "Enterprise LLM API Gateway",
+  "home.hero.cta_primary": "Open Gateway Console",
+  "home.hero.cta_secondary": "Developer Docs",
+  "home.features.card1.title": "Cross-Border Access & Compute Export",
+  "home.features.card1.desc": "Unified OpenAI-compatible API bridging domestic compute exports with instant access to top global models.",
+  "home.features.card2.title": "Unified Model Hub & High Availability",
+  "home.features.card2.desc": "Access all top-tier global LLMs via a single API Key, backed by dynamic load balancing and zero-downtime failover.",
+  "home.features.card3.title": "Zero-Data Retention & API Governance",
+  "home.features.card3.desc": "Enterprise quota management, real-time telemetry billing, and strict zero-data retention security.",
+  "home.proof.kpi1.value": "99.99%",
+  "home.proof.kpi1.label": "Gateway Availability SLA",
+  "home.proof.kpi2.value": "< 15 ms",
+  "home.proof.kpi2.label": "P95 Routing Latency",
+  "home.proof.kpi3.value": "20+",
+  "home.proof.kpi3.label": "Global/Domestic Model Routes",
+  "home.proof.kpi4.value": "10M+",
+  "home.proof.kpi4.label": "Monthly Successful Calls",
+  "home.compare.title": "Why not direct-connect upstream vendors?",
+  "home.compare.subtitle": "A practical comparison for engineering, finance, and reliability teams.",
+  "home.compare.header.dimension": "Dimension",
+  "home.compare.header.direct": "Direct Multi-Vendor",
+  "home.compare.header.selfbuild": "Self-Built Gateway",
+  "home.compare.header.ark": "ArkAgentic Gateway",
+  "home.compare.row1.dimension": "Integration Cost",
+  "home.compare.row1.direct": "Multiple SDKs and auth flows",
+  "home.compare.row1.selfbuild": "High initial engineering cost",
+  "home.compare.row1.ark": "OpenAI-compatible unified endpoint",
+  "home.compare.row2.dimension": "Reliability",
+  "home.compare.row2.direct": "Vendor-side variance",
+  "home.compare.row2.selfbuild": "Ops heavy to stabilize",
+  "home.compare.row2.ark": "Built-in smart routing + failover",
+  "home.compare.row3.dimension": "Cost Governance",
+  "home.compare.row3.direct": "Hard to compare per vendor",
+  "home.compare.row3.selfbuild": "Need custom billing pipeline",
+  "home.compare.row3.ark": "Unified telemetry and billing visibility",
+  "home.compare.row4.dimension": "Security/Compliance",
+  "home.compare.row4.direct": "Inconsistent controls",
+  "home.compare.row4.selfbuild": "Complex policy enforcement",
+  "home.compare.row4.ark": "Zero-data-retention baseline controls",
+  "home.compare.row5.dimension": "Time to Production",
+  "home.compare.row5.direct": "Slow coordination",
+  "home.compare.row5.selfbuild": "Long implementation cycle",
+  "home.compare.row5.ark": "Fast launch with one API key",
+  "home.pricing.title": "Transparent Pricing & Cost Estimator",
+  "home.pricing.subtitle": "Estimate your monthly usage cost before onboarding.",
+  "home.pricing.inputPrompt": "Prompt Tokens / Month",
+  "home.pricing.inputCompletion": "Completion Tokens / Month",
+  "home.pricing.estimateLabel": "Estimated Monthly Cost",
+  "home.pricing.formulaNote": "Formula: input_tokens × $0.6 / 1M + output_tokens × $1.8 / 1M",
+  "home.security.title": "Enterprise Security & Compliance",
+  "home.security.subtitle": "Procurement-ready trust controls for legal and security review.",
+  "home.security.item1.title": "Zero Data Retention",
+  "home.security.item1.desc": "No prompt/content persistence across inference flows by default.",
+  "home.security.item2.title": "API Key Governance",
+  "home.security.item2.desc": "Scoped keys, quota caps, and audit-oriented access management.",
+  "home.security.item3.title": "Region-aware Routing",
+  "home.security.item3.desc": "Policy-based route controls for cross-border and regional access.",
+  "home.security.item4.title": "Operational Auditability",
+  "home.security.item4.desc": "Unified request telemetry for finance and reliability operations.",
+  "home.integration.title": "Integrate in Minutes",
+  "home.integration.subtitle": "No SDK rewrite. Keep your existing OpenAI client workflow.",
+  "home.cta.title": "Choose your onboarding path",
+  "home.cta.subtitle": "Developers can self-serve instantly; enterprises can review architecture and compliance with our team.",
+  "home.cta.primary": "Open Gateway Console",
+  "home.cta.secondary": "Schedule Architecture Review",
+  "home.hero.subtitle": "Empowering domestic compute expansion worldwide while delivering ultra-low latency access to top-tier global LLMs with enterprise-grade availability.",
+  "home.hero.cta.primary": "Open Gateway Console",
+  "home.hero.cta.secondary": "Developer Docs",
+  "home.trust.arch.title": "B2B Trust Backbone & Architecture Topology",
+  "home.trust.arch.step.client": "Client / Enterprise Systems",
+  "home.trust.arch.step.gateway": "ArkAgentic High-Availability Gateway",
+  "home.trust.arch.step.filter": "Zero-data-retention leakage filter",
+  "home.trust.arch.step.providers": "Global Providers: OpenAI / Anthropic / DeepSeek / Kimi",
+  "home.trust.security.title": "Enterprise Security & Compliance",
+  "home.trust.security.item1.title": "Zero Data Retention",
+  "home.trust.security.item1.desc": "Pure pipeline mode: no persistent storage of prompts or inference payloads.",
+  "home.trust.security.item2.title": "Enterprise End-to-End Encryption",
+  "home.trust.security.item2.desc": "Mandatory TLS 1.3 high-strength encryption across full transmission path.",
+  "home.trust.security.item3.title": "RBAC & Circuit Breaker",
+  "home.trust.security.item3.desc": "Sub-account key quota controls and rate limits with automatic upstream circuit breaking.",
+  "home.trust.security.item4.title": "Data Residency Compliance",
+  "home.trust.security.item4.desc": "Aligned with EU/US/AU privacy expectations and deployed in global compliant regions.",
+  "home.roi.item1.title": "Cross-Border E-commerce Support",
+  "home.roi.item1.desc": "Multi-model routing can reduce blended support-stack cost by up to 60%.",
+  "home.roi.item2.title": "R&D Team Copilot",
+  "home.roi.item2.desc": "One access layer for both global and domestic SOTA model stacks.",
+  "home.roi.item3.title": "Global App Compute Export",
+  "home.roi.item3.desc": "Ultra-fast response routing with automatic retry and failover logic.",
+  "home.calculator.title": "Cost Savings Calculator",
+  "home.calculator.subtitle": "Estimate blended gateway savings under realistic monthly usage patterns.",
+  "home.calculator.tokens": "Estimated Monthly Token Volume",
+  "home.calculator.scenario": "Primary Usage Scenario",
+  "home.calculator.option.gpt4o": "Mostly GPT-4o workload",
+  "home.calculator.option.deepseek": "Mostly DeepSeek-R1 / Qwen workload",
+  "home.calculator.direct": "Direct Multi-API Cost",
+  "home.calculator.ark": "ArkAgentic Gateway Plan",
+  "home.calculator.save": "Estimated blended savings",
+  "home.calculator.cta": "Integrate Now",
+  "home.map.title": "Global Node Coverage & SLA Map",
+  "home.map.metric1.label": "Gateway Overhead",
+  "home.map.metric1.value": "< 15ms",
+  "home.map.metric2.label": "Auto-Failover Standby Coverage",
+  "home.map.metric2.value": "99.99%",
+  "home.playground.title": "Zero-Cost Playground Simulation",
+  "home.playground.subtitle": "Fixed presets only. No free-text input, no token burn risk.",
+  "home.playground.preset.latency": "Test API response latency",
+  "home.playground.preset.json": "Structured JSON extraction",
+  "home.playground.preset.translate": "Cross-language translation sample",
+  "home.playground.typing": "Typewriter streaming...",
+  "home.playground.done": "Simulation complete",
+  "home.playground.latency": "Gateway processing latency:",
+  "home.playground.node": "Route node:",
+  "home.models.title": "Model Card Showcase",
+  "home.models.availability": "Availability",
+  "home.models.latency": "Latency",
+  "home.common.copy": "Copy",
+  "home.common.copied": "Copied",
+  "home.common.copyCode": "Copy Code",
+  "home.finalCta.title": "Ready for production-grade model routing?",
+  "home.finalCta.subtitle": "Launch self-serve in minutes or book an enterprise architecture and compliance walkthrough.",
+  "home.finalCta.primary": "Open Gateway Console",
+  "home.finalCta.secondary": "Book Enterprise Review",
+  "home.providers.title": "Supported LLM Foundations",
+  "home.providers.subtitle": "Direct integration with leading enterprise-grade AI models",
+  "home.highlights.card1.title": "Unified API Hub",
+  "home.highlights.card1.desc": "OpenAI-compatible standard architecture for one-click access to top global and domestic SOTA models.",
+  "home.highlights.card2.title": "Cost Optimization",
+  "home.highlights.card2.desc": "Reduce multi-SDK maintenance and FX leakage with smart routing and usage-based billing, cutting blended cost up to 70%.",
+  "home.highlights.card3.title": "High-Availability Routing",
+  "home.highlights.card3.desc": "Built-in health checks and second-level failover switching keep enterprise production traffic uninterrupted.",
+  "home.trust.arch.step.foundry": "Global compliant managed nodes (US/EU standard deployments)",
+  "home.trust.arch.note": "Overseas enterprise traffic is processed within global compliant data centers without cross-border return flows, aligning with GDPR privacy standards.",
+  "home.featureGrid.card1.title": "Unified API Hub",
+  "home.featureGrid.card1.desc": "OpenAI-compatible format with unified multi-model access and strategy-based routing, enabling one-click integration across global and domestic SOTA models without multi-SDK complexity.",
+  "home.featureGrid.card2.title": "Cost Optimization",
+  "home.featureGrid.card2.desc": "Eliminate multi-SDK maintenance and FX leakage with smart routing and usage-based billing, reducing blended compute cost by up to 70%.",
+  "home.featureGrid.card3.title": "High-Availability Routing",
+  "home.featureGrid.card3.desc": "Built-in health checks, second-level failover switching, and automatic retries keep enterprise production traffic uninterrupted.",
+  "home.featureGrid.card4.title": "Zero Data Retention",
+  "home.featureGrid.card4.desc": "Pure passthrough pipeline mode with no persistent storage or caching of prompts and model inference content.",
+  "home.featureGrid.card5.title": "Enterprise Security",
+  "home.featureGrid.card5.desc": "Mandatory TLS 1.3 encryption with sub-account key quota controls, rate limiting, and auditable logs.",
+  "home.featureGrid.card6.title": "Data Residency & Privacy",
+  "home.featureGrid.card6.desc": "Enterprise gateway nodes deployed in US, Australia, Europe, and Singapore. Overseas enterprise traffic is processed locally without cross-border transfers, fully compliant with GDPR.",
+  "home.calculator.option.hybrid": "Multi-model high-availability strategy scenario (GPT-4o / DeepSeek dynamic seamless switching)",
+  "home.calculator.option.single": "Single-model high-concurrency access (all GPT-4o / Claude 3.5)",
+  "home.calculator.option.cn": "China model global-access scenario (Qwen / Kimi / DeepSeek)",
+  "home.calculator.breakdown.title": "TCO Breakdown Transparency",
+  "home.calculator.breakdown.sdk": "Multi-SDK integration & maintenance: 20+ hrs/month direct -> ArkAgentic 0 hrs (OpenAI-compatible unified API)",
+  "home.calculator.breakdown.network": "Network acceleration & overseas node overhead: direct self-build required -> ArkAgentic built-in global edge routing",
+  "home.calculator.breakdown.failover": "Failover & retry resilience: direct requires custom circuit-breaker logic -> ArkAgentic built-in 99.99% seamless switching",
+  "home.calculator.breakdown.builtin": "Built-in",
+  "home.calculator.note": "Note: This blended TCO model includes SDK maintenance labor conversion, cross-border line/node overhead, and multi-account prepaid capital occupancy; ArkAgentic provides a unified API and built-in failover routing at no extra infra cost.",
+  "home.calculator.breakdown.capital": "Prepaid capital occupancy and FX drag: direct multi-platform wallet preload -> ArkAgentic centralized settlement and routing",
+  "home.calculator.tooltip.sdk": "Estimated from ~20 engineer hours/month for senior API maintenance at about $13/hour equivalent, yielding ~$260/month.",
+  "home.calculator.tooltip.network": "Estimated from fixed monthly self-hosted overseas proxy + acceleration line overhead, around $210/month.",
+  "home.calculator.tooltip.capital": "Estimated from multi-provider prepaid capital lockup, settlement inefficiency, and FX drag, around $50/month baseline.",
+  "home.calculator.tooltip.failover": "Direct-connect requires custom circuit-breaker engineering and resilience ops; ArkAgentic includes built-in second-level failover and retries.",
+  "home.calculator.formula.toggle": "View calculation formulas and audit assumptions",
+  "home.calculator.formula.title": "Calculation formulas and evaluation standard",
+  "home.calculator.formula.direct": "Direct multi-API TCO = token base fee + multi-SDK labor conversion + overseas network/node overhead + prepaid capital occupancy cost.",
+  "home.calculator.formula.ark": "ArkAgentic TCO = token fee × 1.03 markup + unified SDK operations ($0) + built-in HA routing and acceleration ($0).",
+  "home.calculator.breakdown.rows.sdk.title": "Multi-SDK Integration & Maintenance",
+  "home.calculator.breakdown.rows.sdk.desc": "Direct requires 20+ engineer hours/month for API integration, adaptation, and regression maintenance.",
+  "home.calculator.breakdown.rows.network.title": "Oversea Nodes & Line Acceleration",
+  "home.calculator.breakdown.rows.network.desc": "Direct mode needs self-hosted overseas proxy and acceleration links to stabilize latency.",
+  "home.calculator.breakdown.rows.capital.title": "Multi-Provider Capital Lockup",
+  "home.calculator.breakdown.rows.capital.desc": "Direct mode splits prepaid balances across providers, adding settlement friction and FX drag.",
+  "home.calculator.breakdown.rows.failover.title": "Failover & Circuit Breaker",
+  "home.calculator.breakdown.rows.failover.desc": "Direct mode requires custom failover orchestration and retry strategy to avoid service interruption.",
+  "home.calculator.breakdown.badge.direct": "Direct",
+  "home.calculator.breakdown.badge.ark": "ArkAgentic",
+  "home.calculator.breakdown.directRisk": "High Risk",
+  "home.calculator.breakdown.arkSla": "Included 99.99%",
+  "home.map.metric3.label": "Mainland China Data Return Rate",
+  "home.map.metric3.value": "0.00% (GDPR Clean)",
+  "home.map.node.usw": "US-West (Oregon) — 12ms",
+  "home.map.node.use": "US-East (Virginia) — 18ms",
+  "home.map.node.euc": "EU-Central (Frankfurt) — 24ms",
+  "home.map.node.aps": "AP-Southeast (Singapore) — 15ms",
+  "home.map.node.ape": "AP-East (Sydney/Tokyo) — 20ms",
+  "home.map.live.title": "Live Node Status",
+  "home.map.live.active": "Active",
+  "home.map.live.usw": "US-West",
+  "home.map.live.use": "US-East",
+  "home.map.live.euc": "EU-Central",
+  "home.map.live.aps": "AP-Southeast",
+  "home.map.live.ape": "AP-East",
+  "home.map.region.active": "Operational",
+  "home.map.region.usw.name": "US-West (Oregon)",
+  "home.map.region.usw.facility": "AWS/Azure West",
+  "home.map.region.use.name": "US-East (Virginia)",
+  "home.map.region.use.facility": "AWS/Azure East",
+  "home.map.region.euc.name": "EU-Central (Frankfurt)",
+  "home.map.region.euc.facility": "Equinix DE1",
+  "home.map.region.aps.name": "AP-Southeast (Singapore)",
+  "home.map.region.aps.facility": "Singtel Edge",
+  "home.map.region.ape.name": "AP-East (Tokyo)",
+  "home.map.region.ape.facility": "Equinix TY11",
+  "home.map.region.cluster": "Ark-Edge Cluster",
+  "home.map.region.usw.short": "US-West",
+  "home.map.region.use.short": "US-East",
+  "home.map.region.euc.short": "EU-Central",
+  "home.map.region.aps.short": "AP-Southeast",
+  "home.map.region.ape.short": "AP-East",
+  "home.map.region.usw.full": "Oregon, US",
+  "home.map.region.use.full": "Virginia, US",
+  "home.map.region.euc.full": "Frankfurt, DE",
+  "home.map.region.aps.full": "Singapore",
+  "home.map.region.ape.full": "Tokyo, JP",
+  "home.map.region.overhead": "Gateway Overhead",
+  "home.map.footnote": "* Metrics reflect internal gateway routing overhead",
+  "home.contact.title": "Contact Sales & Support",
+  "home.contact.subtitle": "Need help with architecture, enterprise customization, or compliance? Our team will get back to you within 24 hours.",
+  "home.contact.name": "Name",
+  "home.contact.namePlaceholder": "Your name",
+  "home.contact.email": "Work Email",
+  "home.contact.emailPlaceholder": "you@company.com",
+  "home.contact.message": "Message",
+  "home.contact.messagePlaceholder": "Tell us about your requirements...",
+  "home.contact.submit": "Send Message",
+  "home.contact.sending": "Sending...",
+  "home.contact.success": "Message sent successfully. We will contact you soon.",
+  "home.contact.errorRequired": "Please complete all required fields.",
+  "home.contact.errorSubmit": "Failed to send message. Please try again later.",
+  "chat.widget.trigger": "Live Chat",
+  "chat.widget.title": "ArkAgentic Live Chat",
+  "chat.widget.online": "Online Support",
+  "chat.widget.welcome": "Hello, this is ArkAgentic Live Chat. How can we help with your gateway, SLA, or billing questions today?",
+  "chat.widget.placeholder": "Ask about API compatibility, SLA, invoicing...",
+  "chat.widget.error": "Sorry, I could not respond right now. Please try again in a moment.",
+  "chat.widget.close": "Close chat",
+  "chat.widget.send": "Send message",
+  "home.contact.directChannels": "Direct Enterprise Channels",
+  "home.contact.channelSalesLabel": "Sales",
+  "home.contact.channelSupportLabel": "Support",
+  "home.contact.channelSlaLabel": "Response SLA",
+  "home.contact.channelSlaNote": "Business-day response within 24 hours.",
+  "home.dynamic.terminal.title": "Integration Terminal",
+  "home.dynamic.terminal.tab.curl": "cURL",
+  "home.dynamic.terminal.tab.python": "Python",
+  "home.dynamic.terminal.tab.node": "Node.js",
+  "home.dynamic.terminal.copy": "Copy Code",
+  "home.dynamic.terminal.copied": "Copied",
+  "home.dynamic.marquee.title": "Model Ecosystem",
+  "home.gateway.appTitle": "Your AI App",
+  "home.gateway.coreTitle": "ArkAgentic AI Gateway",
+  "home.gateway.llmTitle": "100+ Enterprise LLMs",
+  "home.gateway.ecosystemNote": "Custom + Fine-Tuned Models Supported",
+  "home.gateway.module.routing": "ROUTING & FAILOVER",
+  "home.gateway.module.observability": "OBSERVABILITY",
+  "home.gateway.module.guardrails": "GUARDRAILS",
+  "home.gateway.module.prompt": "PROMPT MANAGEMENT",
+  "home.gateway.module.cost": "COST OPTIMIZATION",
+  "home.gateway.module.security": "ENTERPRISE SECURITY",
+  "home.gateway.module.finops": "FINOPS",
+  "home.gateway.button.custom": "Custom Models",
+  "home.gateway.button.finetuned": "Fine-Tuned Models",
+  "docs.page.title": "Developer Documentation",
+  "docs.page.subtitle.pre": "ArkAgentic API is 100% OpenAI-compatible. Keep your SDK unchanged, only replace",
+  "docs.page.subtitle.base": "baseURL: https://gateway.arkagentic.com/v1",
+  "docs.page.subtitle.post": "and your API key.",
+  "docs.page.ctaBilling": "Open Billing Console",
+  "docs.page.ctaModels": "Open Model Center",
+  "docs.page.contents": "Contents",
+  "docs.page.sections.quickstart": "Quickstart",
+  "docs.page.sections.routing": "Model Routing Directory",
+  "docs.page.sections.advanced": "Advanced Gateway Features",
+  "docs.page.samplePrompt": "Hello from ArkAgentic",
+  "docs.page.quickstart.body.pre": "Use your existing OpenAI SDK. Only change base URL to",
+  "docs.page.quickstart.body.post": "and pass your ArkAgentic API key.",
+  "docs.page.quickstart.tab.curl": "cURL",
+  "docs.page.quickstart.tab.python": "Python (openai SDK)",
+  "docs.page.quickstart.tab.node": "Node.js / TypeScript (openai SDK)",
+  "docs.page.code.copy": "Copy",
+  "docs.page.code.copied": "Copied",
+  "docs.page.routing.body": "Pass standard ArkAgentic model IDs in model. Gateway can map aliases and upstream overrides internally while your client integration stays stable.",
+  "docs.page.routing.table.modelId": "Model ID",
+  "docs.page.routing.table.category": "Category",
+  "docs.page.routing.table.alias": "Alias / Route Target",
+  "docs.page.routing.table.notes": "Notes",
+  "docs.page.routing.rows.gpt4o.family": "Chat & Reasoning",
+  "docs.page.routing.rows.gpt4o.alias": "gpt-4o / flagship balanced",
+  "docs.page.routing.rows.gpt4o.notes": "General production chat workload",
+  "docs.page.routing.rows.codex.family": "Chat & Reasoning",
+  "docs.page.routing.rows.codex.alias": "gpt-5.3-codex / coding",
+  "docs.page.routing.rows.codex.notes": "Code-heavy workflow and tooling",
+  "docs.page.routing.rows.claude.family": "Chat & Reasoning",
+  "docs.page.routing.rows.claude.alias": "claude-sonnet-5",
+  "docs.page.routing.rows.claude.notes": "Long-context reasoning",
+  "docs.page.routing.rows.deepseek.family": "Chat & Reasoning",
+  "docs.page.routing.rows.deepseek.alias": "deepseek-reasoner",
+  "docs.page.routing.rows.deepseek.notes": "Cost-efficient reasoning route",
+  "docs.page.routing.rows.cohereEmbed.family": "RAG & Vector",
+  "docs.page.routing.rows.cohereEmbed.alias": "cohere-embed-v3",
+  "docs.page.routing.rows.cohereEmbed.notes": "Embedding and retrieval pipeline",
+  "docs.page.routing.rows.cohereRerank.family": "RAG & Vector",
+  "docs.page.routing.rows.cohereRerank.alias": "cohere-rerank-v4.0-pro",
+  "docs.page.routing.rows.cohereRerank.notes": "Relevance reranking",
+  "docs.page.routing.rows.transcribe.family": "Audio & Multimodal",
+  "docs.page.routing.rows.transcribe.alias": "mai-transcribe-1.5",
+  "docs.page.routing.rows.transcribe.notes": "Speech-to-text",
+  "docs.page.advanced.failover.title": "Failover & Auto-Retry",
+  "docs.page.advanced.failover.body": "If an upstream node is degraded or unavailable, gateway automatically reroutes and retries to healthy candidates with no client-side route change.",
+  "docs.page.advanced.streaming.title": "Streaming SSE",
+  "docs.page.advanced.streaming.body.pre": "Standard OpenAI-compatible streaming is supported. Set",
+  "docs.page.advanced.streaming.body.post": "and consume Server-Sent Events in your existing client.",
+  "docs.page.advanced.streaming.requestTitle": "Streaming Request",
+  "docs.page.advanced.errors.title": "HTTP Status Codes & Error Handling",
+  "docs.page.advanced.errors.table.code": "Code",
+  "docs.page.advanced.errors.table.meaning": "Meaning",
+  "docs.page.advanced.errors.table.action": "Suggested Action",
+  "docs.page.advanced.errors.rows.400.meaning": "Invalid request payload",
+  "docs.page.advanced.errors.rows.400.action": "Validate JSON shape and model ID.",
+  "docs.page.advanced.errors.rows.401.meaning": "Unauthorized",
+  "docs.page.advanced.errors.rows.401.action": "Check Bearer token and key scope.",
+  "docs.page.advanced.errors.rows.429.meaning": "Rate limited",
+  "docs.page.advanced.errors.rows.429.action": "Apply exponential backoff and retry.",
+  "docs.page.advanced.errors.rows.5xx.meaning": "Transient upstream/gateway failure",
+  "docs.page.advanced.errors.rows.5xx.action": "Retry with jitter; gateway may auto-failover.",
+  "pricing.page.title": "Prepaid Billing & Public Model Center",
+  "pricing.page.subtitle": "Public pricing is aligned with console billing and model-center logic. Recharge in console, then run workload estimation on the same model IDs.",
+  "pricing.page.tiers.starter.badge": "Entry",
+  "pricing.page.tiers.starter.title": "Trial Pack",
+  "pricing.page.tiers.starter.subtitle": "Starter access for first production calls",
+  "pricing.page.tiers.growth.badge": "Recommended",
+  "pricing.page.tiers.growth.title": "Most Popular",
+  "pricing.page.tiers.growth.subtitle": "Unlock 10% Discount Tier",
+  "pricing.page.tiers.enterprise.badge": "VIP",
+  "pricing.page.tiers.enterprise.title": "Enterprise Tier",
+  "pricing.page.tiers.enterprise.subtitle": "VIP 20% discount tier",
+  "pricing.page.tiers.goBilling": "Go to Billing",
+  "pricing.page.modelCenter.title": "Public Model Center & Estimator",
+  "pricing.page.modelCenter.cta": "Open Console Model Center",
+  "pricing.page.filters.all": "All Models",
+  "pricing.page.filters.chat": "Chat & Reasoning",
+  "pricing.page.filters.rag": "RAG & Vector",
+  "pricing.page.filters.audio": "Audio & Multimodal",
+  "pricing.page.searchPlaceholder": "Search model id",
+  "pricing.page.labels.context": "Context",
+  "pricing.page.labels.latency": "Latency",
+  "pricing.page.labels.inputPrice": "Input Price",
+  "pricing.page.labels.outputPrice": "Output Price",
+  "pricing.page.estimator.inputTokens": "Input Tokens",
+  "pricing.page.estimator.outputTokens": "Output Tokens",
+  "pricing.page.estimator.input": "Input",
+  "pricing.page.estimator.output": "Output",
+  "pricing.page.models.names.ark-gpt-4o": "GPT-4o",
+  "pricing.page.models.names.ark-gpt-5.3-codex": "GPT-5.3 Codex",
+  "pricing.page.models.names.ark-claude-sonnet-5": "Claude Sonnet 5",
+  "pricing.page.models.names.ark-claude-opus-5": "Claude Opus 5",
+  "pricing.page.models.names.ark-deepseek-v4-pro": "DeepSeek V4 Pro",
+  "pricing.page.models.names.ark-deepseek-v4-flash": "DeepSeek V4 Flash",
+  "pricing.page.models.names.ark-mai-thinking-1": "MAI Thinking 1",
+  "pricing.page.models.names.ark-cohere-embed-v3": "Cohere Embed V3",
+  "pricing.page.models.names.ark-cohere-rerank-v4-pro": "Cohere Rerank V4 Pro",
+  "pricing.page.models.names.ark-cohere-rerank-v4-fast": "Cohere Rerank V4 Fast",
+  "pricing.page.models.names.ark-mai-image-2.5-pro": "MAI Image 2.5 Pro",
+  "pricing.page.models.names.ark-mai-transcribe-1.5": "MAI Transcribe 1.5",
+  "pricing.page.models.names.ark-mai-voice-2": "MAI Voice 2",
+  "footer.copyright": "© 2026 ArkAgentic Inc.",
+  "footer.rightsReserved": "All rights reserved.",
+  "nav.docs": "Developer Docs",
+  "docs.page.quickstart.getApiKey": "Get API Key ➔",
+  "docs.page.routing.searchPlaceholder": "Search by model ID, alias, or provider",
+  "docs.page.routing.empty": "No models matched your filters.",
+  "docs.page.routing.filters.all": "All providers",
+  "docs.page.routing.filters.openai": "OpenAI family",
+  "docs.page.routing.filters.anthropic": "Anthropic family",
+  "docs.page.routing.filters.deepseek": "DeepSeek family",
+  "docs.page.routing.filters.qwen": "Qwen family",
+  "docs.page.routing.filters.moonshot": "Moonshot family",
+  "docs.page.routing.filters.siliconflow": "SiliconFlow family",
+  "docs.page.routing.categories.openai": "OpenAI",
+  "docs.page.routing.categories.anthropic": "Anthropic",
+  "docs.page.routing.categories.deepseek": "DeepSeek",
+  "docs.page.routing.categories.qwen": "Qwen",
+  "docs.page.routing.categories.moonshot": "Moonshot",
+  "docs.page.routing.categories.siliconflow": "SiliconFlow",
+  "docs.page.routing.pagination.previous": "Previous",
+  "docs.page.routing.pagination.next": "Next",
+  "docs.page.routing.pagination.pageLabel": "Page",
+  "docs.page.routing.viewAllPrefix": "View all",
+  "docs.page.routing.viewAllSuffix": "models in Model Center ➔",
+  "docs.page.routing.notes.generalChat": "General production chat workload",
+  "docs.page.routing.notes.codeHeavy": "Code-heavy workflow and tooling",
+  "docs.page.routing.notes.reasoning": "Deep reasoning and long-chain analysis tasks",
+  "docs.page.routing.notes.embedding": "Vector embedding and semantic indexing",
+  "docs.page.routing.notes.rerank": "Retrieval reranking and relevance scoring",
+  "docs.page.routing.notes.image": "Image generation workflows",
+  "docs.page.routing.notes.audio": "Speech/audio processing workloads",
+  "docs.page.ctaPricing": "View Pricing",
+  "docs.page.ctaBillingConsole": "Open Billing Console",
+  "docs.page.ctaModelList": "View Model List",
+  "docs.page.ctaModelCenter": "Open Model Center",
+  "docs.page.routing.pricingHint.pre": "For detailed token pricing and compute estimator, visit",
+  "docs.page.routing.pricingHint.link": "Pricing ➔",
+  "docs.page.routing.pricingHint.post": ".",
+  "pricing": {
+    "page": {
+      "tiers": {
+        "growth": {
+          "subtitle": "Unlock 10% Discount Tier"
+        }
+      },
+      "modelCenter": {
+        "pagination": {
+          "previous": "Previous",
+          "next": "Next",
+          "pageLabel": "Page"
+        }
+      }
+    }
+  }
+}
