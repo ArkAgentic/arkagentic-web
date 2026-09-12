@@ -2,7 +2,7 @@
 
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { LogoCarousel } from "@/components/ui/logo-carousel";
-import { motion } from "framer-motion";
+import PathDrawingPortfolioHero from "@/components/ui/path-drawing-hero";
 import React from "react";
 
 const sampleLogos = [
@@ -65,22 +65,19 @@ const sampleLogos = [
 export default function HomePage() {
   return (
     <AuroraBackground>
-      <motion.div
-        initial={{ opacity: 0.0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-        className="relative z-10 flex flex-col items-center justify-center gap-8 px-4 text-center"
-      >
-        <h1 className="bg-gradient-to-r from-cyan-200 via-indigo-200 to-emerald-200 bg-clip-text text-4xl font-semibold text-transparent md:text-6xl">
-          Next-Gen Agentic Platform
-        </h1>
+      <div className="relative z-10 flex w-full flex-col items-center justify-center gap-8 px-4 text-center">
+        <PathDrawingPortfolioHero
+          eyebrow="ARKAGENTIC PLATFORM"
+          brand="Next-Gen Agentic Platform"
+          tagline="Unified Infrastructure & Financial AI Workspace"
+          fromColor="#60A5FA"
+          toColor="#C084FC"
+        />
 
-        <p className="max-w-2xl text-sm text-slate-300 md:text-base">Unified Infrastructure &amp; Financial AI Workspace</p>
-
-        <div className="w-full pt-6">
+        <div className="w-full max-w-4xl pb-12">
           <LogoCarousel columnCount={3} logos={sampleLogos} />
         </div>
-      </motion.div>
+      </div>
     </AuroraBackground>
   );
 }
