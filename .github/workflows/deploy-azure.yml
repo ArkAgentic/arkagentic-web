@@ -9,8 +9,8 @@ env:
   AZURE_CONTAINER_APP: "arkag-web-ssr"
   RESOURCE_GROUP: "rg-arkagentic-prod"
   REGISTRY_NAME: "ca5d44f65c74acr"
-  DOCKERFILE_PATH: "apps/gateway/Dockerfile"
-  BUILD_CONTEXT: "apps/gateway"
+  DOCKERFILE_PATH: "./apps/gateway/Dockerfile"
+  BUILD_CONTEXT: "."
   IMAGE_NAME: "arkag-web-ssr"
 
 jobs:
@@ -48,4 +48,5 @@ jobs:
           az containerapp update \
             --name "$AZURE_CONTAINER_APP" \
             --resource-group "$RESOURCE_GROUP" \
-            --image "$IMAGE_SHA"
+            --image "$IMAGE_SHA" \
+            --target-port 3000
