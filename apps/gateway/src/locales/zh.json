@@ -1,0 +1,1232 @@
+{
+  "nav": {
+    "products": "API 网关",
+    "solutions": "解决方案",
+    "docs": "文档",
+    "about": "关于我们",
+    "getStarted": "开始",
+    "console": "控制台",
+    "billing": "计费",
+    "signOut": "退出登录",
+    "pricing": "费率与定价"
+  },
+  "home": {
+    "hero": {
+      "primary": "中国算力出海",
+      "accent": "全球顶级 AI 模型中转网关",
+      "subtitle": "打通国内算力出海通道，无缝接入 OpenAI、Claude 等全球顶尖大模型，提供毫秒级低延迟与企业级高可用中转服务。",
+      "cta_primary": "进入控制台",
+      "cta_secondary": "开发者文档"
+    },
+    "features": {
+      "card1": {
+        "title": "跨境模型访问与算力出海",
+        "desc": "聚合 OpenAI、Anthropic、Meta、Gemini 及国内主流大模型，提供统一标准 OpenAI 格式 API 接口。"
+      },
+      "card2": {
+        "title": "统一模型 Hub 与高可用调度",
+        "desc": "单 API Key 聚合全球顶尖大模型，内置高并发负载均衡与自动熔断恢复，保障业务永不中断。"
+      },
+      "card3": {
+        "title": "零数据留存与 API 密钥管控",
+        "desc": "企业级配额管理、实时账单计量与全链路数据不落盘安全保障。"
+      }
+    }
+  },
+  "products": {
+    "title": "产品",
+    "subtitle": "三款生产级产品共享同一套 Warm Premium 设计语言与工程底座。",
+    "cards": {
+      "gateway": {
+        "title": "OpenAI 兼容 API 网关",
+        "summary": "单一入口接入全球与国内主流模型，支持策略路由与低时延响应。"
+      },
+      "rag": {
+        "title": "RAG 微服务",
+        "summary": "面向客服、运营与知识工作流的生产级检索增强方案。"
+      },
+      "aaas": {
+        "title": "AaaS 交付架构",
+        "summary": "模块化可组合能力，帮助团队从原型快速走向生产。"
+      }
+    }
+  },
+  "solutions": {
+    "title": "解决方案",
+    "subtitle": "面向开发者、创业团队与企业 AI 团队的场景化方案架构。",
+    "items": [
+      "面向全球化业务的国内模型接入方案",
+      "企业私有化智能体部署方案",
+      "跨境 RAG 客服与知识服务方案"
+    ]
+  },
+  "about": {
+    "title": "关于 ArkAgentic",
+    "subtitle": "我们致力于建设可靠、透明、可规模化的 AI 基础设施，让企业能够安全接入全球与中国的顶尖大模型，并将 AI 能力真正转化为业务增长与运营效率提升。",
+    "sections": {
+      "what": {
+        "title": "我们在做什么",
+        "body": "ArkAgentic 提供生产级 OpenAI 兼容网关与模型中转能力。中国团队可以稳定调用海外顶级模型，海外团队也可以高效接入中国领先模型。我们坚持稳定路由、透明计费、可观测与可治理，让 AI 能力能够长期、可控地服务真实业务。"
+      },
+      "story": {
+        "title": "我们的故事",
+        "body": "我们的核心团队来自大型科技公司、投行与咨询机构，拥有超过十年的管理与一线实战经验。我们在大量项目中持续看到同一个问题：企业想用 AI，却常常被接入复杂、稳定性不足、成本不可控与跨区域调用门槛所限制。ArkAgentic 的初心，就是把这些复杂基础能力产品化，让团队把更多精力放在业务价值。"
+      },
+      "mission": {
+        "title": "我们的使命",
+        "body": "通过可信赖的 AI 平台，帮助更多组织与个人获得高质量智能能力。我们相信 AI 的价值不在概念展示，而在可衡量结果：更高效率、更低成本、更快决策，以及更可持续的客户增长。"
+      },
+      "smb": {
+        "title": "中小企业 AI 增长计划",
+        "body": "除了网关与中转平台，我们也在持续为中小企业提供 AI 与智能体落地服务，围绕运营效率、成本优化、营销与客户增长等关键场景，提供可执行、可复用、可持续优化的方案，帮助企业把 AI 变成长期增长引擎。"
+      }
+    },
+    "contact": {
+      "title": "联系我们",
+      "support": "技术支持：support@arkagentic.com",
+      "business": "商务合作：hello@arkagentic.com"
+    }
+  },
+  "docs": {
+    "title": "API 参考",
+    "subtitle": "采用 Stripe/OpenAI 风格文档，帮助你快速接入：一个 OpenAI 兼容端点、清晰认证方式与生产级请求模式。",
+    "contents": "目录",
+    "sections": {
+      "quickstart": "快速开始",
+      "authentication": "认证",
+      "model-hub": "模型中心",
+      "chat-completions": "Chat Completions",
+      "embeddings": "Embeddings",
+      "error-codes": "错误码"
+    },
+    "quickstart": {
+      "body": "导出 API Key 后即可在数分钟内调用 ArkAgentic，继续沿用你已有的 OpenAI SDK。"
+    },
+    "auth": {
+      "body": "在 Authorization 请求头中使用 Bearer Token 格式传递 API Key。"
+    },
+    "modelHub": {
+      "body": "统一路由 OpenAI、Claude、Gemini 与国内主流模型。"
+    },
+    "chat": {
+      "body1": "端点：POST /v1/chat/completions",
+      "body2": "兼容 OpenAI 协议，适配 Node.js 与 Python SDK 的稳定请求/响应契约。"
+    },
+    "embeddings": {
+      "body": "端点：POST /v1/embeddings，用于 RAG 索引与检索链路。"
+    },
+    "error": {
+      "table": {
+        "code": "状态码",
+        "meaning": "含义",
+        "troubleshooting": "排查建议"
+      },
+      "rows": {
+        "401": {
+          "msg": "API Key 无效",
+          "tip": "检查 ARK_API_KEY 与 Bearer 前缀"
+        },
+        "429": {
+          "msg": "超出限流阈值",
+          "tip": "请退避重试或提升配额"
+        },
+        "503": {
+          "msg": "上游暂不可用",
+          "tip": "切换备用模型路由后重试"
+        }
+      }
+    },
+    "try": {
+      "title": "在线调试",
+      "apiKey": "API Key",
+      "model": "模型",
+      "prompt": "提示词",
+      "promptDefault": "请给我一句简洁的问候语。",
+      "send": "发送请求",
+      "streaming": "流式返回中...",
+      "keyHintEmpty": "请输入 API Key 以测试请求。",
+      "keyHintInvalid": "请使用 sk-ark- 前缀的 Key。",
+      "keyHintReady": "已就绪，可发送模拟流式请求。",
+      "livePreview": "实时预览",
+      "previewPlaceholder": "// 点击“发送请求”以查看模拟 JSON 流式响应"
+    },
+    "page": {
+      "subtitle": "欢迎使用 ArkAgentic 开发者 API 文档，一键集成全球 SOTA 大模型。"
+    }
+  },
+  "console": {
+    "common": {
+      "loadingOverview": "正在加载概览...",
+      "loadingBilling": "正在加载计费信息..."
+    },
+    "nav": {
+      "title": "控制台",
+      "overview": "概览",
+      "topup": "预付充值",
+      "keys": "密钥管理",
+      "billing": "用量与计费",
+      "models": "模型中心",
+      "setupGuide": "接入指南",
+      "admin": "管理总览",
+      "backToWebsite": "返回官网"
+    },
+    "overview": {
+      "metrics": {
+        "requests24h": "24 小时请求量",
+        "requestsPerMin": "每分钟请求",
+        "tokenUsage": "Token 用量",
+        "p95Latency": "P95 延迟"
+      },
+      "trafficTitle": "流量概览",
+      "trafficDesc": "实时请求趋势（API 客户端契约 mock）"
+    },
+    "keys": {
+      "title": "API 密钥管理",
+      "subtitle": "{count} 个密钥 · OpenAI 兼容鉴权",
+      "maxPerAccount": "每个账户最多 {max} 个 API Key",
+      "newKey": "创建密钥",
+      "maxLimitReached": "已达到最大密钥数量限制 ({max}/{max})",
+      "copy": "复制",
+      "copied": "已复制",
+      "disable": "禁用",
+      "enable": "启用",
+      "quota": "配额",
+      "created": "创建时间",
+      "securityTitle": "安全控制",
+      "securityDesc": "支持 IP 白名单、单密钥额度与环境级访问策略。",
+      "show": "显示",
+      "hide": "隐藏",
+      "save": "保存",
+      "saving": "保存中...",
+      "cancel": "取消",
+      "edit": "编辑",
+      "delete": "删除",
+      "deleting": "删除中...",
+      "unlimited": "不限额",
+      "form": {
+        "name": "密钥名称",
+        "namePlaceholder": "生产 / 测试 / 团队用途",
+        "spendLimit": "消费上限（美元）",
+        "spendLimitPlaceholder": "仅限数字",
+        "creating": "创建中..."
+      },
+      "errors": {
+        "copyUnavailable": "当前无法复制该密钥，如需完整值请重新生成",
+        "limitMustBeNumber": "消费上限必须是有效数字",
+        "limitBelowUsed": "消费上限不能小于已用金额",
+        "operationFailed": "操作失败，请重试"
+      },
+      "table": {
+        "title": "密钥列表",
+        "name": "名称",
+        "masked": "密钥字符串",
+        "usageLimit": "已用 / 上限",
+        "lastUsed": "最后调用",
+        "status": "状态",
+        "actions": "操作"
+      },
+      "status": {
+        "active": "启用中",
+        "disabled": "已禁用"
+      },
+      "setup": {
+        "title": "快速接入",
+        "step1": "在本页面复制完整 API Key",
+        "step2": "使用端点 https://gateway.arkagentic.com/v1/chat/completions",
+        "step3": "模型填写 ark-gpt-4o（或其他已启用模型）"
+      }
+    },
+    "setupGuide": {
+      "title": "接入指南",
+      "subtitle": "从创建 API Key 到首个请求成功的完整操作说明。",
+      "flow": {
+        "title": "接入流程",
+        "step1": {
+          "title": "Step 01 | 凭证准备",
+          "pre": "前往",
+          "link": "API 密钥",
+          "post": "页面创建并保存完整密钥。"
+        },
+        "step2": {
+          "title": "Step 02 | 基础配置",
+          "desc": "将客户端 Base URL 替换为 https://gateway.arkagentic.com/v1。"
+        },
+        "step3": {
+          "title": "Step 03 | 模型选择",
+          "pre": "前往",
+          "link": "模型中心",
+          "post": "选择需要的 model ID。"
+        },
+        "step4": {
+          "title": "Step 04 | 验证调用",
+          "pre": "前往",
+          "link": "预付充值",
+          "post": "确保账户有可用余额，运行下方代码测试。"
+        }
+      },
+      "examplesTitle": "请求示例",
+      "code": {
+        "copy": "复制代码",
+        "copied": "已复制！"
+      },
+      "response": {
+        "title": "响应示例 (200 OK)"
+      },
+      "troubleshootingTitle": "常见问题排查",
+      "troubleshooting": {
+        "columns": {
+          "error": "错误代码 (Error Code)",
+          "cause": "常见原因",
+          "fix": "解决方式"
+        },
+        "rows": {
+          "invalidKey": {
+            "cause": "复制了掩码值、密钥拼写错误或密钥被禁用",
+            "fix": "重新复制完整密钥，并确认状态为启用中"
+          },
+          "modelNotSupported": {
+            "cause": "模型 ID 填写错误，或请求地址不正确",
+            "fix": "使用 Model Hub 中任意已启用模型（例如 ark-gpt-4o）与端点 https://gateway.arkagentic.com/v1/chat/completions"
+          },
+          "insufficientBalance": {
+            "cause": "账户余额不足",
+            "fix": "前往 Prepaid Top-up 充值后重试"
+          },
+          "retryable": {
+            "cause": "上游/网络临时异常或限流",
+            "fix": "使用指数退避重试，并保留请求信息以便支持排查"
+          }
+        }
+      },
+      "nextTitle": "下一步",
+      "nextLinks": {
+        "apiKeys": "前往 API Keys",
+        "topup": "前往 Prepaid Top-up",
+        "models": "前往 Model Hub"
+      }
+    },
+    "billing": {
+      "cards": {
+        "balance": "当前余额",
+        "monthToDate": "本月累计",
+        "avgDaily": "日均消耗"
+      },
+      "topupTitle": "预付充值",
+      "topupDesc": "固定公道计费：按实付金额充值，指定档位自动赠送额外额度。",
+      "success": "充值成功，到账额度已写入您的账户余额。",
+      "badges": {
+        "starter": "入门档",
+        "tier2": "解锁 10% 优惠档",
+        "tier3": "解锁 VIP 20% 档"
+      },
+      "creatingCheckout": "正在创建收银台...",
+      "topupButton": "充值 {amount}",
+      "historyTitle": "充值记录",
+      "usageLogsTitle": "用量记录",
+      "table": {
+        "invoice": "单号",
+        "time": "时间",
+        "usage": "用量 / Token",
+        "amount": "扣费金额 (USD)",
+        "paid": "实付金额 (USD)",
+        "credited": "到账金额 (USD)",
+        "model": "模型",
+        "promptTokens": "Prompt Token",
+        "completionTokens": "Completion Token",
+        "method": "支付渠道",
+        "status": "状态"
+      },
+      "status": {
+        "success": "成功",
+        "pending": "处理中",
+        "failed": "失败"
+      },
+      "topupPreset": "预设充值金额",
+      "redeem": {
+        "title": "兑换码充值",
+        "desc": "输入企业兑换码后可直接增加余额。",
+        "placeholder": "输入兑换码",
+        "action": "立即兑换",
+        "redeeming": "兑换中...",
+        "success": "兑换成功：+{amount}",
+        "failed": "兑换失败"
+      },
+      "chart": {
+        "title": "近 30 天用量趋势",
+        "empty": "近 30 天暂无用量数据。",
+        "caption": "按天展示计费金额趋势（最近 30 天）。"
+      },
+      "breakdown": {
+        "title": "模型消耗分布",
+        "desc": "按模型展示近 30 天调用次数、Token 消耗、金额与占比。",
+        "empty": "近 30 天暂无模型用量。",
+        "calls": "调用次数：{count}"
+      },
+      "empty": "暂无账单记录。",
+      "method": {
+        "stripe": "Stripe",
+        "card": "银行卡",
+        "alipay": "支付宝",
+        "wechatPay": "微信支付",
+        "redeemCode": "兑换码",
+        "system": "系统结算"
+      },
+      "pagination": {
+        "prev": "上一页",
+        "next": "下一页",
+        "page": "第 {page} / {total} 页"
+      },
+      "topupButtonWithCredit": "充值 {paid} (到账 {credited})",
+      "topupFootnote": "充值赠额将直接存入您的账户余额，支持全平台所有 AI 模型消费。",
+      "fxDisclaimer": "中文用户使用人民币计价（固定汇率 1 USD = 7.2 CNY），账户余额仍以 USD 记账。",
+      "checkoutFailed": "无法发起收银台，请重试。",
+      "largeTopupHint": {
+        "before": "如需 $500 以上大额充值或企业对公转账开票，请联系",
+        "after": "。"
+      },
+      "planLine": "实付 {paid} | 到账 {credited}",
+      "planBonus": "含 {bonus} 赠额",
+      "plans": {
+        "starter": {
+          "badge": "入门档"
+        },
+        "growth": {
+          "badge": "送 +10% 额度"
+        },
+        "enterprise": {
+          "badge": "超值推荐 +15% Credit"
+        }
+      }
+    },
+    "models": {
+      "title": "模型中心",
+      "subtitle": "支持全球 + 中国双向 AI 路由，并提供自动同步 mock 流程。",
+      "sync": "从 /api/v1/models/sync 同步",
+      "syncing": "同步中...",
+      "filters": {
+        "all": "全部",
+        "global": "全球主流模型",
+        "china": "中国头部模型",
+        "chat": "对话与推理",
+        "rag": "RAG 与向量",
+        "audio": "音频与多模态"
+      },
+      "new": "新",
+      "autoAdded": "自动加入",
+      "active": "启用",
+      "disabled": "禁用",
+      "context": "上下文",
+      "inputPrice": "输入价格",
+      "outputPrice": "输出价格",
+      "latency": "延迟",
+      "estimatorTitle": "成本估算（用户价）",
+      "promptTokens": "输入 Tokens",
+      "completionTokens": "输出 Tokens",
+      "estimatedCharge": "预估费用",
+      "subtitleLive": "13 个模型目录，进入页面后自动静默同步。",
+      "refresh": "刷新",
+      "searchPlaceholder": "按模型名称或 ID 搜索",
+      "loading": "正在加载模型数据...",
+      "empty": "没有匹配当前搜索的模型。",
+      "pricingDetailsButton": "定价与等级详情",
+      "discountApplied": "已应用等级费率",
+      "copyModelId": "复制模型 ID",
+      "summary": {
+        "activeModels": "个模型已启用",
+        "currentTier": "当前等级"
+      },
+      "tiers": {
+        "standard": "标准",
+        "vip": "VIP",
+        "enterprise": "企业"
+      },
+      "inputs": {
+        "audioSeconds": "音频时长（秒）",
+        "characters": "字符数",
+        "generatedImages": "生成图片张数"
+      },
+      "badges": {
+        "text": "文本",
+        "code": "代码",
+        "reasoning": "推理",
+        "thinking": "思考",
+        "embedding": "向量",
+        "rerank": "重排",
+        "imageGen": "图像生成",
+        "audioStt": "语音转写",
+        "audioTts": "语音合成"
+      },
+      "formula": {
+        "unavailable": "当前模型暂无定价配置。",
+        "input": "输入：",
+        "output": "输出：",
+        "stt": "转写：",
+        "tts": "合成：",
+        "image": "图片：",
+        "tokensPerSecond": "tokens/秒",
+        "characters": "字符",
+        "tokenPerCharacter": "token/字符",
+        "perImage": "张"
+      },
+      "modal": {
+        "title": "定价与等级详情",
+        "subtitle": "模型费用按输入与输出 Token 计算，每张卡片展示每百万 Token 单价。",
+        "close": "关闭",
+        "inputTitle": "输入 Token",
+        "inputDesc": "来自提示词、上下文和工具元数据的消耗。",
+        "outputTitle": "输出 Token",
+        "outputDesc": "由模型回复生成的消耗。",
+        "formulaTitle": "估算公式",
+        "formulaDesc": "（输入 Token × 输入单价/1M）+（输出 Token × 输出单价/1M）。",
+        "residencyTitle": "数据驻留与安全",
+        "residencyDesc": "所有模型均托管在 ArkAgentic Enterprise Cloud，不使用提示数据训练模型，且不进行不合规跨境传输。",
+        "tierTitle": "等级阶梯（实时配置）",
+        "tierStandard": "标准（tier_1）",
+        "tierVip": "VIP（tier_2）",
+        "tierEnterprise": "企业（tier_3）",
+        "currentTier": "你的当前等级"
+      },
+      "errors": {
+        "load": "加载最新模型数据失败。"
+      },
+      "toast": {
+        "copied": "已复制到剪贴板！",
+        "copyFailed": "复制失败。"
+      },
+      "residency": {
+        "tooltip": "推理全程在 ArkAgentic Enterprise Cloud 内完成。客户数据不会被持久化存储，也不会跨越受限边界传输。",
+        "tooltipUsEast": "推理在企业级 US East 集群内执行，并承诺零数据留存。",
+        "tooltipGlobal": "推理在 ArkAgentic Global Cluster 内执行，并承诺零数据留存。"
+      },
+      "styleSelector": {
+        "label": "样式",
+        "optionA": "A",
+        "optionB": "B",
+        "optionC": "C"
+      },
+      "pagination": {
+        "previous": "上一页",
+        "next": "下一页",
+        "pageLabel": "第",
+        "pageSize": "每页"
+      },
+      "enterpriseTrust": {
+        "label": "企业安全 零数据留存",
+        "tooltip": "ArkAgentic 上所有模型推理均采用零提示词日志。你的企业数据不会被保存，也不会用于训练。"
+      }
+    }
+  },
+  "footer": {
+    "products": "产品",
+    "solutions": "解决方案",
+    "resources": "资源",
+    "companyLegal": "公司与法律",
+    "copyright": "© 2026 ArkAgentic Inc. 保留所有权利。",
+    "modelHub": "模型中心",
+    "apiGateway": "API 网关",
+    "ragMicroservices": "RAG 微服务",
+    "systemStatus": "系统状态",
+    "chinaOutbound": "中国出海",
+    "globalAccessChina": "全球访问中国 AI",
+    "enterpriseSecurity": "企业安全",
+    "apiReference": "API 参考",
+    "quickstart": "快速开始",
+    "sdks": "SDK",
+    "documentation": "文档中心",
+    "aboutUs": "关于我们",
+    "contact": "联系我们",
+    "privacyPolicy": "隐私政策",
+    "terms": "服务条款"
+  },
+  "auth": {
+    "common": {
+      "fullNamePlaceholder": "姓名",
+      "emailPlaceholder": "you@company.com",
+      "passwordPlaceholder": "密码"
+    },
+    "login": {
+      "title": "登录",
+      "subtitle": "登录 ArkAgentic 控制台，使用高标准账户安全机制。",
+      "google": "使用 Google 继续",
+      "github": "使用 GitHub 继续",
+      "submit": "登录",
+      "noAccount": "还没有账号？",
+      "getStarted": "立即注册",
+      "submitting": "登录中...",
+      "accountPlaceholder": "账户",
+      "forgotPassword": "忘记密码？"
+    },
+    "signup": {
+      "title": "开始使用",
+      "subtitle": "创建账号以解锁控制台、计费与模型路由能力。",
+      "google": "使用 Google 注册",
+      "github": "使用 GitHub 注册",
+      "submit": "创建账号",
+      "hasAccount": "已有账号？",
+      "signIn": "登录"
+    },
+    "forgot": {
+      "title": "忘记密码",
+      "subtitle": "请输入账户邮箱，我们将发送一次性重置链接。",
+      "submit": "发送重置链接",
+      "submitting": "发送中...",
+      "success": "如果该邮箱存在，我们已发送重置链接。",
+      "error": "发送重置邮件失败，请稍后重试。",
+      "backToLogin": "返回登录"
+    },
+    "reset": {
+      "title": "重置密码",
+      "subtitle": "为你的账户设置一个新密码。",
+      "newPassword": "新密码",
+      "confirmPassword": "确认新密码",
+      "submit": "更新密码",
+      "submitting": "更新中...",
+      "success": "密码已更新，正在跳转登录页...",
+      "invalidToken": "重置链接无效或缺失。",
+      "passwordTooShort": "密码长度至少为 8 位。",
+      "passwordMismatch": "两次输入的密码不一致。",
+      "failed": "重置失败，请稍后重试。",
+      "backToLogin": "返回登录"
+    }
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "subtitle": "ArkAgentic 面向澳大利亚、美国及全球企业合规要求，构建了可审计的企业级隐私与数据保护体系，覆盖全链路 AI 推理场景。",
+    "badges": {
+      "au": "🇦🇺 澳大利亚 APPs 合规",
+      "us": "🇺🇸 SOC2 标准",
+      "eu": "🇪🇺 GDPR 就绪",
+      "zdr": "🛡️ 零数据留存"
+    },
+    "sections": {
+      "baseline": {
+        "title": "企业安全与零数据留存基线",
+        "p1": "ArkAgentic 对模型推理实行仅内存（RAM）处理机制。Prompt 与 Completion 仅用于即时生成响应，完成后立即销毁。",
+        "p2": "平台基线控制明确要求：不进行磁盘持久化留存、不保存 Prompt 日志，并且 100% 禁止将客户 Prompt 或 Completion 用于任何 AI 模型训练。"
+      },
+      "compliance": {
+        "title": "全球监管与合规框架",
+        "intro": "我们的合规控制与企业法务/采购常用监管框架对齐：",
+        "items": [
+          "澳大利亚《Privacy Act 1988》及 APPs：保障数据处理透明度并满足数据主权要求。",
+          "美国隐私与安全标准：架构对齐 SOC 2 Type II 控制要求及 CCPA/CPRA，并通过 US East 路由保障数据主权边界。",
+          "欧盟 GDPR：支持 GDPR 第 28 条处理者义务与企业 DPA（数据处理附录）流程。",
+          "国际标准参考：遵循 ISO/IEC 27001 与 ISO/IEC 27018 云端数据保护实践。"
+        ]
+      },
+      "dataProcessed": {
+        "title": "我们处理的数据类型",
+        "items": [
+          "用户身份数据：仅限 Name、Email、Account Tier，用于注册、鉴权与账号管理。",
+          "计费与遥测元数据：仅包含 Token 数量、API 延迟与防刷诊断指标，用于计费、限流与稳定性保障；不包含 Prompt 原文内容。"
+        ]
+      },
+      "residency": {
+        "title": "数据驻留与跨境传输护栏",
+        "body": "所有推理流量按已批准的 Enterprise Cloud Region（如 US East）路由。未经法务与合规审计批准，不允许发生不合规跨境数据传输。"
+      },
+      "rights": {
+        "title": "数据主体权利与企业请求",
+        "body": "客户可申请数据访问、更正、导出与删除。企业客户可通过 ArkAgentic 隐私运营团队发起与 DPA 相关的法务审查与处理记录请求。"
+      },
+      "contact": {
+        "title": "DPO 与隐私合规联系",
+        "body": "如需提交隐私事件、法务请求或监管沟通事项，请联系 ArkAgentic 隐私合规团队。",
+        "email": "privacy@arkagentic.com"
+      }
+    }
+  },
+  "admin": {
+    "nav": {
+      "overview": "总览",
+      "usage": "用量日志",
+      "channels": "渠道管理",
+      "routes": "路由管理"
+    },
+    "common": {
+      "enabled": "启用",
+      "disabled": "禁用",
+      "active": "活跃",
+      "inactive": "停用",
+      "edit": "编辑",
+      "delete": "删除",
+      "cancel": "取消",
+      "saving": "保存中...",
+      "creating": "创建中...",
+      "exportCsv": "导出 CSV",
+      "exporting": "导出中...",
+      "prev": "上一页",
+      "next": "下一页",
+      "page": "第",
+      "showing": "显示",
+      "of": "共"
+    },
+    "overview": {
+      "loading": "正在加载管理员面板...",
+      "metrics": {
+        "totalUsers": "注册用户总数",
+        "grossDeposits": "累计充值流水",
+        "totalBalance": "用户余额总额",
+        "netProfit": "累计净利润"
+      },
+      "usersSection": {
+        "title": "用户与资金管理",
+        "searchLabel": "搜索用户",
+        "searchPlaceholder": "用户 ID / 邮箱",
+        "disable": "禁用",
+        "enable": "启用",
+        "table": {
+          "userId": "用户 ID",
+          "email": "邮箱",
+          "registeredAt": "注册时间",
+          "totalDeposited": "累计充值 ($)",
+          "currentBalance": "当前余额 ($)",
+          "tier": "等级",
+          "status": "状态",
+          "actions": "操作"
+        }
+      },
+      "keysSection": {
+        "title": "API 密钥与网关监控",
+        "searchLabel": "搜索密钥",
+        "searchPlaceholder": "用户 ID / Key 前缀 / 状态",
+        "table": {
+          "userId": "用户 ID",
+          "keyPrefix": "API Key 前缀",
+          "quota": "配额上限",
+          "status": "状态"
+        }
+      }
+    },
+    "usage": {
+      "loading": "正在加载用量日志...",
+      "title": "实时用量日志",
+      "searchLabel": "搜索日志",
+      "searchPlaceholder": "用户 / 模型 / 请求 ID",
+      "range": {
+        "24h": "24小时",
+        "7d": "7天",
+        "30d": "30天",
+        "all": "全部"
+      },
+      "table": {
+        "timestamp": "时间",
+        "user": "用户",
+        "model": "模型",
+        "tokens": "Token 用量",
+        "charge": "用户收费 ($)",
+        "profit": "净利润 ($)"
+      }
+    },
+    "channels": {
+      "title": "上游渠道",
+      "subtitle": "管理上游端点、加密凭据与实时健康指标。",
+      "loading": "正在加载渠道...",
+      "confirmDelete": "确认删除该渠道？关联路由也会被删除。",
+      "stats": {
+        "total": "渠道总数",
+        "healthyEnabled": "健康且启用",
+        "lastRefresh": "最近刷新"
+      },
+      "actions": {
+        "refresh": "刷新",
+        "refreshing": "刷新中...",
+        "newChannel": "新建渠道",
+        "ping": "探测",
+        "pinging": "探测中...",
+        "saveChanges": "保存修改",
+        "createChannel": "创建渠道"
+      },
+      "table": {
+        "name": "名称",
+        "type": "类型",
+        "baseUrl": "基础 URL",
+        "apiKey": "API Key",
+        "latency": "延迟",
+        "health": "健康状态",
+        "enabled": "启用",
+        "actions": "操作"
+      },
+      "healthStates": {
+        "healthy": "健康",
+        "degraded": "降级",
+        "unreachable": "不可达",
+        "unknown": "未知"
+      },
+      "modal": {
+        "newTitle": "新建渠道",
+        "editTitle": "编辑渠道",
+        "type": "类型",
+        "name": "名称",
+        "baseUrl": "基础 URL",
+        "apiKey": "API Key",
+        "apiKeyOptional": "API Key（留空则保持原值）",
+        "timeoutMs": "超时 (ms)",
+        "modelMapping": "模型映射 (JSON)"
+      },
+      "errors": {
+        "load": "加载渠道失败",
+        "save": "保存失败",
+        "delete": "删除失败",
+        "ping": "健康检查失败",
+        "apiKeyRequired": "新建渠道必须填写 API Key"
+      }
+    },
+    "routes": {
+      "title": "模型路由与优先级",
+      "subtitle": "以统一优先级表管理 Ark 模型路由。新增路由会自动同步到模型中心卡片。",
+      "loading": "正在加载路由...",
+      "empty": "暂无路由配置。",
+      "confirmDelete": "确认删除该路由吗？",
+      "create": {
+        "title": "新建路由",
+        "modelPlaceholder": "ark 模型 ID（例如 ark-qwen-3.5-max）",
+        "overridePlaceholder": "上游覆盖模型（例如 gpt-4o / Qwen/Qwen3.5-397B）",
+        "add": "新增路由",
+        "expand": "展开",
+        "collapse": "收起"
+      },
+      "table": {
+        "priority": "优先级",
+        "channel": "目标渠道",
+        "override": "上游覆盖模型",
+        "enabled": "启用状态",
+        "actions": "操作",
+        "modelId": "Ark 模型 ID"
+      },
+      "actions": {
+        "up": "上移",
+        "down": "下移",
+        "save": "保存"
+      },
+      "errors": {
+        "load": "路由加载失败",
+        "create": "新建路由失败",
+        "toggle": "切换状态失败",
+        "delete": "删除失败",
+        "priority": "优先级调整失败",
+        "swap": "没有可用的临时优先级，请手动调整后重试。",
+        "update": "更新路由失败",
+        "noEnabledChannels": "当前没有可用启用渠道，请先启用渠道。"
+      }
+    }
+  },
+  "home.usecases.items.0.desc": "帮助跨国企业降低模型调度与算力接入成本。",
+  "home.usecases.items.1.desc": "为科技巨头精准定向匹配 AI 领军人才。",
+  "home.usecases.items.2.desc": "打造安全可控的知识库与智能化业务流。",
+  "home.hero.primary": "一站式全球 AI 大模型接入平台",
+  "home.hero.accent": "企业级高可用 API 中转网关",
+  "home.hero.cta_primary": "进入控制台",
+  "home.hero.cta_secondary": "开发者文档",
+  "home.features.card1.title": "跨境模型访问与算力出海",
+  "home.features.card1.desc": "聚合 OpenAI、Anthropic、Meta、Gemini 及国内主流大模型，提供统一标准 OpenAI 格式 API 接口。",
+  "home.features.card2.title": "统一模型 Hub 与高可用调度",
+  "home.features.card2.desc": "单 API Key 聚合全球顶尖大模型，内置高并发负载均衡与自动熔断恢复，保障业务永不中断。",
+  "home.features.card3.title": "零数据留存与 API 密钥管控",
+  "home.features.card3.desc": "企业级配额管理、实时账单计量与全链路数据不落盘安全保障。",
+  "home.proof.kpi1.value": "99.99%",
+  "home.proof.kpi1.label": "网关可用性 SLA",
+  "home.proof.kpi2.value": "< 15 ms",
+  "home.proof.kpi2.label": "P95 路由延迟",
+  "home.proof.kpi3.value": "20+",
+  "home.proof.kpi3.label": "全球/国内模型路由",
+  "home.proof.kpi4.value": "1000万+",
+  "home.proof.kpi4.label": "月度成功调用",
+  "home.compare.title": "为什么不直接对接多家上游模型？",
+  "home.compare.subtitle": "面向工程、财务与稳定性的实战对比。",
+  "home.compare.header.dimension": "维度",
+  "home.compare.header.direct": "直连多家模型",
+  "home.compare.header.selfbuild": "自建网关",
+  "home.compare.header.ark": "ArkAgentic 网关",
+  "home.compare.row1.dimension": "接入成本",
+  "home.compare.row1.direct": "多 SDK 与多套鉴权",
+  "home.compare.row1.selfbuild": "初期研发投入高",
+  "home.compare.row1.ark": "OpenAI 兼容统一接入",
+  "home.compare.row2.dimension": "稳定性",
+  "home.compare.row2.direct": "上游波动难统一处理",
+  "home.compare.row2.selfbuild": "运维成本高",
+  "home.compare.row2.ark": "内置智能路由与故障转移",
+  "home.compare.row3.dimension": "成本治理",
+  "home.compare.row3.direct": "多供应商成本难对齐",
+  "home.compare.row3.selfbuild": "需自建计量系统",
+  "home.compare.row3.ark": "统一账单与实时可观测",
+  "home.compare.row4.dimension": "安全合规",
+  "home.compare.row4.direct": "控制标准不一致",
+  "home.compare.row4.selfbuild": "策略落地复杂",
+  "home.compare.row4.ark": "零数据留存基线控制",
+  "home.compare.row5.dimension": "上线周期",
+  "home.compare.row5.direct": "跨团队协同慢",
+  "home.compare.row5.selfbuild": "实施周期长",
+  "home.compare.row5.ark": "单 Key 快速上线",
+  "home.pricing.title": "透明定价与成本估算",
+  "home.pricing.subtitle": "在接入前预估月度调用成本。",
+  "home.pricing.inputPrompt": "每月输入 Token",
+  "home.pricing.inputCompletion": "每月输出 Token",
+  "home.pricing.estimateLabel": "预估月成本",
+  "home.pricing.formulaNote": "公式：input_tokens × $0.6 / 1M + output_tokens × $1.8 / 1M",
+  "home.security.title": "企业级安全与合规",
+  "home.security.subtitle": "满足企业法务与安全采购评审的关键能力。",
+  "home.security.item1.title": "零数据留存",
+  "home.security.item1.desc": "默认推理链路不持久化提示词与内容。",
+  "home.security.item2.title": "API 密钥管控",
+  "home.security.item2.desc": "支持密钥分级、配额限制与审计管理。",
+  "home.security.item3.title": "区域策略路由",
+  "home.security.item3.desc": "支持跨境与区域访问策略的路由控制。",
+  "home.security.item4.title": "运营可审计性",
+  "home.security.item4.desc": "统一请求遥测，支撑财务与稳定性运营。",
+  "home.integration.title": "分钟级集成",
+  "home.integration.subtitle": "无需重写 SDK，沿用 OpenAI 客户端调用方式。",
+  "home.cta.title": "选择你的接入路径",
+  "home.cta.subtitle": "开发者可立即自助开通，企业可预约架构与合规评审。",
+  "home.cta.primary": "进入网关控制台",
+  "home.cta.secondary": "预约架构评审",
+  "home.hero.subtitle": "一行代码无缝集成全球与本土大模型，智能切流容灾，降低高达 70% 的算力与运维成本。",
+  "home.hero.cta.primary": "进入网关控制台",
+  "home.hero.cta.secondary": "开发者文档",
+  "home.trust.arch.title": "B 端信任背书与架构拓扑",
+  "home.trust.arch.step.client": "客户端 / 企业系统",
+  "home.trust.arch.step.gateway": "ArkAgentic 高可用网关",
+  "home.trust.arch.step.filter": "零数据留存防泄露过滤",
+  "home.trust.arch.step.providers": "全球模型供应商：OpenAI / Anthropic / DeepSeek / Kimi",
+  "home.trust.security.title": "企业级安全与合规保障",
+  "home.trust.security.item1.title": "Zero Data Retention",
+  "home.trust.security.item1.desc": "纯管道模式，绝不持久化存储任何 Prompt 与推理内容。",
+  "home.trust.security.item2.title": "Enterprise End-to-End Encryption",
+  "home.trust.security.item2.desc": "全程强制 TLS 1.3 高强度加密传输。",
+  "home.trust.security.item3.title": "RBAC & Circuit Breaker",
+  "home.trust.security.item3.desc": "支持子账号 Key 额度管控与速率限制，上游波动自动熔断。",
+  "home.trust.security.item4.title": "Data Residency Compliance",
+  "home.trust.security.item4.desc": "适配欧美/澳洲数据隐私标准，模型运行于全球合规区域。",
+  "home.roi.item1.title": "跨境电商客服",
+  "home.roi.item1.desc": "多模型统一中转，综合支持成本可降至 60%。",
+  "home.roi.item2.title": "研发 Team Copilot",
+  "home.roi.item2.desc": "一套网关统一访问全球与国内 SOTA 模型。",
+  "home.roi.item3.title": "出海应用算力",
+  "home.roi.item3.desc": "极速响应与自动重试机制，保障业务连续性。",
+  "home.calculator.title": "算力降本对比计算器",
+  "home.calculator.subtitle": "按真实月度调用规模评估综合接入与运维成本差异。",
+  "home.calculator.tokens": "预计月度 Token 消耗",
+  "home.calculator.scenario": "主要调用场景",
+  "home.calculator.option.gpt4o": "主要调用 GPT-4o",
+  "home.calculator.option.deepseek": "主要调用 DeepSeek-R1 / Qwen",
+  "home.calculator.direct": "直连多家 API 成本",
+  "home.calculator.ark": "ArkAgentic 方案",
+  "home.calculator.save": "预计综合节省",
+  "home.calculator.cta": "立即接入",
+  "home.map.title": "全球节点与 SLA 覆盖地图",
+  "home.map.metric1.label": "网关中转附加延迟",
+  "home.map.metric1.value": "< 15ms",
+  "home.map.metric2.label": "节点自动熔断备用率",
+  "home.map.metric2.value": "99.99%",
+  "home.playground.title": "零成本模拟演示框",
+  "home.playground.subtitle": "仅提供固定预设，避免自由输入导致额外 Token 消耗。",
+  "home.playground.preset.latency": "测试 API 响应延时",
+  "home.playground.preset.json": "格式化提取 JSON",
+  "home.playground.preset.translate": "跨语言翻译示例",
+  "home.playground.typing": "打字机模拟输出中...",
+  "home.playground.done": "模拟完成",
+  "home.playground.latency": "网关处理耗时：",
+  "home.playground.node": "路由节点：",
+  "home.models.title": "模型卡片示例",
+  "home.models.availability": "可用性",
+  "home.models.latency": "延迟",
+  "home.common.copy": "复制",
+  "home.common.copied": "已复制",
+  "home.common.copyCode": "复制代码",
+  "home.finalCta.title": "准备好接入生产级模型中转了吗？",
+  "home.finalCta.subtitle": "开发者可立即自助开通，企业可预约架构与合规评审。",
+  "home.finalCta.primary": "进入网关控制台",
+  "home.finalCta.secondary": "预约企业评审",
+  "home.providers.title": "支持的顶级大模型生态",
+  "home.providers.subtitle": "原生集成全球顶尖企业级大模型生态",
+  "home.highlights.card1.title": "统一 API 架构",
+  "home.highlights.card1.desc": "采用 OpenAI 兼容标准，一键无缝接入全球顶级与国产 SOTA 模型。",
+  "home.highlights.card2.title": "算力成本治理",
+  "home.highlights.card2.desc": "消除多 SDK 维护与汇率损耗，智能路由按量计费，综合成本最高降低 70%。",
+  "home.highlights.card3.title": "高可用熔断容灾",
+  "home.highlights.card3.desc": "内置健康检查与秒级故障无感切流，保障企业生产级业务永不中断。",
+  "home.trust.arch.step.foundry": "全球合规托管节点（US/EU 标准部署）",
+  "home.trust.arch.note": "海外企业调用数据在全球合规数据中心内本地处理，无需跨境回传，满足 GDPR 隐私要求。",
+  "home.featureGrid.card1.title": "统一 API 架构",
+  "home.featureGrid.card1.desc": "兼容 OpenAI 标准格式，提供多模型统一接入与策略路由，一键无缝接入全球顶级与国产 SOTA 模型，无需接入多套 SDK。",
+  "home.featureGrid.card2.title": "算力成本治理",
+  "home.featureGrid.card2.desc": "消除多 SDK 维护成本与汇率损耗，智能路由按量计费，综合算力成本最高降低 70%。",
+  "home.featureGrid.card3.title": "高可用熔断容灾",
+  "home.featureGrid.card3.desc": "内置健康检查与秒级故障无感切流，上游节点波动自动重试，保障企业生产级业务永不中断。",
+  "home.featureGrid.card4.title": "零数据留存",
+  "home.featureGrid.card4.desc": "采用纯管道透传模式，网关绝不持久化存储或缓存用户的任何 Prompt 提示词与大模型推理内容。",
+  "home.featureGrid.card5.title": "企业级安全管控",
+  "home.featureGrid.card5.desc": "全程强制 TLS 1.3 极高强度加密，支持企业子账号 Key 额度分配、速率限制与审计日志。",
+  "home.featureGrid.card6.title": "跨境数据合规不回传",
+  "home.featureGrid.card6.desc": "网关节点分布于澳洲、美国、欧洲及新加坡等全球合规数据中心，海外企业调用数据无需回传中国本土，完全符合 GDPR 隐私标准。",
+  "home.calculator.option.hybrid": "多模型高可用策略场景 (GPT-4o / DeepSeek 动态无感切流)",
+  "home.calculator.option.single": "单模型高并发接入场景 (全量 GPT-4o / Claude 3.5)",
+  "home.calculator.option.cn": "国产模型出海/引进场景 (Qwen / Kimi / DeepSeek)",
+  "home.calculator.breakdown.title": "成本构成拆解透视",
+  "home.calculator.breakdown.sdk": "多 SDK 与接口维护成本：直连需要 20+ 工时/月 -> ArkAgentic 0 工时（OpenAI 统一兼容）",
+  "home.calculator.breakdown.network": "网络加速与专线开销：直连需自建海外 Node -> ArkAgentic 内置全球 Edge 节点免费路由",
+  "home.calculator.breakdown.failover": "故障自动切流与重试：直连需自研熔断代码 -> ArkAgentic 99.99% 内置无感秒级切换",
+  "home.calculator.breakdown.builtin": "内置",
+  "home.calculator.note": "注：综合 TCO（总拥有成本）评估已将多 SDK 维护工时折算、跨境专线节点开销及多账号资金占用成本纳入计算；ArkAgentic 提供统一 API 接口与免费内置熔断路由。",
+  "home.calculator.breakdown.capital": "资金占用成本：直连多平台需分别预充值并承担汇率损耗 -> ArkAgentic 统一结算与路由",
+  "home.calculator.tooltip.sdk": "折算逻辑：约 20 小时/月 资深工程师 API 维护工时，按约 $13/小时折算，约 $260/月。",
+  "home.calculator.tooltip.network": "折算逻辑：自建海外 Proxy 与跨境加速链路的固定月度开销，约 $210/月。",
+  "home.calculator.tooltip.capital": "折算逻辑：多平台预充值资金占用、结算摩擦与汇率损耗，基线约 $50/月。",
+  "home.calculator.tooltip.failover": "折算逻辑：直连需自研熔断与弹性重试运维；ArkAgentic 内置秒级切流与自动重试。",
+  "home.calculator.formula.toggle": "查看计算公式与评估标准",
+  "home.calculator.formula.title": "完整计算公式与评估口径",
+  "home.calculator.formula.direct": "直连多家 API 综合 TCO = 账面 Token 基础费 + 多 SDK 开发维护与工程师工时折算 + 自建跨境专线/代理节点开销 + 多平台预充值资金占用成本。",
+  "home.calculator.formula.ark": "ArkAgentic 方案总成本 = 网关 Token 费（X × 1.03）+ 统一 SDK 运维成本（$0）+ 内置高可用路由与极速专线（$0）。",
+  "home.calculator.breakdown.rows.sdk.title": "多 SDK 与接口维护成本",
+  "home.calculator.breakdown.rows.sdk.desc": "直连需要每月 20+ 工程师工时，用于多平台接入、适配与回归维护。",
+  "home.calculator.breakdown.rows.network.title": "海外节点与网络加速",
+  "home.calculator.breakdown.rows.network.desc": "直连需自建海外 Proxy 与跨境加速链路，以保障延迟与稳定性。",
+  "home.calculator.breakdown.rows.capital.title": "跨平台预充值资金占用",
+  "home.calculator.breakdown.rows.capital.desc": "直连需在多平台分头预充值，带来结算分散与汇率损耗。",
+  "home.calculator.breakdown.rows.failover.title": "故障自动切流与重试",
+  "home.calculator.breakdown.rows.failover.desc": "直连需自研熔断与重试编排，才能避免上游波动导致业务中断。",
+  "home.calculator.breakdown.badge.direct": "传统直连",
+  "home.calculator.breakdown.badge.ark": "ArkAgentic",
+  "home.calculator.breakdown.directRisk": "高风险",
+  "home.calculator.breakdown.arkSla": "内置 99.99%",
+  "home.map.metric3.label": "中国本土数据回传率",
+  "home.map.metric3.value": "0.00% (GDPR Clean)",
+  "home.map.node.usw": "US-West (Oregon) — 12ms",
+  "home.map.node.use": "US-East (Virginia) — 18ms",
+  "home.map.node.euc": "EU-Central (Frankfurt) — 24ms",
+  "home.map.node.aps": "AP-Southeast (Singapore) — 15ms",
+  "home.map.node.ape": "AP-East (Sydney/Tokyo) — 20ms",
+  "home.map.live.title": "Live Node Status",
+  "home.map.live.active": "Active",
+  "home.map.live.usw": "US-West",
+  "home.map.live.use": "US-East",
+  "home.map.live.euc": "EU-Central",
+  "home.map.live.aps": "AP-Southeast",
+  "home.map.live.ape": "AP-East",
+  "home.map.region.active": "运行正常",
+  "home.map.region.usw.name": "US-West (Oregon)",
+  "home.map.region.usw.facility": "AWS/Azure West",
+  "home.map.region.use.name": "US-East (Virginia)",
+  "home.map.region.use.facility": "AWS/Azure East",
+  "home.map.region.euc.name": "EU-Central (Frankfurt)",
+  "home.map.region.euc.facility": "Equinix DE1",
+  "home.map.region.aps.name": "AP-Southeast (Singapore)",
+  "home.map.region.aps.facility": "Singtel Edge",
+  "home.map.region.ape.name": "AP-East (Tokyo)",
+  "home.map.region.ape.facility": "Equinix TY11",
+  "home.map.region.cluster": "Ark-Edge Cluster",
+  "home.map.region.usw.short": "US-West",
+  "home.map.region.use.short": "US-East",
+  "home.map.region.euc.short": "EU-Central",
+  "home.map.region.aps.short": "AP-Southeast",
+  "home.map.region.ape.short": "AP-East",
+  "home.map.region.usw.full": "美国俄勒冈",
+  "home.map.region.use.full": "美国弗吉尼亚",
+  "home.map.region.euc.full": "德国法兰克福",
+  "home.map.region.aps.full": "新加坡",
+  "home.map.region.ape.full": "日本东京",
+  "home.map.region.overhead": "网关中转开销",
+  "home.map.footnote": "* 指标反映网关内部路由开销",
+  "home.contact.title": "联系销售与支持",
+  "home.contact.subtitle": "如需架构方案、企业定制或合规咨询，我们将在 24 小时内回复。",
+  "home.contact.name": "姓名",
+  "home.contact.namePlaceholder": "请输入您的姓名",
+  "home.contact.email": "企业邮箱",
+  "home.contact.emailPlaceholder": "you@company.com",
+  "home.contact.message": "需求说明",
+  "home.contact.messagePlaceholder": "请描述您的需求...",
+  "home.contact.submit": "发送消息",
+  "home.contact.sending": "发送中...",
+  "home.contact.success": "提交成功，我们将尽快联系您。",
+  "home.contact.errorRequired": "请完整填写所有必填字段。",
+  "home.contact.errorSubmit": "发送失败，请稍后重试。",
+  "chat.widget.trigger": "在线客服",
+  "chat.widget.title": "ArkAgentic 在线客服",
+  "chat.widget.online": "在线支持",
+  "chat.widget.welcome": "您好，这里是 ArkAgentic 在线客服。欢迎咨询网关接入、SLA 保障或企业结算问题。",
+  "chat.widget.placeholder": "可咨询 API 兼容性、SLA、发票与结算...",
+  "chat.widget.error": "暂时无法响应，请稍后重试。",
+  "chat.widget.close": "关闭客服窗口",
+  "chat.widget.send": "发送消息",
+  "home.contact.directChannels": "官方直连通道",
+  "home.contact.channelSalesLabel": "销售咨询",
+  "home.contact.channelSupportLabel": "技术支持",
+  "home.contact.channelSlaLabel": "响应时效",
+  "home.contact.channelSlaNote": "工作日 24 小时内回复。",
+  "home.dynamic.terminal.title": "集成终端",
+  "home.dynamic.terminal.tab.curl": "cURL",
+  "home.dynamic.terminal.tab.python": "Python",
+  "home.dynamic.terminal.tab.node": "Node.js",
+  "home.dynamic.terminal.copy": "复制代码",
+  "home.dynamic.terminal.copied": "已复制",
+  "home.dynamic.marquee.title": "模型生态",
+  "home.gateway.appTitle": "Your AI APP",
+  "home.gateway.coreTitle": "ArkAgentic AI Gateway",
+  "home.gateway.llmTitle": "100+ Enterprise LLMs",
+  "home.gateway.ecosystemNote": "支持自定义与微调模型",
+  "home.gateway.module.routing": "智能路由与故障切换",
+  "home.gateway.module.observability": "实时可观测性",
+  "home.gateway.module.guardrails": "安全护栏",
+  "home.gateway.module.prompt": "Prompt 管理",
+  "home.gateway.module.cost": "成本优化",
+  "home.gateway.module.security": "企业安全",
+  "home.gateway.module.finops": "FINOPS",
+  "home.gateway.button.custom": "Custom Models",
+  "home.gateway.button.finetuned": "Fine-Tuned Models",
+  "docs.page.title": "开发者文档",
+  "docs.page.subtitle.pre": "ArkAgentic API 与 OpenAI 格式 100% 兼容。保持现有 SDK 不变，只需替换",
+  "docs.page.subtitle.base": "baseURL: https://gateway.arkagentic.com/v1",
+  "docs.page.subtitle.post": "以及你的 API Key。",
+  "docs.page.ctaBilling": "打开充值控制台",
+  "docs.page.ctaModels": "打开模型中心",
+  "docs.page.contents": "目录",
+  "docs.page.sections.quickstart": "快速开始",
+  "docs.page.sections.routing": "模型路由目录",
+  "docs.page.sections.advanced": "高级网关能力",
+  "docs.page.samplePrompt": "Hello from ArkAgentic",
+  "docs.page.quickstart.body.pre": "使用你现有的 OpenAI SDK，只需把 base URL 改为",
+  "docs.page.quickstart.body.post": "并传入 ArkAgentic API Key。",
+  "docs.page.quickstart.tab.curl": "cURL",
+  "docs.page.quickstart.tab.python": "Python（openai SDK）",
+  "docs.page.quickstart.tab.node": "Node.js / TypeScript（openai SDK）",
+  "docs.page.code.copy": "复制",
+  "docs.page.code.copied": "已复制",
+  "docs.page.routing.body": "在 model 字段传入标准 ArkAgentic 模型 ID。网关可在内部完成别名映射与上游覆盖，客户端接入保持稳定。",
+  "docs.page.routing.table.modelId": "Model ID",
+  "docs.page.routing.table.category": "分类",
+  "docs.page.routing.table.alias": "Alias / Route Target",
+  "docs.page.routing.table.notes": "说明",
+  "docs.page.routing.rows.gpt4o.family": "Chat & Reasoning",
+  "docs.page.routing.rows.gpt4o.alias": "gpt-4o / flagship balanced",
+  "docs.page.routing.rows.gpt4o.notes": "通用生产对话负载",
+  "docs.page.routing.rows.codex.family": "Chat & Reasoning",
+  "docs.page.routing.rows.codex.alias": "gpt-5.3-codex / coding",
+  "docs.page.routing.rows.codex.notes": "代码密集型工作流与工具调用",
+  "docs.page.routing.rows.claude.family": "Chat & Reasoning",
+  "docs.page.routing.rows.claude.alias": "claude-sonnet-5",
+  "docs.page.routing.rows.claude.notes": "Long-context reasoning",
+  "docs.page.routing.rows.deepseek.family": "Chat & Reasoning",
+  "docs.page.routing.rows.deepseek.alias": "deepseek-reasoner",
+  "docs.page.routing.rows.deepseek.notes": "Cost-efficient reasoning route",
+  "docs.page.routing.rows.cohereEmbed.family": "RAG & Vector",
+  "docs.page.routing.rows.cohereEmbed.alias": "cohere-embed-v3",
+  "docs.page.routing.rows.cohereEmbed.notes": "Embedding and retrieval pipeline",
+  "docs.page.routing.rows.cohereRerank.family": "RAG & Vector",
+  "docs.page.routing.rows.cohereRerank.alias": "cohere-rerank-v4.0-pro",
+  "docs.page.routing.rows.cohereRerank.notes": "Relevance reranking",
+  "docs.page.routing.rows.transcribe.family": "Audio & Multimodal",
+  "docs.page.routing.rows.transcribe.alias": "mai-transcribe-1.5",
+  "docs.page.routing.rows.transcribe.notes": "Speech-to-text",
+  "docs.page.advanced.failover.title": "智能熔断与自动重试",
+  "docs.page.advanced.failover.body": "当上游节点降级或不可用时，网关会自动切换到健康候选并重试，无需客户端修改路由。",
+  "docs.page.advanced.streaming.title": "流式输出 SSE",
+  "docs.page.advanced.streaming.body.pre": "Standard OpenAI-compatible streaming is supported. Set",
+  "docs.page.advanced.streaming.body.post": "and consume Server-Sent Events in your existing client.",
+  "docs.page.advanced.streaming.requestTitle": "流式请求",
+  "docs.page.advanced.errors.title": "HTTP 状态码与错误处理",
+  "docs.page.advanced.errors.table.code": "Code",
+  "docs.page.advanced.errors.table.meaning": "Meaning",
+  "docs.page.advanced.errors.table.action": "Suggested Action",
+  "docs.page.advanced.errors.rows.400.meaning": "请求载荷无效",
+  "docs.page.advanced.errors.rows.400.action": "请校验 JSON 结构与模型 ID。",
+  "docs.page.advanced.errors.rows.401.meaning": "未授权",
+  "docs.page.advanced.errors.rows.401.action": "请检查 Bearer Token 与密钥权限范围。",
+  "docs.page.advanced.errors.rows.429.meaning": "触发限流",
+  "docs.page.advanced.errors.rows.429.action": "请使用指数退避策略后重试。",
+  "docs.page.advanced.errors.rows.5xx.meaning": "网关或上游暂时性故障",
+  "docs.page.advanced.errors.rows.5xx.action": "加入抖动重试；网关可能自动故障切换。",
+  "pricing.page.title": "预付充值与公网模型中心",
+  "pricing.page.subtitle": "公网价格与控制台计费和模型中心逻辑对齐。先在控制台充值，再基于同一模型 ID 做成本估算。",
+  "pricing.page.tiers.starter.badge": "入门",
+  "pricing.page.tiers.starter.title": "试用包",
+  "pricing.page.tiers.starter.subtitle": "首批生产调用的起步额度",
+  "pricing.page.tiers.growth.badge": "推荐",
+  "pricing.page.tiers.growth.title": "最受欢迎",
+  "pricing.page.tiers.growth.subtitle": "解锁 10% 优惠档",
+  "pricing.page.tiers.enterprise.badge": "VIP",
+  "pricing.page.tiers.enterprise.title": "企业档",
+  "pricing.page.tiers.enterprise.subtitle": "VIP 20% 优惠档",
+  "pricing.page.tiers.goBilling": "前往充值",
+  "pricing.page.modelCenter.title": "公网模型中心与估算器",
+  "pricing.page.modelCenter.cta": "打开控制台模型中心",
+  "pricing.page.filters.all": "全部模型",
+  "pricing.page.filters.chat": "对话与推理",
+  "pricing.page.filters.rag": "RAG 与向量",
+  "pricing.page.filters.audio": "音频与多模态",
+  "pricing.page.searchPlaceholder": "搜索模型 ID",
+  "pricing.page.labels.context": "上下文",
+  "pricing.page.labels.latency": "延迟",
+  "pricing.page.labels.inputPrice": "输入价格",
+  "pricing.page.labels.outputPrice": "输出价格",
+  "pricing.page.estimator.inputTokens": "输入 Tokens",
+  "pricing.page.estimator.outputTokens": "输出 Tokens",
+  "pricing.page.estimator.input": "输入",
+  "pricing.page.estimator.output": "输出",
+  "pricing.page.models.names.ark-gpt-4o": "GPT-4o",
+  "pricing.page.models.names.ark-gpt-5.3-codex": "GPT-5.3 Codex",
+  "pricing.page.models.names.ark-claude-sonnet-5": "Claude Sonnet 5",
+  "pricing.page.models.names.ark-claude-opus-5": "Claude Opus 5",
+  "pricing.page.models.names.ark-deepseek-v4-pro": "DeepSeek V4 Pro",
+  "pricing.page.models.names.ark-deepseek-v4-flash": "DeepSeek V4 Flash",
+  "pricing.page.models.names.ark-mai-thinking-1": "MAI Thinking 1",
+  "pricing.page.models.names.ark-cohere-embed-v3": "Cohere Embed V3",
+  "pricing.page.models.names.ark-cohere-rerank-v4-pro": "Cohere Rerank V4 Pro",
+  "pricing.page.models.names.ark-cohere-rerank-v4-fast": "Cohere Rerank V4 Fast",
+  "pricing.page.models.names.ark-mai-image-2.5-pro": "MAI Image 2.5 Pro",
+  "pricing.page.models.names.ark-mai-transcribe-1.5": "MAI Transcribe 1.5",
+  "pricing.page.models.names.ark-mai-voice-2": "MAI Voice 2",
+  "footer.copyright": "© 2026 ArkAgentic 团队",
+  "footer.rightsReserved": "保留所有权利。",
+  "nav.docs": "开发者文档",
+  "docs.page.quickstart.getApiKey": "获取 API Key ➔",
+  "docs.page.routing.searchPlaceholder": "按模型 ID、别名或服务商搜索",
+  "docs.page.routing.empty": "没有匹配当前筛选条件的模型。",
+  "docs.page.routing.filters.all": "全部服务商",
+  "docs.page.routing.filters.openai": "OpenAI 系列",
+  "docs.page.routing.filters.anthropic": "Anthropic 系列",
+  "docs.page.routing.filters.deepseek": "DeepSeek 系列",
+  "docs.page.routing.filters.qwen": "Qwen 系列",
+  "docs.page.routing.filters.moonshot": "Moonshot 系列",
+  "docs.page.routing.filters.siliconflow": "SiliconFlow 系列",
+  "docs.page.routing.categories.openai": "OpenAI",
+  "docs.page.routing.categories.anthropic": "Anthropic",
+  "docs.page.routing.categories.deepseek": "DeepSeek",
+  "docs.page.routing.categories.qwen": "Qwen",
+  "docs.page.routing.categories.moonshot": "Moonshot",
+  "docs.page.routing.categories.siliconflow": "SiliconFlow",
+  "docs.page.routing.pagination.previous": "上一页",
+  "docs.page.routing.pagination.next": "下一页",
+  "docs.page.routing.pagination.pageLabel": "第",
+  "docs.page.routing.viewAllPrefix": "在模型中心查看全部",
+  "docs.page.routing.viewAllSuffix": "个模型 ➔",
+  "docs.page.routing.notes.generalChat": "通用生产对话负载",
+  "docs.page.routing.notes.codeHeavy": "代码密集型工作流与工具调用",
+  "docs.page.routing.notes.reasoning": "深度推理与长链分析任务",
+  "docs.page.routing.notes.embedding": "向量嵌入与语义索引场景",
+  "docs.page.routing.notes.rerank": "检索重排与相关性评分任务",
+  "docs.page.routing.notes.image": "图像生成工作流",
+  "docs.page.routing.notes.audio": "语音与音频处理任务",
+  "docs.page.ctaPricing": "查看算力定价",
+  "docs.page.ctaBillingConsole": "打开充值控制台",
+  "docs.page.ctaModelList": "查看模型列表",
+  "docs.page.ctaModelCenter": "打开模型中心",
+  "docs.page.routing.pricingHint.pre": "如需查看具体 Token 计费与算力估算器，请前往",
+  "docs.page.routing.pricingHint.link": "费率与定价 ➔",
+  "docs.page.routing.pricingHint.post": "。",
+  "pricing": {
+    "page": {
+      "tiers": {
+        "growth": {
+          "subtitle": "解锁 10% 优惠档"
+        }
+      },
+      "modelCenter": {
+        "pagination": {
+          "previous": "上一页",
+          "next": "下一页",
+          "pageLabel": "第"
+        }
+      }
+    }
+  }
+}
