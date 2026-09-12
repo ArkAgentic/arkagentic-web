@@ -1,0 +1,50 @@
+name: Deploy to Azure Container Apps
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  AZURE_CONTAINER_APP: "arkag-web-ssr"
+  RESOURCE_GROUP: "rg-arkagentic-prod"
+  REGISTRY_NAME: "ca5d44f65c74acr"
+  DOCKERFILE_PATH: "web/Dockerfile"
+  IMAGE_NAME: "arkag-web-ssr"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Login to Azure Container Registry
+        run: az acr login --name "$REGISTRY_NAME"
+
+      - name: Build and push Docker image (latest + sha)
+        run: |
+          set -euo pipefail
+          ACR_LOGIN_SERVER=$(az acr show -n "$REGISTRY_NAME" --query loginServer -o tsv)
+          IMAGE_SHA="$ACR_LOGIN_SERVER/$IMAGE_NAME:${{ github.sha }}"
+          IMAGE_LATEST="$ACR_LOGIN_SERVER/$IMAGE_NAME:latest"
+
+          docker build -f "$DOCKERFILE_PATH" -t "$IMAGE_SHA" -t "$IMAGE_LATEST" .
+          docker push "$IMAGE_SHA"
+          docker push "$IMAGE_LATEST"
+
+          echo "IMAGE_SHA=$IMAGE_SHA" >> "$GITHUB_ENV"
+
+      - name: Deploy to Azure Container App
+        run: |
+          set -euo pipefail
+          az containerapp update \
+            --name "$AZURE_CONTAINER_APP" \
+            --resource-group "$RESOURCE_GROUP" \
+            --image "$IMAGE_SHA"
