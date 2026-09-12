@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "services/ledgerly/public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "ledgerly-backend",
+          "region": "australia-southeast1"
+        }
+      }
+    ]
+  }
+}
