@@ -1,7 +1,7 @@
 "use client";
 
 import { CardSpotlight } from "@/components/ui/card-spotlight";
-import { motion } from "framer-motion";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Cloud, Cpu, Database, Shield, Sparkles, Workflow } from "lucide-react";
 import Link from "next/link";
 
@@ -23,14 +23,15 @@ export default function HomePage() {
     <main className="mx-auto w-full max-w-6xl px-6 py-16 md:py-24">
       <section className="text-center">
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-amber-700">ArkAgentic Platform</p>
-        <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          className="mx-auto mt-4 max-w-4xl bg-gradient-to-r from-stone-900 via-amber-600 to-stone-900 bg-clip-text text-4xl font-semibold leading-tight text-transparent md:text-6xl"
-        >
-          Next-Gen Agentic Platform &amp; Infrastructure
-        </motion.h1>
+        <div className="relative mx-auto mt-4 max-w-4xl">
+          <TextGenerateEffect
+            words="Next-Gen Agentic Platform & Infrastructure"
+            className="bg-gradient-to-r from-stone-900 via-amber-500 to-stone-900 bg-clip-text text-transparent"
+          />
+          <div className="pointer-events-none absolute inset-0 -z-10 blur-2xl">
+            <div className="mx-auto h-full w-5/6 bg-gradient-to-r from-amber-200/0 via-amber-300/35 to-amber-200/0" />
+          </div>
+        </div>
         <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-stone-700 md:text-base">
           Unified infrastructure for finance automation and global AI gateway routing with enterprise-grade reliability.
         </p>
