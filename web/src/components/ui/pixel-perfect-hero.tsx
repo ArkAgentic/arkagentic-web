@@ -133,7 +133,13 @@ export function PixelHero({
   }, []);
 
   return (
-    <div className="relative w-full min-h-[100dvh] bg-background flex flex-col justify-between md:justify-center md:gap-6 py-8 md:py-0 px-2 sm:px-6 overflow-hidden select-none isolate">
+    <div
+      className="relative w-full min-h-[100dvh] bg-[#f8fafc] flex flex-col justify-between md:justify-center md:gap-6 py-8 md:py-0 px-2 sm:px-6 overflow-hidden select-none isolate"
+      style={{
+        ["--background" as string]: "#f8fafc",
+        ["--foreground" as string]: "#0f172a",
+      }}
+    >
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(0%); }
@@ -144,12 +150,12 @@ export function PixelHero({
         }
         .tahoe-glass-text {
             color: transparent;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.4) 25%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.9) 55%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 1) 100%);
-            background-size: 200% auto;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(37, 99, 235, 0.7) 26%, rgba(15, 23, 42, 0.72) 52%, rgba(99, 102, 241, 0.82) 72%, rgba(15, 23, 42, 0.98) 100%);
+            background-size: 220% auto;
             -webkit-background-clip: text;
             background-clip: text;
-            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.3);
-            filter: drop-shadow(0 15px 35px rgba(0,0,0,0.4)) drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+            -webkit-text-stroke: 1.1px rgba(15, 23, 42, 0.18);
+            filter: drop-shadow(0 8px 20px rgba(148, 163, 184, 0.28));
             animation: shimmer 8s linear infinite;
         }
         @keyframes shimmer {
@@ -160,9 +166,9 @@ export function PixelHero({
 
       {/* Aurora background layers */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute -inset-[10px] animate-aurora opacity-45 [background-image:var(--white-gradient),var(--aurora-gradient)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%] blur-[10px] filter invert dark:invert-0" />
-        <div className="absolute -inset-[10px] animate-aurora opacity-40 mix-blend-overlay [background-image:var(--white-gradient),var(--aurora-gradient)] [background-size:200%,_100%] [background-position:50%_50%,50%_50%] blur-[14px] filter" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_10%,rgba(2,6,23,0.72)_60%,rgba(2,6,23,0.96)_100%)]" />
+        <div className="absolute -inset-[12px] animate-aurora opacity-30 [background-image:var(--white-gradient),var(--aurora-gradient)] [background-size:320%,_220%] [background-position:50%_50%,50%_50%] blur-[14px] filter" />
+        <div className="absolute -inset-[12px] animate-aurora opacity-22 mix-blend-multiply [background-image:var(--white-gradient),var(--aurora-gradient)] [background-size:220%,_120%] [background-position:50%_50%,50%_50%] blur-[18px] filter" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06)_0%,rgba(248,250,252,0.24)_45%,rgba(248,250,252,0.62)_100%)]" />
       </div>
 
       {/* Top Container: Tahoe Glass Header */}
