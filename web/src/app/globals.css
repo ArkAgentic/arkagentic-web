@@ -1,11 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712;
-  --foreground: #e5e7eb;
-  --brand-amber-from: #d8a45b;
-  --brand-amber-via: #d7963a;
+  --background: #f8f6f1;
+  --foreground: #1f2937;
+  --brand-amber-from: #e3c486;
+  --brand-amber-via: #d99b52;
   --brand-amber-to: #b4693d;
+  --gateway-bg-from: #f6efe3;
+  --gateway-bg-via: #f8f4ec;
+  --gateway-bg-to: #f5f7fb;
+  --gateway-text-main: #111827;
+  --gateway-text-muted: #475569;
 }
 
 @theme inline {
@@ -40,6 +45,22 @@ body {
     var(--brand-amber-via),
     var(--brand-amber-to)
   );
+}
+
+.gateway-hero-bg {
+  background-image: radial-gradient(880px 420px at 8% 10%, rgba(227, 196, 134, 0.28), rgba(227, 196, 134, 0)),
+    radial-gradient(700px 360px at 92% 20%, rgba(217, 155, 82, 0.12), rgba(217, 155, 82, 0)),
+    linear-gradient(100deg, var(--gateway-bg-from) 0%, var(--gateway-bg-via) 54%, var(--gateway-bg-to) 100%);
+}
+
+.gateway-primary-btn {
+  background-image: linear-gradient(90deg, var(--brand-amber-from) 0%, var(--brand-amber-via) 45%, var(--brand-amber-to) 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 26px rgba(123, 75, 28, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.gateway-primary-btn:hover {
+  filter: brightness(1.04);
 }
 
 .ark-unified-card {
