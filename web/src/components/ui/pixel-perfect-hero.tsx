@@ -369,7 +369,7 @@ export function PixelHero({
       {/* Top Container: Tahoe Glass Header */}
       <div className="flex flex-col items-center justify-center text-center order-1 md:order-1 mt-28 sm:mt-0 pointer-events-none w-full">
         <h1 className="tahoe-glass-text flex flex-row items-center justify-center gap-1.5 sm:gap-4 lg:gap-6 px-1 w-full flex-wrap text-[2.8rem] xs:text-[3.2rem] sm:text-6xl md:text-8xl lg:text-9xl leading-none">
-          <span className="font-serif italic font-medium">{word1}</span>
+          <span className="font-sans font-bold tracking-tight">{word1}</span>
           <span className="font-sans font-extrabold tracking-tighter">{word2}</span>
         </h1>
       </div>
