@@ -1,8 +1,7 @@
 "use client";
 
-import { AuroraBackground } from "@/components/ui/aurora-background";
+import PathDrawingPortfolioHero from "@/components/ui/path-drawing-portfolio-hero";
 import { LogoCarousel } from "@/components/ui/logo-carousel";
-import PathDrawingPortfolioHero from "@/components/ui/path-drawing-hero";
 import React from "react";
 
 const sampleLogos = [
@@ -64,20 +63,12 @@ const sampleLogos = [
 
 export default function HomePage() {
   return (
-    <AuroraBackground>
-      <div className="relative z-10 flex w-full flex-col items-center justify-center gap-8 px-4 text-center">
-        <PathDrawingPortfolioHero
-          eyebrow="ARKAGENTIC PLATFORM"
-          brand="Next-Gen Agentic Platform"
-          tagline="Unified Infrastructure & Financial AI Workspace"
-          fromColor="#60A5FA"
-          toColor="#C084FC"
-        />
+    <main className="w-full bg-[#0c0a0f] bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(240,147,251,0.14),transparent),radial-gradient(ellipse_60%_50%_at_80%_110%,rgba(245,87,108,0.1),transparent)]">
+      <PathDrawingPortfolioHero className="w-full" brand="AORA" tagline="UI / Brand Designer — Tokyo" eyebrow="Portfolio" />
 
-        <div className="w-full max-w-4xl pb-12">
-          <LogoCarousel columnCount={3} logos={sampleLogos} />
-        </div>
+      <div className="z-20 w-full max-w-4xl pb-12 mx-auto">
+        <LogoCarousel columnCount={3} logos={sampleLogos} />
       </div>
-    </AuroraBackground>
+    </main>
   );
 }
