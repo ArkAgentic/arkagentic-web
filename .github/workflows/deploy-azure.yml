@@ -1,8 +1,9 @@
 name: Deploy to Azure Container Apps
 
 on:
-  push:
+  pull_request:
     branches: [main]
+    types: [closed]
   workflow_dispatch:
 
 env:
@@ -15,11 +16,14 @@ env:
 
 jobs:
   build-and-deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha || 'main' }}
 
       - name: Azure login
         uses: azure/login@v1
@@ -33,7 +37,8 @@ jobs:
         run: |
           set -euo pipefail
           ACR_LOGIN_SERVER=$(az acr show -n "$REGISTRY_NAME" --query loginServer -o tsv)
-          IMAGE_SHA="$ACR_LOGIN_SERVER/$IMAGE_NAME:${{ github.sha }}"
+          DEPLOY_SHA="${{ github.event.pull_request.merge_commit_sha || github.sha }}"
+          IMAGE_SHA="$ACR_LOGIN_SERVER/$IMAGE_NAME:$DEPLOY_SHA"
           IMAGE_LATEST="$ACR_LOGIN_SERVER/$IMAGE_NAME:latest"
 
           docker build -f "$DOCKERFILE_PATH" -t "$IMAGE_SHA" -t "$IMAGE_LATEST" "$BUILD_CONTEXT"
@@ -49,3 +54,28 @@ jobs:
             --name "$AZURE_CONTAINER_APP" \
             --resource-group "$RESOURCE_GROUP" \
             --image "$IMAGE_SHA"
+
+      - name: Verify post-deploy health and traffic gate
+        run: |
+          set -euo pipefail
+          sleep 30
+
+          REV_JSON=$(az containerapp revision list -g "$RESOURCE_GROUP" -n "$AZURE_CONTAINER_APP" -o json)
+          LATEST_REV=$(echo "$REV_JSON" | jq -r 'sort_by(.properties.createdTime) | last')
+
+          REV_NAME=$(echo "$LATEST_REV" | jq -r '.name')
+          REV_HEALTH=$(echo "$LATEST_REV" | jq -r '.properties.healthState // "None"')
+          REV_RUNNING=$(echo "$LATEST_REV" | jq -r '.properties.runningState // "Unknown"')
+          REV_TRAFFIC=$(echo "$LATEST_REV" | jq -r '.properties.trafficWeight // 0')
+          REV_IMAGE=$(echo "$LATEST_REV" | jq -r '.properties.template.containers[0].image')
+
+          echo "revision=$REV_NAME"
+          echo "health=$REV_HEALTH"
+          echo "running=$REV_RUNNING"
+          echo "traffic=$REV_TRAFFIC"
+          echo "image=$REV_IMAGE"
+
+          if [ "$REV_HEALTH" != "Healthy" ] || [ "$REV_RUNNING" != "Running" ] || [ "$REV_TRAFFIC" != "100" ] || [ "$REV_IMAGE" != "$IMAGE_SHA" ]; then
+            echo "Deployment gate failed: revision is not Healthy/Running/100% traffic on expected image"
+            exit 1
+          fi

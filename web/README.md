@@ -6,6 +6,39 @@
 npm run dev
 ```
 
+## Deploy flow (GitHub -> Azure Container Apps)
+
+- Auto deploy now runs when a Pull Request into `main` is merged.
+- Direct pushes to `main` will no longer auto-deploy.
+- Manual deploy remains available via GitHub Actions `workflow_dispatch`.
+
+### Deployment status
+
+- Workflow: `.github/workflows/deploy-azure.yml`
+- GitHub Actions page: `https://github.com/ArkAgentic/arkagentic-web/actions/workflows/deploy-azure.yml`
+
+### Post-deploy gate
+
+The workflow verifies after rollout that latest ACA revision is:
+
+- `health = Healthy`
+- `running = Running`
+- `traffic = 100`
+- `image = expected sha-tag image`
+
+If any check fails, the workflow fails.
+
+### Rollback
+
+Use Azure CLI to roll back to previous image:
+
+```bash
+az containerapp update \
+  -g rg-arkagentic-prod \
+  -n arkag-web-ssr \
+  --image <previous-image>
+```
+
 ## Azure Milestone 3 automation
 
 - Keepalive heartbeat (OpenAI + PostgreSQL + Blob + Log Analytics):

@@ -4,8 +4,8 @@ import path from "node:path";
 const root = process.cwd();
 const base = path.join(root, "src", "locales");
 const langs = ["en", "zh", "ja", "fr", "de", "ko"];
-const prefixes = ["docs.page.", "pricing.page.", "home.hero.", "home.featureGrid.", "home.contact.", "home.map.", "footer."];
-const strictPrefixes = ["home.contact.", "footer.", "home.hero.", "pricing.page."];
+const prefixes = ["docs.page.", "pricing.page.", "home.hero.", "home.featureGrid.", "home.contact.", "home.map.", "home.calculator.", "footer."];
+const strictPrefixes = ["home.contact.", "footer.", "home.hero.", "pricing.page.", "home.calculator."];
 
 const data = Object.fromEntries(
   langs.map((l) => [l, JSON.parse(fs.readFileSync(path.join(base, `${l}.json`), "utf8"))]),
