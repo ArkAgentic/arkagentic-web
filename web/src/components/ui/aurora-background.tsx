@@ -1,32 +1,53 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { ReactNode } from "react";
 
-type AuroraBackgroundProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
+interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
+  children: ReactNode;
   showRadialGradient?: boolean;
-};
+}
 
-export function AuroraBackground({
-  children,
+export const AuroraBackground = ({
   className,
+  children,
   showRadialGradient = true,
   ...props
-}: AuroraBackgroundProps) {
+}: AuroraBackgroundProps) => {
   return (
-    <div className={cn("relative w-full overflow-hidden bg-white", className)} {...props}>
-      <div className="pointer-events-none absolute inset-0">
-        <div className="ark-aurora-layer absolute -inset-[8px]" />
-        <div className="ark-aurora-layer-fine absolute -inset-[9px] [animation-duration:208s] [animation-delay:20s]" />
-        <div className="ark-aurora-asymmetry absolute inset-0" />
+    <div
+      className={cn(
+        // 保持你当前页面布局容器，仅替换 Aurora 内核实现 | Keep current page layout wrapper, replace Aurora core implementation only
+        "relative w-full overflow-hidden bg-white text-slate-950",
+        className,
+      )}
+      {...props}
+    >
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        style={
+          {
+            // 仅替换为品牌主色；其余结构严格对齐 Aceternity 原版 | Keep Aceternity structure; only swap to brand colors
+            "--aurora":
+              "repeating-linear-gradient(100deg, var(--brand-amber-to) 10%, #c6764a 15%, var(--brand-amber-from) 20%, #e3c486 25%, var(--brand-amber-via) 30%)",
+            "--dark-gradient":
+              "repeating-linear-gradient(100deg, #000 0%, #000 7%, transparent 10%, transparent 12%, #000 16%)",
+            "--white-gradient":
+              "repeating-linear-gradient(100deg, #fff 0%, #fff 7%, transparent 10%, transparent 12%, #fff 16%)",
+          } as React.CSSProperties
+        }
+      >
+        <div
+          className={cn(
+            // Aceternity 原版核心层（含 invert + difference）| Aceternity original core layer (with invert + difference)
+            `after:animate-aurora absolute -inset-[10px] [background-image:var(--white-gradient),var(--aurora)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%] opacity-50 blur-[10px] invert filter will-change-transform after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)] after:[background-size:200%,_100%] after:[background-attachment:fixed] after:mix-blend-difference after:content-[""] dark:[background-image:var(--dark-gradient),var(--aurora)] dark:invert-0 after:dark:[background-image:var(--dark-gradient),var(--aurora)]`,
+            showRadialGradient &&
+              `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,transparent_70%)]`,
+          )}
+        />
       </div>
-
-      {showRadialGradient ? (
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0)_0%,rgba(255,255,255,0.03)_36%,rgba(255,255,255,0.12)_100%)]" />
-      ) : null}
 
       <div className="relative z-10">{children}</div>
     </div>
   );
-}
+};

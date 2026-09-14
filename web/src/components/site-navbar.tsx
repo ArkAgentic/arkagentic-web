@@ -114,7 +114,7 @@ export function SiteNavbar({ active }: { active?: NavKey }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 overflow-hidden bg-transparent">
+    <header className="sticky top-0 z-50 overflow-visible bg-transparent">
       <div className="pointer-events-none absolute inset-0">
         <div className="ark-aurora-nav-seamless absolute -inset-x-8 -inset-y-3" />
         <div className="ark-aurora-asymmetry absolute inset-0" />
