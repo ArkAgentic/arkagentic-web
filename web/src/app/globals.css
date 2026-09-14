@@ -1,29 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8f6f1;
-  --foreground: #1f2937;
-  --brand-amber-from: #e3c486;
-  --brand-amber-via: #d99b52;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --brand-amber-from: #d8a45b;
+  --brand-amber-via: #d7963a;
   --brand-amber-to: #b4693d;
-  --gateway-bg-from: #f6efe3;
-  --gateway-bg-via: #f8f4ec;
-  --gateway-bg-to: #f5f7fb;
-  --gateway-text-main: #111827;
-  --gateway-text-muted: #475569;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-jakarta-sans);
+  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-jakarta-sans), Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: var(--font-geist-sans), Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 .brand-amber-gradient-text {
@@ -45,22 +40,6 @@ body {
     var(--brand-amber-via),
     var(--brand-amber-to)
   );
-}
-
-.gateway-hero-bg {
-  background-image: radial-gradient(880px 420px at 8% 10%, rgba(227, 196, 134, 0.28), rgba(227, 196, 134, 0)),
-    radial-gradient(700px 360px at 92% 20%, rgba(217, 155, 82, 0.12), rgba(217, 155, 82, 0)),
-    linear-gradient(100deg, var(--gateway-bg-from) 0%, var(--gateway-bg-via) 54%, var(--gateway-bg-to) 100%);
-}
-
-.gateway-primary-btn {
-  background-image: linear-gradient(90deg, var(--brand-amber-from) 0%, var(--brand-amber-via) 45%, var(--brand-amber-to) 100%);
-  color: #ffffff;
-  box-shadow: 0 12px 26px rgba(123, 75, 28, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-
-.gateway-primary-btn:hover {
-  filter: brightness(1.04);
 }
 
 .ark-unified-card {
@@ -402,34 +381,4 @@ body {
   }
 }
 
-:root {
-  --aurora-gradient: repeating-linear-gradient(
-    100deg,
-    #3b82f6 10%,
-    #22c55e 15%,
-    #a855f7 20%,
-    #06b6d4 25%,
-    #f59e0b 30%
-  );
-  --white-gradient: repeating-linear-gradient(
-    100deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.08) 7%,
-    transparent 10%,
-    transparent 12%,
-    rgba(255, 255, 255, 0.08) 16%
-  );
-}
 
-@keyframes aurora {
-  from {
-    background-position: 50% 50%, 50% 50%;
-  }
-  to {
-    background-position: 350% 50%, 350% 50%;
-  }
-}
-
-.animate-aurora {
-  animation: aurora 60s linear infinite;
-}
