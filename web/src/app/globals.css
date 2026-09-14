@@ -13,6 +13,83 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --animate-aurora: aurora 168s linear infinite;
+
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+}
+
+:root {
+  --aurora-brand-gradient: repeating-linear-gradient(
+    104deg,
+    rgba(214, 160, 77, 0.14) 0%,
+    rgba(214, 160, 77, 0.14) 0.75%,
+    rgba(255, 255, 255, 0) 1.2%,
+    rgba(255, 255, 255, 0) 2.3%,
+    rgba(215, 150, 58, 0.16) 2.75%,
+    rgba(215, 150, 58, 0.16) 3.5%,
+    rgba(255, 255, 255, 0) 3.95%,
+    rgba(255, 255, 255, 0) 5.25%,
+    rgba(180, 105, 61, 0.14) 5.7%,
+    rgba(180, 105, 61, 0.14) 6.4%,
+    rgba(255, 255, 255, 0) 6.8%,
+    rgba(255, 255, 255, 0) 8.2%,
+    rgba(236, 144, 156, 0.12) 8.6%,
+    rgba(236, 144, 156, 0.12) 9.25%,
+    rgba(255, 255, 255, 0) 9.8%,
+    rgba(255, 255, 255, 0) 11.4%
+  );
+  --aurora-white-gradient: repeating-linear-gradient(
+    104deg,
+    rgba(255, 255, 255, 0.44) 0%,
+    rgba(255, 255, 255, 0.44) 0.65%,
+    rgba(255, 255, 255, 0) 1.1%,
+    rgba(255, 255, 255, 0) 2.15%,
+    rgba(255, 255, 255, 0.36) 2.6%,
+    rgba(255, 255, 255, 0.36) 3.2%,
+    rgba(255, 255, 255, 0) 3.65%,
+    rgba(255, 255, 255, 0) 4.9%
+  );
+}
+
+.ark-aurora-layer {
+  animation: var(--animate-aurora);
+  background-image: var(--aurora-white-gradient), var(--aurora-brand-gradient);
+  background-size: 450%, 320%;
+  background-position: 50% 50%, 50% 50%;
+  filter: blur(3.8px) saturate(112%) contrast(106%);
+  opacity: 0.40;
+}
+
+.ark-aurora-layer-fine {
+  animation: var(--animate-aurora);
+  background-image: var(--aurora-white-gradient), var(--aurora-brand-gradient);
+  background-size: 560%, 390%;
+  background-position: 50% 50%, 50% 50%;
+  filter: blur(2.2px) saturate(114%) contrast(108%);
+  opacity: 0.26;
+}
+
+.ark-aurora-nav-seamless {
+  animation: var(--animate-aurora);
+  background-image: var(--aurora-white-gradient), var(--aurora-brand-gradient);
+  background-size: 340%, 240%;
+  background-position: 50% 50%, 50% 50%;
+  filter: blur(6px) saturate(102%);
+  opacity: 0.16;
+}
+
+.ark-aurora-asymmetry {
+  background:
+    radial-gradient(80% 95% at 82% 18%, rgba(180, 105, 61, 0.18), rgba(180, 105, 61, 0) 72%),
+    radial-gradient(60% 88% at 68% 8%, rgba(236, 144, 156, 0.12), rgba(236, 144, 156, 0) 76%),
+    radial-gradient(72% 96% at 14% 22%, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0) 78%);
 }
 
 body {

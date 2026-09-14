@@ -26,6 +26,7 @@ import {
 import { useI18n } from "@/lib/i18n";
 import { RevealOnScroll, staggerContainer } from "@/components/animated/RevealOnScroll";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 type Scenario = "hybrid" | "single" | "cn";
 
@@ -195,25 +196,12 @@ function HomePageContent() {
   ] as const;
 
   return (
-    <main className="relative w-full pb-20 pt-10">
-      <div className="pointer-events-none absolute -left-24 top-6 h-[340px] w-[340px] rounded-full bg-[#F59E0B]/15 blur-3xl hero-orb-amber" />
-      <div className="pointer-events-none absolute -right-24 top-2 h-[360px] w-[360px] rounded-full bg-[#D97706]/11 blur-3xl hero-orb-orange" />
+    <main className="relative w-full pb-20 pt-0">
+      <AuroraBackground>
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-      <section className="rounded-[30px] bg-gradient-to-b from-white to-stone-50/60 px-8 py-20 md:px-12 md:py-24">
+      <section className="px-8 pb-20 pt-24 md:px-12 md:pb-24 md:pt-32">
         <style jsx global>{`
-          .hero-orb-amber { animation: heroOrbAmber 18s ease-in-out infinite alternate; }
-          .hero-orb-orange { animation: heroOrbOrange 20s ease-in-out infinite alternate; }
           .shimmer-sweep { animation: shimmerSweep 2.2s linear infinite; }
-          @keyframes heroOrbAmber {
-            0% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
-            50% { transform: translate(22px, 10px) rotate(12deg) scale(1.08); }
-            100% { transform: translate(10px, 26px) rotate(24deg) scale(1.02); }
-          }
-          @keyframes heroOrbOrange {
-            0% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
-            50% { transform: translate(-20px, 12px) rotate(-14deg) scale(1.06); }
-            100% { transform: translate(-8px, 24px) rotate(-26deg) scale(1.01); }
-          }
           @keyframes shimmerSweep {
             0% { transform: translateX(-120%) skewX(-22deg); }
             100% { transform: translateX(380%) skewX(-22deg); }
@@ -501,6 +489,7 @@ function HomePageContent() {
       </section>
       </RevealOnScroll>
       </div>
+      </AuroraBackground>
     </main>
   );
 }

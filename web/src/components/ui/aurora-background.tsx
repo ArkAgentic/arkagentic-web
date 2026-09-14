@@ -3,27 +3,27 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
-type AuroraBackgroundProps = {
+type AuroraBackgroundProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
-  className?: string;
   showRadialGradient?: boolean;
 };
 
-export function AuroraBackground({ children, className, showRadialGradient = true }: AuroraBackgroundProps) {
+export function AuroraBackground({
+  children,
+  className,
+  showRadialGradient = true,
+  ...props
+}: AuroraBackgroundProps) {
   return (
-    <div
-      className={cn(
-        "relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-950 text-slate-100",
-        className,
-      )}
-    >
+    <div className={cn("relative w-full overflow-hidden bg-white", className)} {...props}>
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -inset-[10px] animate-aurora opacity-45 [background-image:var(--white-gradient),var(--aurora-gradient)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%] blur-[10px] filter invert dark:invert-0" />
-        <div className="absolute -inset-[10px] animate-aurora opacity-40 mix-blend-overlay [background-image:var(--white-gradient),var(--aurora-gradient)] [background-size:200%,_100%] [background-position:50%_50%,50%_50%] blur-[14px] filter" />
+        <div className="ark-aurora-layer absolute -inset-[8px]" />
+        <div className="ark-aurora-layer-fine absolute -inset-[9px] [animation-duration:208s] [animation-delay:20s]" />
+        <div className="ark-aurora-asymmetry absolute inset-0" />
       </div>
 
       {showRadialGradient ? (
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_10%,rgba(2,6,23,0.72)_60%,rgba(2,6,23,0.96)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0)_0%,rgba(255,255,255,0.03)_36%,rgba(255,255,255,0.12)_100%)]" />
       ) : null}
 
       <div className="relative z-10">{children}</div>
