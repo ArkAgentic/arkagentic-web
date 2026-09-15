@@ -10,8 +10,8 @@ env:
   AZURE_CONTAINER_APP: "arkag-web-ssr"
   RESOURCE_GROUP: "rg-arkagentic-prod"
   REGISTRY_NAME: "ca5d44f65c74acr"
-  DOCKERFILE_PATH: "./apps/gateway/Dockerfile"
-  BUILD_CONTEXT: "."
+  DOCKERFILE_PATH: "./web/Dockerfile"
+  BUILD_CONTEXT: "./web"
   IMAGE_NAME: "arkag-web-ssr"
 
 jobs:
