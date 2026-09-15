@@ -26,6 +26,10 @@ import {
 import { useI18n } from "@/lib/i18n";
 import { RevealOnScroll, staggerContainer } from "@/components/animated/RevealOnScroll";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { LogoCloud } from "@/components/ui/logo-cloud-3";
+import { HowItWorks } from "@/components/ui/how-it-works";
+import { TypewriterEffect, type TypewriterWord, estimateTypewriterDurationMs } from "@/components/ui/typewriter-effect";
 
 type Scenario = "hybrid" | "single" | "cn";
 
@@ -41,6 +45,20 @@ const FEATURE_CARDS: FeatureCard[] = [
   { key: "card4", icon: "zero" },
   { key: "card5", icon: "security" },
   { key: "card6", icon: "residency" },
+];
+
+const TRUSTED_LOGOS = [
+  { src: "/assets/logos/providers/amazon-web-services-light.svg", alt: "Amazon Web Services" },
+  { src: "/assets/logos/providers/azure.svg", alt: "Azure" },
+  { src: "/assets/logos/providers/claude-ai-icon.svg", alt: "Claude AI" },
+  { src: "/assets/logos/providers/kimi-icon.svg", alt: "Kimi" },
+  { src: "/assets/logos/providers/gemini.svg", alt: "Gemini" },
+  { src: "/assets/logos/providers/github-light.svg", alt: "GitHub" },
+  { src: "/assets/logos/providers/google-cloud.svg", alt: "Google Cloud" },
+  { src: "/assets/logos/providers/microsoft.svg", alt: "Microsoft" },
+  { src: "/assets/logos/providers/openai.svg", alt: "OpenAI" },
+  { src: "/assets/logos/providers/typescript.svg", alt: "TypeScript" },
+  { src: "/assets/logos/providers/openclaw.svg", alt: "OpenClaw" },
 ];
 
 const featureItemVariants: Variants = {
@@ -68,6 +86,15 @@ function TooltipItem({ text }: { text: string }) {
   );
 }
 
+function toTypewriterWords(text: string, className?: string): TypewriterWord[] {
+  const normalized = text.trim();
+  if (!normalized) return [];
+  if (/\s/.test(normalized)) {
+    return normalized.split(/\s+/).map((word) => ({ text: word, className }));
+  }
+  return [{ text: normalized, className }];
+}
+
 function HomePageContent() {
   const { t } = useI18n();
 
@@ -81,6 +108,44 @@ function HomePageContent() {
   const [contactLoading, setContactLoading] = useState(false);
   const [contactStatus, setContactStatus] = useState<"idle" | "success" | "error">("idle");
   const [contactStatusText, setContactStatusText] = useState("");
+
+  const heroPrimaryWords = useMemo(() => toTypewriterWords(t("home.hero.primary")), [t]);
+  const heroAccentWords = useMemo(() => toTypewriterWords(t("home.hero.accent")), [t]);
+  const heroSubtitleLines = useMemo(() => {
+    const raw = t("home.hero.subtitle");
+    return raw
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean);
+  }, [t]);
+  const heroSubtitleLine1Words = useMemo(
+    () => toTypewriterWords(heroSubtitleLines[0] ?? ""),
+    [heroSubtitleLines],
+  );
+  const heroSubtitleLine1Duration = useMemo(
+    () =>
+      estimateTypewriterDurationMs(heroSubtitleLine1Words, {
+        charDelayMs: 40,
+        pauseEveryChars: 10,
+        pauseDurationMs: 60,
+        spacePauseMs: 40,
+        punctuationPauseMs: 70,
+      }),
+    [heroSubtitleLine1Words],
+  );
+  const heroPrimaryTypewriterDuration = useMemo(
+    () =>
+      estimateTypewriterDurationMs(heroPrimaryWords, {
+        charDelayMs: 48,
+        pauseEveryChars: 4,
+        pauseDurationMs: 132,
+        spacePauseMs: 108,
+        punctuationPauseMs: 160,
+      }),
+    [heroPrimaryWords],
+  );
+  const heroAccentStartDelay = 180 + heroPrimaryTypewriterDuration + 280;
+  const heroTypewriterVisible = heroPrimaryWords.length > 0 && heroAccentWords.length > 0;
 
   const calc = useMemo(() => {
     const monthlyTokens = monthlyTokensM * 1_000_000;
@@ -195,35 +260,81 @@ function HomePageContent() {
   ] as const;
 
   return (
-    <main className="relative w-full pb-20 pt-10">
-      <div className="pointer-events-none absolute -left-24 top-6 h-[340px] w-[340px] rounded-full bg-[#F59E0B]/15 blur-3xl hero-orb-amber" />
-      <div className="pointer-events-none absolute -right-24 top-2 h-[360px] w-[360px] rounded-full bg-[#D97706]/11 blur-3xl hero-orb-orange" />
+    <main className="relative w-full pb-20 pt-0">
+      <AuroraBackground>
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-      <section className="rounded-[30px] border border-stone-200/70 bg-gradient-to-b from-white to-stone-50/60 px-8 py-20 md:px-12 md:py-24">
+      <section className="px-8 pb-24 pt-44 md:px-12 md:pb-28 md:pt-56">
         <style jsx global>{`
-          .hero-orb-amber { animation: heroOrbAmber 18s ease-in-out infinite alternate; }
-          .hero-orb-orange { animation: heroOrbOrange 20s ease-in-out infinite alternate; }
           .shimmer-sweep { animation: shimmerSweep 2.2s linear infinite; }
-          @keyframes heroOrbAmber {
-            0% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
-            50% { transform: translate(22px, 10px) rotate(12deg) scale(1.08); }
-            100% { transform: translate(10px, 26px) rotate(24deg) scale(1.02); }
-          }
-          @keyframes heroOrbOrange {
-            0% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
-            50% { transform: translate(-20px, 12px) rotate(-14deg) scale(1.06); }
-            100% { transform: translate(-8px, 24px) rotate(-26deg) scale(1.01); }
-          }
           @keyframes shimmerSweep {
             0% { transform: translateX(-120%) skewX(-22deg); }
             100% { transform: translateX(380%) skewX(-22deg); }
           }
         `}</style>
-        <h1 className="text-4xl font-semibold leading-[1.08] tracking-[-0.02em] text-stone-900 sm:text-5xl lg:text-6xl">
-          <span className="block text-stone-900">{t("home.hero.primary")}</span>
-          <span className="brand-amber-gradient-text block">{t("home.hero.accent")}</span>
+        <h1 className="text-4xl font-semibold leading-[1.16] tracking-[-0.02em] text-stone-900 sm:text-5xl lg:text-6xl">
+          {heroTypewriterVisible ? (
+            <>
+              <span className="block whitespace-nowrap leading-[1.22] min-h-[1.22em]">
+                <TypewriterEffect
+                  words={heroPrimaryWords}
+                  charDelayMs={48}
+                  startDelayMs={150}
+                  pauseEveryChars={4}
+                  pauseDurationMs={132}
+                  spacePauseMs={108}
+                  punctuationPauseMs={160}
+                  cursorClassName="bg-stone-500/85"
+                  hideCursorOnComplete
+                />
+              </span>
+              <span className="block whitespace-nowrap leading-[1.22] min-h-[1.22em] mt-1.5">
+                <TypewriterEffect
+                  words={heroAccentWords}
+                  textClassName="brand-amber-gradient-text"
+                  renderMode="substring"
+                  charDelayMs={52}
+                  startDelayMs={heroAccentStartDelay}
+                  pauseEveryChars={4}
+                  pauseDurationMs={146}
+                  spacePauseMs={112}
+                  punctuationPauseMs={174}
+                  cursorClassName="bg-[#B4693D]/90"
+                  hideCursorOnComplete
+                />
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="block text-stone-900">{t("home.hero.primary")}</span>
+              <span className="block">
+                <span className="brand-amber-gradient-text inline-block">{t("home.hero.accent")}</span>
+              </span>
+            </>
+          )}
         </h1>
-        <p className="mt-8 max-w-5xl text-sm leading-8 text-stone-700 md:text-base">{t("home.hero.subtitle")}</p>
+        <p className="mt-8 max-w-5xl text-sm leading-8 text-stone-700 md:text-base">
+          {heroSubtitleLines.length > 0 ? (
+            <span className="block space-y-1.5">
+              {heroSubtitleLines.map((line, index) => (
+                <span key={`hero-subtitle-line-${index}`} className="block whitespace-nowrap">
+                  <TypewriterEffect
+                    words={toTypewriterWords(line)}
+                    charDelayMs={40}
+                    startDelayMs={index === 0 ? 100 : 100 + heroSubtitleLine1Duration + 80}
+                    pauseEveryChars={10}
+                    pauseDurationMs={60}
+                    spacePauseMs={40}
+                    punctuationPauseMs={70}
+                    cursorClassName="bg-stone-500/70"
+                    hideCursorOnComplete
+                  />
+                </span>
+              ))}
+            </span>
+          ) : (
+            t("home.hero.subtitle")
+          )}
+        </p>
         <div className="mt-10 flex flex-wrap gap-4">
           <Link href="/llmapigateway/console/overview">
             <ShimmerButton>{t("home.hero.cta.primary")}</ShimmerButton>
@@ -235,8 +346,22 @@ function HomePageContent() {
 
       </section>
 
+      <div aria-hidden="true" className="section-amber-divider mx-8 md:mx-12" />
+      <section className="relative mt-[30px] mb-8 px-8 md:mt-[44px] md:mb-10 md:px-12">
+        <div className="mx-auto max-w-6xl">
+          <LogoCloud logos={TRUSTED_LOGOS} />
+        </div>
+      </section>
+
+      <div aria-hidden="true" className="section-amber-divider mx-8 md:mx-12" />
+      <HowItWorks />
+
+      <div aria-hidden="true" className="section-amber-divider mx-8 md:mx-12" />
+      <section id="gateway-capabilities" className="mt-20">
+        <h2 className="text-2xl font-semibold text-stone-900">{t("home.featureGrid.sectionTitle")}</h2>
+        <p className="mt-2 text-sm text-stone-700">{t("home.featureGrid.sectionNote")}</p>
       <motion.section
-        className="mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
@@ -257,9 +382,11 @@ function HomePageContent() {
           </motion.article>
         ))}
       </motion.section>
+      </section>
 
+      <div aria-hidden="true" className="section-amber-divider mx-8 md:mx-12" />
       <RevealOnScroll>
-      <section id="cost-calculator" className="mt-12 border border-stone-200/50 bg-white/40 backdrop-blur-sm rounded-2xl p-8">
+      <section id="cost-calculator" className="mt-20">
         <h2 className="text-2xl font-semibold text-stone-900">{t("home.calculator.title")}</h2>
         <p className="mt-2 text-sm text-stone-700">{t("home.calculator.subtitle")}</p>
 
@@ -350,8 +477,9 @@ function HomePageContent() {
       </section>
       </RevealOnScroll>
 
+      <div aria-hidden="true" className="section-amber-divider mx-8 md:mx-12" />
       <RevealOnScroll delay={0.05}>
-      <section id="global-nodes" className="mt-12 border border-stone-200/50 bg-white/40 backdrop-blur-sm rounded-2xl p-8">
+      <section id="global-nodes" className="mt-20">
         <h2 className="text-2xl font-semibold text-stone-900">{t("home.map.title")}</h2>
         <div className="mt-6 grid gap-6 lg:grid-cols-[7fr_5fr]">
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -405,8 +533,9 @@ function HomePageContent() {
       </section>
       </RevealOnScroll>
 
+      <div aria-hidden="true" className="section-amber-divider mx-8 md:mx-12" />
       <RevealOnScroll delay={0.1}>
-      <section className="mt-12 border border-stone-200/50 bg-white/40 backdrop-blur-sm rounded-2xl p-8">
+      <section className="mt-20">
         <h2 className="text-2xl font-semibold text-stone-900">{t("home.contact.title")}</h2>
         <p className="mt-2 text-sm text-stone-700">{t("home.contact.subtitle")}</p>
         <div className="mt-6 grid gap-6 lg:grid-cols-[40%_60%]">
@@ -501,6 +630,7 @@ function HomePageContent() {
       </section>
       </RevealOnScroll>
       </div>
+      </AuroraBackground>
     </main>
   );
 }

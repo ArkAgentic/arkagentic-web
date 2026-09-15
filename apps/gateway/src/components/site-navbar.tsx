@@ -114,8 +114,12 @@ export function SiteNavbar({ active }: { active?: NavKey }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-amber-100/70 bg-white/72 backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-6 py-4">
+    <header className="sticky top-0 z-50 overflow-visible border-b border-amber-100/70 bg-white/92 backdrop-blur-md">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="ark-aurora-nav-seamless absolute -inset-x-8 -inset-y-3" />
+        <div className="ark-aurora-asymmetry absolute inset-0" />
+      </div>
+      <div className="relative mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="flex min-w-0 items-center gap-3">
           <BrandLogo />
         </Link>

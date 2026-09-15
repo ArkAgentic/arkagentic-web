@@ -9,16 +9,98 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background); /* 全局背景色 token | Global background color token */
+  --color-foreground: var(--foreground); /* 全局前景文字色 token | Global foreground/text color token */
+  --font-sans: var(--font-geist-sans); /* 无衬线字体映射 | Sans font mapping */
+  --font-mono: var(--font-geist-mono); /* 等宽字体映射 | Monospace font mapping */
+
+  --animate-aurora: aurora 60s linear infinite; /* 主光束动画：速度/节奏主控 | Primary beam animation: main speed/cadence control */
+  --animate-aurora-soft: aurora 90s linear infinite; /* 次级光束动画：更慢更柔和 | Secondary beam animation: slower and softer */
+
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%; /* 动画起点：两层都从中心出发 | Start: both layers begin centered */
+    }
+    to {
+      background-position: 350% 50%, 350% 50%; /* 严格对齐 Aceternity 原版位移范围 | Strictly match Aceternity original travel range */
+    }
+  }
+}
+
+:root {
+  --aurora-brand-gradient: repeating-linear-gradient(
+    104deg, /* 主倾角（层1）| Primary tilt (layer 1) */
+    rgba(215, 150, 58, 0.16) 0%, /* 品牌琥珀主束 | Primary amber beam */
+    rgba(215, 150, 58, 0.16) 1.6%, /* 束宽（偏粗）| Beam width (thicker) */
+    rgba(255, 255, 255, 0) 2.0%, /* 过渡透明 | Fade out */
+    rgba(255, 255, 255, 0) 4.1%, /* 稀疏段 | Sparse zone */
+    rgba(198, 118, 74, 0.13) 4.55%, /* 红金束 | Red-gold beam */
+    rgba(198, 118, 74, 0.13) 5.85%, /* 束宽 | Beam width */
+    rgba(255, 255, 255, 0) 6.35%, /* 过渡透明 | Fade out */
+    rgba(255, 255, 255, 0) 10.8% /* 周期终点 | Repeat cycle end */
+  );
+  --aurora-white-gradient: repeating-linear-gradient(
+    104deg, /* 与主层同倾角 | Same tilt as primary layer */
+    rgba(255, 255, 255, 0.40) 0%, /* 白高光束 | White highlight beam */
+    rgba(255, 255, 255, 0.40) 1.35%, /* 束宽（偏粗）| Beam width (thicker) */
+    rgba(255, 255, 255, 0) 1.85%, /* 过渡透明 | Fade out */
+    rgba(255, 255, 255, 0) 5.9% /* 大留白 | Large sparse gap */
+  );
+
+  --aurora-brand-gradient-tilt: repeating-linear-gradient(
+    96deg, /* 次倾角（层2，和主层不同）| Secondary tilt (layer 2, different from primary) */
+    rgba(216, 164, 91, 0.12) 0%, /* 香槟金束 | Champagne-gold beam */
+    rgba(216, 164, 91, 0.12) 0.95%, /* 束宽（中等）| Beam width (medium) */
+    rgba(255, 255, 255, 0) 1.4%, /* 过渡透明 | Fade out */
+    rgba(255, 255, 255, 0) 3.2%, /* 密集段间隔（更短）| Dense-zone gap (shorter) */
+    rgba(180, 105, 61, 0.10) 3.65%, /* 深琥珀束 | Deep amber beam */
+    rgba(180, 105, 61, 0.10) 4.45%, /* 束宽（窄）| Beam width (narrow) */
+    rgba(255, 255, 255, 0) 4.9%, /* 过渡透明 | Fade out */
+    rgba(255, 255, 255, 0) 8.6% /* 周期终点 | Repeat cycle end */
+  );
+  --aurora-white-gradient-tilt: repeating-linear-gradient(
+    112deg, /* 第三倾角（层3）| Tertiary tilt (layer 3) */
+    rgba(255, 255, 255, 0.26) 0%, /* 柔白高光 | Soft white highlight */
+    rgba(255, 255, 255, 0.26) 0.72%, /* 束宽（窄）| Beam width (narrow) */
+    rgba(255, 255, 255, 0) 1.15%, /* 过渡透明 | Fade out */
+    rgba(255, 255, 255, 0) 4.8% /* 稀疏留白 | Sparse gap */
+  );
+}
+
+.ark-aurora-nav-seamless {
+  animation: var(--animate-aurora);
+  background-image: var(--aurora-white-gradient), var(--aurora-brand-gradient);
+  background-size: 340%, 240%;
+  background-position: 50% 50%, 50% 50%;
+  filter: blur(6px) saturate(102%);
+  opacity: 0.16;
+}
+
+.ark-aurora-asymmetry {
+  background:
+    radial-gradient(80% 94% at 64% 14%, rgba(180, 105, 61, 0.15), rgba(180, 105, 61, 0) 74%), /* 主簇右移并集中 | Primary cluster shifted right and tightened */
+    radial-gradient(54% 82% at 58% 18%, rgba(198, 118, 74, 0.12), rgba(198, 118, 74, 0) 76%), /* 中心偏右次簇 | Center-right secondary cluster */
+    radial-gradient(44% 80% at 80% 18%, rgba(215, 150, 58, 0.10), rgba(215, 150, 58, 0) 78%), /* 右侧密集增强 | Right-side density boost */
+    radial-gradient(34% 68% at 60% 18%, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0) 72%), /* 中间小空区 | Small mid gap */
+    radial-gradient(90% 100% at 42% 24%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 84%); /* 左侧整体更稀 | Left side overall sparser */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+a[href] {
+  cursor: pointer;
+}
+
+button:disabled,
+[role="button"][aria-disabled="true"],
+a[aria-disabled="true"] {
+  cursor: not-allowed;
 }
 
 .brand-amber-gradient-text {
@@ -40,6 +122,13 @@ body {
     var(--brand-amber-via),
     var(--brand-amber-to)
   );
+}
+
+.section-amber-divider {
+  height: 1px;
+  background: rgba(254, 243, 199, 0.7);
+  -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
+  mask-image: linear-gradient(to right, transparent, black, transparent);
 }
 
 .ark-unified-card {
