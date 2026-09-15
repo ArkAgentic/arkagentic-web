@@ -91,6 +91,18 @@ body {
   font-family: var(--font-geist-sans), Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+a[href] {
+  cursor: pointer;
+}
+
+button:disabled,
+[role="button"][aria-disabled="true"],
+a[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
 .brand-amber-gradient-text {
   background-image: linear-gradient(
     to right,
@@ -110,6 +122,13 @@ body {
     var(--brand-amber-via),
     var(--brand-amber-to)
   );
+}
+
+.section-amber-divider {
+  height: 1px;
+  background: rgba(254, 243, 199, 0.7);
+  -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
+  mask-image: linear-gradient(to right, transparent, black, transparent);
 }
 
 .ark-unified-card {
