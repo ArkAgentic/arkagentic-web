@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { SlidersHorizontal, Rocket, UserPlus } from "lucide-react";
 import type React from "react";
 import { useI18n } from "@/lib/i18n";

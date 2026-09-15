@@ -1,5 +1,5 @@
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import type { ComponentPropsWithoutRef } from "react";
 
 type Logo = {
