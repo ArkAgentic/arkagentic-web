@@ -808,13 +808,7 @@ export const apiClient = {
     if (USE_REAL_BACKEND) {
       return requestJson<AdminDashboardSnapshot>(ENDPOINTS.adminDashboard, { method: "GET" });
     }
-
-    try {
-      return await requestJson<AdminDashboardSnapshot>("/api/admin/dashboard", { method: "GET" });
-    } catch {
-      await wait(220);
-      return structuredClone(state.admin);
-    }
+    return requestJson<AdminDashboardSnapshot>("/api/admin/dashboard", { method: "GET" });
   },
 
   async getAdminUsageLogs(
@@ -856,33 +850,7 @@ export const apiClient = {
     if (USE_REAL_BACKEND) {
       return requestJson<AdminDashboardSnapshot>(ENDPOINTS.adminUserToggle(userId), { method: "POST" });
     }
-
-    try {
-      return await requestJson<AdminDashboardSnapshot>(`/api/admin/users/${userId}/toggle`, { method: "POST" });
-    } catch {
-      await wait(180);
-
-      state.admin.users = state.admin.users.map((user) =>
-        user.userId === userId ? { ...user, status: user.status === "active" ? "disabled" : "active" } : user,
-      );
-
-      const disabledUsers = new Set(
-        state.admin.users.filter((user) => user.status === "disabled").map((user) => user.userId),
-      );
-
-      state.admin.keyRecords = state.admin.keyRecords.map((key) => {
-        if (disabledUsers.has(key.userId)) return { ...key, status: "disabled" as const };
-        const owner = state.admin.users.find((user) => user.userId === key.userId);
-        if (owner?.status === "active") return { ...key, status: "active" as const };
-        return key;
-      });
-
-      state.admin.kpi.totalUserBalanceUsd = state.admin.users
-        .filter((user) => user.status === "active")
-        .reduce((acc, user) => acc + user.currentBalanceUsd, 0);
-
-      return structuredClone(state.admin);
-    }
+    return requestJson<AdminDashboardSnapshot>(`/api/admin/users/${userId}/toggle`, { method: "POST" });
   },
 
   async listAdminChannels(): Promise<AdminChannelRecord[]> {
