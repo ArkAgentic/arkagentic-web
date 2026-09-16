@@ -146,7 +146,7 @@ async function ensurePostgresSchema(pool: Pool) {
       total_deposited_usd decimal(18,6) not null default 0,
       gateway_locked boolean not null default false,
       gateway_lock_reason varchar(64),
-      gateway_locked_at timestamptz
+      gateway_locked_at timestamptz,
       created_at timestamptz not null default now()
     );
 
@@ -159,7 +159,7 @@ async function ensurePostgresSchema(pool: Pool) {
       key_encrypted text,
       quota_limit bigint not null default 0,
       spend_limit_usd decimal(18,6),
-      status varchar(16) not null default 'active'
+      status varchar(16) not null default 'active',
       created_at timestamptz not null default now()
     );
 
@@ -173,7 +173,7 @@ async function ensurePostgresSchema(pool: Pool) {
       cost_usd decimal(18,6) not null default 0,
       charged_usd decimal(18,6) not null default 0,
       net_profit_usd decimal(18,6) not null default 0,
-      status_code integer not null default 200
+      status_code integer not null default 200,
       created_at timestamptz not null default now()
     );
 
@@ -184,7 +184,7 @@ async function ensurePostgresSchema(pool: Pool) {
       model varchar(120) not null,
       prompt_tokens integer not null default 0,
       completion_tokens integer not null default 0,
-      cost_usd decimal(18,6) not null default 0
+      cost_usd decimal(18,6) not null default 0,
       created_at timestamptz not null default now()
     );
 
@@ -196,7 +196,7 @@ async function ensurePostgresSchema(pool: Pool) {
       amount_paid_usd decimal(18,6),
       amount_credited_usd decimal(18,6),
       bonus_usd decimal(18,6),
-      kind varchar(16) not null default 'deposit'
+      kind varchar(16) not null default 'deposit',
       created_at timestamptz not null default now()
     );
 
@@ -208,7 +208,7 @@ async function ensurePostgresSchema(pool: Pool) {
       reserved_usd decimal(18,6) not null,
       settled_usd decimal(18,6) not null default 0,
       released_usd decimal(18,6) not null default 0,
-      status varchar(16) not null default 'reserved'
+      status varchar(16) not null default 'reserved',
       created_at timestamptz not null default now(),
       settled_at timestamptz,
       updated_at timestamptz not null default now()
@@ -248,7 +248,7 @@ async function ensurePostgresSchema(pool: Pool) {
       status varchar(16) not null default 'active',
       expires_at timestamptz,
       redeemed_by_user_id varchar(64) references users(id) on delete set null,
-      redeemed_at timestamptz
+      redeemed_at timestamptz,
       created_at timestamptz not null default now()
     );
 
@@ -259,7 +259,7 @@ async function ensurePostgresSchema(pool: Pool) {
       expires_at timestamptz not null,
       used_at timestamptz,
       requested_ip varchar(64),
-      requested_ua text
+      requested_ua text,
       created_at timestamptz not null default now()
     );
 
@@ -270,7 +270,7 @@ async function ensurePostgresSchema(pool: Pool) {
       expires_at timestamptz not null,
       used_at timestamptz,
       requested_ip varchar(64),
-      requested_ua text
+      requested_ua text,
       created_at timestamptz not null default now()
     );
 
