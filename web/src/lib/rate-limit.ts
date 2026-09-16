@@ -1,18 +1,8 @@
 import Redis from "ioredis";
-import type { PricingTier } from "./db-schema";
 
 const WINDOW_SECONDS = 60;
-const TIER_LIMITS: Record<PricingTier, number> = {
-  tier_1: 60,
-  tier_2: 300,
-  tier_3: 1000,
-};
-
-const CONCURRENCY_LIMITS: Record<PricingTier, number> = {
-  tier_1: 10,
-  tier_2: 30,
-  tier_3: 100,
-};
+const REQUESTS_PER_MINUTE_LIMIT = 1000;
+const CONCURRENCY_LIMIT = 100;
 
 type RateLimitResult = {
   allowed: boolean;
@@ -91,12 +81,11 @@ async function decrementCounter(redis: Redis | null, key: string): Promise<void>
 
 export async function enforceSlidingWindowRateLimit(input: {
   apiKeyId: string;
-  pricingTier: PricingTier;
 }): Promise<RateLimitResult> {
   const now = Date.now();
   const windowStart = now - WINDOW_SECONDS * 1000;
   const windowEnd = now + WINDOW_SECONDS * 1000;
-  const limit = TIER_LIMITS[input.pricingTier] ?? TIER_LIMITS.tier_1;
+  const limit = REQUESTS_PER_MINUTE_LIMIT;
 
   const fallbackAllowed: RateLimitResult = {
     allowed: true,
@@ -154,9 +143,8 @@ export async function enforceSlidingWindowRateLimit(input: {
 
 export async function acquireApiKeyConcurrencySlot(input: {
   apiKeyId: string;
-  pricingTier: PricingTier;
 }): Promise<ConcurrencyLimitResult> {
-  const limit = CONCURRENCY_LIMITS[input.pricingTier] ?? CONCURRENCY_LIMITS.tier_1;
+  const limit = CONCURRENCY_LIMIT;
   const redis = resolveRedisClient();
   const noOpRelease = async () => {};
 

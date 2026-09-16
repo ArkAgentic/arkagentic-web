@@ -6,6 +6,11 @@ import { useI18n } from "@/lib/i18n";
 
 const PAGE_SIZE = 10;
 
+function compactUserId(userId: string): string {
+  if (userId.length <= 20) return userId;
+  return `${userId.slice(0, 12)}…${userId.slice(-6)}`;
+}
+
 export function AdminClientPanel() {
   const { t } = useI18n();
   const [data, setData] = useState<AdminDashboardSnapshot | null>(null);
@@ -79,36 +84,34 @@ export function AdminClientPanel() {
         </div>
 
         <div className="mt-4 overflow-x-auto">
-          <table className="w-full min-w-[920px] text-left text-sm">
+          <table className="w-full min-w-[900px] table-fixed text-left text-sm">
+            <colgroup>
+              <col className="w-[24%]" />
+              <col className="w-[32%]" />
+              <col className="w-[14%]" />
+              <col className="w-[12%]" />
+              <col className="w-[12%]" />
+              <col className="w-[6%]" />
+            </colgroup>
             <thead>
               <tr className="border-b border-amber-100 text-stone-500">
-                <th className="py-2">{t("admin.overview.usersSection.table.userId")}</th>
-                <th className="py-2">{t("admin.overview.usersSection.table.email")}</th>
-                <th className="py-2">{t("admin.overview.usersSection.table.registeredAt")}</th>
-                <th className="py-2">{t("admin.overview.usersSection.table.totalDeposited")}</th>
-                <th className="py-2">{t("admin.overview.usersSection.table.currentBalance")}</th>
-                <th className="py-2">{t("admin.overview.usersSection.table.tier")}</th>
-                <th className="py-2">{t("admin.overview.usersSection.table.status")}</th>
+                <th className="py-2 pr-2">{t("admin.overview.usersSection.table.userId")}</th>
+                <th className="py-2 pr-2">{t("admin.overview.usersSection.table.email")}</th>
+                <th className="py-2 pr-2">{t("admin.overview.usersSection.table.registeredAt")}</th>
+                <th className="py-2 pr-2">{t("admin.overview.usersSection.table.totalDeposited")}</th>
+                <th className="py-2 pr-2">{t("admin.overview.usersSection.table.currentBalance")}</th>
                 <th className="py-2">{t("admin.overview.usersSection.table.actions")}</th>
               </tr>
             </thead>
             <tbody>
               {pagedUsers.map((user) => (
-                <tr key={user.userId} className="border-b border-amber-50 text-stone-700">
-                  <td className="py-3 font-mono text-xs">{user.userId}</td>
-                  <td className="py-3">{user.email}</td>
-                  <td className="py-3">{user.registeredAt}</td>
-                  <td className="py-3">{formatUsd(user.totalDepositedUsd)}</td>
-                  <td className="py-3">{formatUsd(user.currentBalanceUsd)}</td>
-                  <td className="py-3">
-                    <span className="rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-800">{user.pricingTier.toUpperCase()}</span>
-                  </td>
-                  <td className="py-3">
-                    <span className={`rounded-full px-2 py-1 text-xs font-semibold ${user.status === "active" ? "bg-emerald-100 text-emerald-700" : "bg-stone-200 text-stone-700"}`}>
-                      {user.status === "active" ? t("admin.common.active") : t("admin.common.inactive")}
-                    </span>
-                  </td>
-                  <td className="py-3">
+                <tr key={user.userId} className="border-b border-amber-50 text-stone-700 align-top">
+                  <td className="py-3 pr-2 font-mono text-xs" title={user.userId}>{compactUserId(user.userId)}</td>
+                  <td className="py-3 pr-2 break-words">{user.email}</td>
+                  <td className="py-3 pr-2 whitespace-nowrap">{user.registeredAt}</td>
+                  <td className="py-3 pr-2 whitespace-nowrap">{formatUsd(user.totalDepositedUsd)}</td>
+                  <td className="py-3 pr-2 whitespace-nowrap">{formatUsd(user.currentBalanceUsd)}</td>
+                  <td className="py-3 whitespace-nowrap">
                     <button
                       onClick={() => onToggleUser(user.userId)}
                       className="rounded-lg border border-amber-200 bg-white px-3 py-1.5 text-xs font-semibold text-stone-700"

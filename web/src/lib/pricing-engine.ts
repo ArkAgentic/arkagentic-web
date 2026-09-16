@@ -1,9 +1,9 @@
-import type { PricingTier } from "./db-schema";
 import type { ModelPricingConfig } from "./pricing-schema";
 
-export function resolvePricingTier(totalDepositedUsd: number): PricingTier {
-  if (totalDepositedUsd >= 200) return "tier_3";
-  if (totalDepositedUsd >= 50) return "tier_2";
+
+export type PricingTier = "tier_1" | "tier_2" | "tier_3";
+
+export function resolvePricingTier(_totalDepositedUsd: number): PricingTier {
   return "tier_1";
 }
 
@@ -39,8 +39,7 @@ export function calculateTieredCost(args: {
 } {
   const inputPer1k = args.inputCostPer1k ?? 0.0017;
   const outputPer1k = args.outputCostPer1k ?? 0.0017;
-
-  const tier = resolvePricingTier(args.totalDepositedUsd);
+  const tier: PricingTier = "tier_1";
   const multiplier = 1;
 
   const upstreamCost =

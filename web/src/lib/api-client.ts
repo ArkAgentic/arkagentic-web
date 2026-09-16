@@ -62,7 +62,6 @@ export type BillingSummary = {
   monthToDateUsd: number;
   avgDailyUsd: number;
   totalDepositedUsd?: number;
-  pricingTier?: "tier_1" | "tier_2" | "tier_3";
   dailyUsage: Array<{ date: string; tokenCount: number; amountUsd: number }>;
   modelBreakdown: Array<{ modelId: string; callCount: number; totalTokens: number; amountUsd: number }>;
   history: BillingHistoryRecord[];
@@ -100,7 +99,6 @@ export type ModelSyncResponse = {
 export type ModelsSnapshot = {
   pricing: {
     totalDepositedUsd: number;
-    tier: "tier_1" | "tier_2" | "tier_3";
     multiplier: number;
   };
   models: ModelRecord[];
@@ -119,7 +117,6 @@ export type AdminUserRecord = {
   registeredAt: string;
   totalDepositedUsd: number;
   currentBalanceUsd: number;
-  pricingTier: "tier_1" | "tier_2" | "tier_3";
   status: "active" | "disabled";
 };
 
@@ -485,7 +482,6 @@ const state = {
         registeredAt: "2026-07-01",
         totalDepositedUsd: 24000,
         currentBalanceUsd: 11830.52,
-        pricingTier: "tier_3",
         status: "active",
       },
       {
@@ -494,7 +490,6 @@ const state = {
         registeredAt: "2026-07-12",
         totalDepositedUsd: 8200,
         currentBalanceUsd: 2490.11,
-        pricingTier: "tier_2",
         status: "active",
       },
       {
@@ -503,7 +498,6 @@ const state = {
         registeredAt: "2026-07-22",
         totalDepositedUsd: 4100,
         currentBalanceUsd: 640.88,
-        pricingTier: "tier_1",
         status: "disabled",
       },
       {
@@ -512,7 +506,6 @@ const state = {
         registeredAt: "2026-08-02",
         totalDepositedUsd: 36500,
         currentBalanceUsd: 17500.43,
-        pricingTier: "tier_3",
         status: "active",
       },
     ] as AdminUserRecord[],
@@ -773,7 +766,7 @@ export const apiClient = {
       const query = group === "all" ? "" : `?group=${group}`;
       const models = await requestJson<ModelRecord[]>(`${ENDPOINTS.models}${query}`, { method: "GET" });
       return {
-        pricing: { totalDepositedUsd: 0, tier: "tier_1", multiplier: 1.5 },
+        pricing: { totalDepositedUsd: 0, multiplier: 1 },
         models,
       };
     }
@@ -786,7 +779,7 @@ export const apiClient = {
       const all = state.models.map((item) => ({ ...item, isNew: false, autoAdded: false }));
       const filtered = group === "all" ? all : all.filter((m) => m.group === group);
       return {
-        pricing: { totalDepositedUsd: 0, tier: "tier_1", multiplier: 1.5 },
+        pricing: { totalDepositedUsd: 0, multiplier: 1 },
         models: filtered,
       };
     }

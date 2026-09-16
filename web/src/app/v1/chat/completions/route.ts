@@ -596,7 +596,6 @@ export async function POST(request: NextRequest) {
 
   const rl = await enforceSlidingWindowRateLimit({
     apiKeyId: keyInfo.apiKeyId,
-    pricingTier: keyInfo.user.pricingTier,
   });
 
   if (!rl.allowed) {
@@ -616,7 +615,6 @@ export async function POST(request: NextRequest) {
 
   const concurrencySlot = await acquireApiKeyConcurrencySlot({
     apiKeyId: keyInfo.apiKeyId,
-    pricingTier: keyInfo.user.pricingTier,
   });
 
   if (!concurrencySlot.allowed) {

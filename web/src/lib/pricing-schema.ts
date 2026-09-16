@@ -1,5 +1,3 @@
-import type { PricingTier } from "./db-schema";
-
 export interface ModelPricingConfig {
   modelId: string;
   upstreamModelId: string;
@@ -185,11 +183,11 @@ export const modelPricingTable: ModelPricingConfig[] = [
   },
 ];
 
-export const tierMultipliers: Record<PricingTier, number> = {
+export const tierMultipliers = {
   tier_1: 1,
   tier_2: 1,
   tier_3: 1,
-};
+} as const;
 
 export function getPricingConfig(modelId: string): ModelPricingConfig | undefined {
   return modelPricingTable.find((item) => item.modelId === modelId);

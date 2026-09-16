@@ -6,7 +6,6 @@ export type User = {
   name: string;
   balanceUsd: number;
   totalDepositedUsd: number;
-  pricingTier: PricingTier;
   createdAt: string;
   status?: "active" | "disabled";
 };
@@ -46,7 +45,7 @@ export type ApiLog = {
 
 export const dbSchemaContract = {
   users:
-    "users(id uuid pk, email text unique, name text, balance_usd decimal default 0.00, total_deposited_usd decimal default 0.00, pricing_tier varchar default 'tier_1', created_at timestamptz, status varchar default 'active')",
+    "users(id uuid pk, email text unique, name text, balance_usd decimal default 0.00, total_deposited_usd decimal default 0.00, created_at timestamptz, status varchar default 'active')",
   apiKeys:
     "api_keys(id uuid pk, user_id uuid fk users, key_hash text, key_prefix text, quota_limit bigint, status text)",
   usageLogs:

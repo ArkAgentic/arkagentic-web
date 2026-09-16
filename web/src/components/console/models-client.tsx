@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { apiClient, type ModelRecord, type ModelsSnapshot } from "@/lib/api-client";
 import { calculateTieredCost, formatPricePer1M } from "@/lib/pricing-engine";
-import { getPricingConfig, tierMultipliers } from "@/lib/pricing-schema";
+import { getPricingConfig } from "@/lib/pricing-schema";
 import { useI18n } from "@/lib/i18n";
 
 type ModelCategory = "all" | "chat" | "rag" | "audio";
@@ -49,12 +49,6 @@ const MODEL_META: Record<string, ModelUxMeta> = {
   "ark-mai-voice-2": { category: "audio", badgeKey: "console.models.badges.audioTts", mode: "audio_tts" },
 };
 
-const TIER_LABELS: Record<ModelsSnapshot["pricing"]["tier"], string> = {
-  tier_1: "console.models.tiers.standard",
-  tier_2: "console.models.tiers.vip",
-  tier_3: "console.models.tiers.enterprise",
-};
-
 function normalizeTargetModels(models: ModelRecord[]): ModelRecord[] {
   const byId = new Map(models.map((item) => [item.id, item]));
   const activeIds = models.filter((item) => item.active).map((item) => item.id);
@@ -66,10 +60,6 @@ function normalizeTargetModels(models: ModelRecord[]): ModelRecord[] {
   return [...featured, ...dynamic]
     .map((id) => byId.get(id))
     .filter((item): item is ModelRecord => Boolean(item));
-}
-
-function getTierRatePercent(multiplier: number): number {
-  return Math.round((multiplier / tierMultipliers.tier_1) * 100);
 }
 
 function badgeColorByKey(key: string): string {
@@ -127,7 +117,7 @@ function ModelPricingCard({
       })
     : null;
 
-  const standardMultiplier = tierMultipliers.tier_1;
+  const standardMultiplier = 1;
   const appliedTierRate = estimate ? estimate.multiplier / standardMultiplier : 1;
   const standardInputPer1M = pricing ? pricing.costPer1kInputToken * standardMultiplier * 1000 : 0;
   const standardOutputPer1M = pricing ? pricing.costPer1kOutputToken * standardMultiplier * 1000 : 0;
@@ -153,8 +143,6 @@ function ModelPricingCard({
     const outputCost = usage.completion * (standardOutputPer1M / 1_000_000);
     return `${t("console.models.formula.input")} (${usage.prompt.toLocaleString()} × $${standardInputPer1M.toFixed(2)}/1M) + ${t("console.models.formula.output")} (${usage.completion.toLocaleString()} × $${standardOutputPer1M.toFixed(2)}/1M) = $${(inputCost + outputCost).toFixed(6)}`;
   }, [audioSeconds, imageCount, meta.mode, pricing, standardInputPer1M, standardOutputPer1M, standardTotal, t, ttsChars, usage.completion, usage.prompt]);
-
-  const tierRate = getTierRatePercent(pricingSnapshot.multiplier);
 
   return (
     <article className="h-full rounded-2xl border border-amber-100/60 bg-white/80 p-5 shadow-[0_10px_24px_rgba(92,56,19,0.1)]">
@@ -292,12 +280,6 @@ function ModelPricingCard({
             {t("console.models.estimatedCharge")}: <span className="inline-block transition-all duration-200">{estimate ? `$${discountedTotal.toFixed(6)}` : "$0.000000"}</span>
           </div>
 
-          {estimate && tierRate < 100 ? (
-            <p className="mt-1 text-xs text-emerald-700">
-              <span className="mr-1 line-through text-stone-500">${standardTotal.toFixed(6)}</span>
-              ${discountedTotal.toFixed(6)} ({tierRate}% {t("console.models.discountApplied")})
-            </p>
-          ) : null}
         </div>
       </div>
     </article>
@@ -309,8 +291,7 @@ export function ModelsClientPanel() {
   const [models, setModels] = useState<ModelRecord[]>([]);
   const [pricingSnapshot, setPricingSnapshot] = useState<ModelsSnapshot["pricing"]>({
     totalDepositedUsd: 0,
-    tier: "tier_1",
-    multiplier: tierMultipliers.tier_1,
+    multiplier: 1,
   });
   const [search, setSearch] = useState("");
   const [syncing, setSyncing] = useState(false);
@@ -384,8 +365,6 @@ export function ModelsClientPanel() {
       setTimeout(() => setToastMessage(null), 1600);
     }
   };
-
-  const currentTierLabel = t(TIER_LABELS[pricingSnapshot.tier]);
 
   return (
     <>
@@ -542,17 +521,6 @@ export function ModelsClientPanel() {
                 </p>
               </div>
 
-              <div className="mt-4 rounded-xl border border-amber-100 bg-amber-50/50 p-3 text-sm text-stone-700">
-                <p className="font-semibold text-stone-900">{t("console.models.modal.tierTitle")}</p>
-                <ul className="mt-2 space-y-1">
-                  <li>{t("console.models.modal.tierStandard")}: 100%</li>
-                  <li>{t("console.models.modal.tierVip")}: 90%</li>
-                  <li>{t("console.models.modal.tierEnterprise")}: 80%</li>
-                </ul>
-                <p className="mt-2 text-xs text-stone-600">
-                  {t("console.models.modal.currentTier")}: {currentTierLabel} ({getTierRatePercent(pricingSnapshot.multiplier)}%)
-                </p>
-              </div>
             </div>
           </div>
         </div>

@@ -1,8 +1,7 @@
 import { createHash, randomBytes, randomUUID, scryptSync, timingSafeEqual } from "crypto";
 import type { Pool } from "pg";
-import type { PricingTier } from "./db-schema";
-import { calculateTieredCost, resolvePricingTier } from "./pricing-engine";
-import { getPricingConfig, modelPricingTable, tierMultipliers } from "./pricing-schema";
+import { calculateTieredCost } from "./pricing-engine";
+import { getPricingConfig, modelPricingTable } from "./pricing-schema";
 import { getActiveModelIdSet, getActiveModelMetadataMap } from "./upstream-store";
 import { decryptApiKey, encryptApiKey } from "./upstream-crypto";
 
@@ -15,7 +14,6 @@ type UserRecord = {
   status: "active" | "disabled";
   balanceUsd: number;
   totalDepositedUsd: number;
-  pricingTier: PricingTier;
   gatewayLocked?: boolean;
   gatewayLockReason?: string | null;
   createdAt: string;
@@ -98,8 +96,7 @@ type AdminDashboard = {
     registeredAt: string;
     totalDepositedUsd: number;
     currentBalanceUsd: number;
-    pricingTier: PricingTier;
-    status: "active" | "disabled";
+      status: "active" | "disabled";
   }>;
   keyRecords: Array<{
     userId: string;
@@ -147,10 +144,9 @@ async function ensurePostgresSchema(pool: Pool) {
       status varchar(16) not null default 'active',
       balance_usd decimal(18,6) not null default 0,
       total_deposited_usd decimal(18,6) not null default 0,
-      pricing_tier varchar(16) not null default 'tier_1',
       gateway_locked boolean not null default false,
       gateway_lock_reason varchar(64),
-      gateway_locked_at timestamptz,
+      gateway_locked_at timestamptz
       created_at timestamptz not null default now()
     );
 
@@ -163,7 +159,7 @@ async function ensurePostgresSchema(pool: Pool) {
       key_encrypted text,
       quota_limit bigint not null default 0,
       spend_limit_usd decimal(18,6),
-      status varchar(16) not null default 'active',
+      status varchar(16) not null default 'active'
       created_at timestamptz not null default now()
     );
 
@@ -177,7 +173,7 @@ async function ensurePostgresSchema(pool: Pool) {
       cost_usd decimal(18,6) not null default 0,
       charged_usd decimal(18,6) not null default 0,
       net_profit_usd decimal(18,6) not null default 0,
-      status_code integer not null default 200,
+      status_code integer not null default 200
       created_at timestamptz not null default now()
     );
 
@@ -188,7 +184,7 @@ async function ensurePostgresSchema(pool: Pool) {
       model varchar(120) not null,
       prompt_tokens integer not null default 0,
       completion_tokens integer not null default 0,
-      cost_usd decimal(18,6) not null default 0,
+      cost_usd decimal(18,6) not null default 0
       created_at timestamptz not null default now()
     );
 
@@ -200,7 +196,7 @@ async function ensurePostgresSchema(pool: Pool) {
       amount_paid_usd decimal(18,6),
       amount_credited_usd decimal(18,6),
       bonus_usd decimal(18,6),
-      kind varchar(16) not null default 'deposit',
+      kind varchar(16) not null default 'deposit'
       created_at timestamptz not null default now()
     );
 
@@ -212,7 +208,7 @@ async function ensurePostgresSchema(pool: Pool) {
       reserved_usd decimal(18,6) not null,
       settled_usd decimal(18,6) not null default 0,
       released_usd decimal(18,6) not null default 0,
-      status varchar(16) not null default 'reserved',
+      status varchar(16) not null default 'reserved'
       created_at timestamptz not null default now(),
       settled_at timestamptz,
       updated_at timestamptz not null default now()
@@ -252,7 +248,7 @@ async function ensurePostgresSchema(pool: Pool) {
       status varchar(16) not null default 'active',
       expires_at timestamptz,
       redeemed_by_user_id varchar(64) references users(id) on delete set null,
-      redeemed_at timestamptz,
+      redeemed_at timestamptz
       created_at timestamptz not null default now()
     );
 
@@ -263,7 +259,7 @@ async function ensurePostgresSchema(pool: Pool) {
       expires_at timestamptz not null,
       used_at timestamptz,
       requested_ip varchar(64),
-      requested_ua text,
+      requested_ua text
       created_at timestamptz not null default now()
     );
 
@@ -274,7 +270,7 @@ async function ensurePostgresSchema(pool: Pool) {
       expires_at timestamptz not null,
       used_at timestamptz,
       requested_ip varchar(64),
-      requested_ua text,
+      requested_ua text
       created_at timestamptz not null default now()
     );
 
@@ -330,7 +326,6 @@ function ensureMemorySeed() {
     status: "active",
     balanceUsd: 500,
     totalDepositedUsd: 500,
-    pricingTier: "tier_3",
     createdAt: "2026-07-01T00:00:00Z",
   };
 
@@ -342,7 +337,6 @@ function ensureMemorySeed() {
     status: "active",
     balanceUsd: 42,
     totalDepositedUsd: 42,
-    pricingTier: "tier_1",
     createdAt: "2026-07-10T00:00:00Z",
   };
 
@@ -421,7 +415,6 @@ export async function upsertAuthenticatedUser(input: {
       status: "active",
       balanceUsd: 0,
       totalDepositedUsd: 0,
-      pricingTier: "tier_1",
       createdAt: new Date().toISOString(),
     };
     mem.users.set(created.id, created);
@@ -429,8 +422,8 @@ export async function upsertAuthenticatedUser(input: {
   }
 
   const sql = `
-    insert into users(id, email, name, role, status, balance_usd, total_deposited_usd, pricing_tier)
-    values ($1, lower($2), $3, $4, 'active', 0, 0, 'tier_1')
+    insert into users(id, email, name, role, status, balance_usd, total_deposited_usd)
+    values ($1, lower($2), $3, $4, 'active', 0, 0)
     on conflict (id) do update
       set email = lower(excluded.email),
           name = excluded.name,
@@ -442,8 +435,7 @@ export async function upsertAuthenticatedUser(input: {
       role,
       status,
       coalesce(balance_usd,0)::float8 as balance_usd,
-      coalesce(total_deposited_usd,0)::float8 as total_deposited_usd,
-      coalesce(pricing_tier,'tier_1') as pricing_tier,
+      coalesce(total_deposited_usd,0)::float8 as total_deposited_usd
       created_at
   `;
 
@@ -457,7 +449,6 @@ export async function upsertAuthenticatedUser(input: {
     status: row.status,
     balanceUsd: Number(row.balance_usd),
     totalDepositedUsd: Number(row.total_deposited_usd),
-    pricingTier: row.pricing_tier,
     createdAt: new Date(row.created_at).toISOString(),
   } satisfies UserRecord;
 }
@@ -478,12 +469,11 @@ export async function registerUserWithPassword(input: {
   const pool = await getPool();
   if (pool) {
     const res = await pool.query(
-      `insert into users(id, email, name, role, status, balance_usd, total_deposited_usd, pricing_tier, password_hash, email_verified)
-       values ($1, $2, $3, $4, 'active', 0, 0, 'tier_1', $5, false)
+      `insert into users(id, email, name, role, status, balance_usd, total_deposited_usd, password_hash, email_verified)
+       values ($1, $2, $3, $4, 'active', 0, 0, $5, false)
        returning id,email,name,role,status,
                  coalesce(balance_usd,0)::float8 as balance_usd,
-                 coalesce(total_deposited_usd,0)::float8 as total_deposited_usd,
-                 coalesce(pricing_tier,'tier_1') as pricing_tier,
+                 coalesce(total_deposited_usd,0)::float8 as total_deposited_usd
                  created_at`,
       [userId, email, name, role, passwordHash],
     );
@@ -496,7 +486,6 @@ export async function registerUserWithPassword(input: {
       status: row.status,
       balanceUsd: Number(row.balance_usd),
       totalDepositedUsd: Number(row.total_deposited_usd),
-      pricingTier: row.pricing_tier,
       createdAt: new Date(row.created_at).toISOString(),
     };
   }
@@ -513,7 +502,6 @@ export async function registerUserWithPassword(input: {
     status: "active",
     balanceUsd: 0,
     totalDepositedUsd: 0,
-    pricingTier: "tier_1",
     createdAt: new Date().toISOString(),
   };
   mem.users.set(user.id, user);
@@ -533,7 +521,6 @@ export async function authenticateUserWithPassword(input: {
       `select id,email,name,coalesce(role,'user') as role,coalesce(status,'active') as status,
               coalesce(balance_usd,0)::float8 as balance_usd,
               coalesce(total_deposited_usd,0)::float8 as total_deposited_usd,
-              coalesce(pricing_tier,'tier_1') as pricing_tier,
               coalesce(password_hash,'') as password_hash,
               created_at
        from users
@@ -553,7 +540,6 @@ export async function authenticateUserWithPassword(input: {
       status: row.status,
       balanceUsd: Number(row.balance_usd),
       totalDepositedUsd: Number(row.total_deposited_usd),
-      pricingTier: row.pricing_tier,
       createdAt: new Date(row.created_at).toISOString(),
     };
   }
@@ -912,7 +898,6 @@ export async function resolveApiKey(rawToken: string): Promise<{
         coalesce(u.status, 'active') as user_status,
         coalesce(u.balance_usd, 0)::float8 as balance_usd,
         coalesce(u.total_deposited_usd, 0)::float8 as total_deposited_usd,
-        coalesce(u.pricing_tier, 'tier_1') as pricing_tier,
         coalesce(u.gateway_locked, false) as gateway_locked,
         u.gateway_lock_reason,
         u.created_at
@@ -937,7 +922,6 @@ export async function resolveApiKey(rawToken: string): Promise<{
         status: row.user_status,
         balanceUsd: Number(row.balance_usd),
         totalDepositedUsd: Number(row.total_deposited_usd),
-        pricingTier: row.pricing_tier,
         gatewayLocked: Boolean(row.gateway_locked),
         gatewayLockReason: row.gateway_lock_reason,
         createdAt: new Date(row.created_at).toISOString(),
@@ -1242,7 +1226,6 @@ export async function chargeUsage(input: {
       const userRes = await client.query(
         `select coalesce(balance_usd,0)::float8 as balance_usd,
                 coalesce(total_deposited_usd,0)::float8 as total_deposited_usd,
-                coalesce(pricing_tier,'tier_1') as pricing_tier
          from users where id=$1 for update`,
         [input.userId],
       );
@@ -1324,12 +1307,11 @@ export async function chargeUsage(input: {
       await client.query(
         `update users
            set balance_usd = $2,
-               pricing_tier = $3,
-               gateway_locked = case when $4 then true else coalesce(gateway_locked,false) end,
-               gateway_lock_reason = case when $4 then 'negative_balance' else gateway_lock_reason end,
-               gateway_locked_at = case when $4 then now() else gateway_locked_at end
+               gateway_locked = case when $3 then true else coalesce(gateway_locked,false) end,
+               gateway_lock_reason = case when $3 then 'negative_balance' else gateway_lock_reason end,
+               gateway_locked_at = case when $3 then now() else gateway_locked_at end
          where id = $1`,
-        [input.userId, nextBalance, tiered.tier, shouldLock],
+        [input.userId, nextBalance, shouldLock],
       );
 
       const usageId = randomUUID();
@@ -1420,7 +1402,6 @@ export async function chargeUsage(input: {
       user.gatewayLocked = true;
       user.gatewayLockReason = "negative_balance";
     }
-    user.pricingTier = tiered.tier;
 
     reservation.settledUsd = settleUsd;
     reservation.releasedUsd = releaseUsd;
@@ -1461,7 +1442,6 @@ export async function chargeUsage(input: {
     user.gatewayLocked = true;
     user.gatewayLockReason = "negative_balance";
   }
-  user.pricingTier = tiered.tier;
 
   mem.apiLogs.unshift({
     id: randomUUID(),
@@ -1549,18 +1529,16 @@ export async function applyStripeDeposit(
 
       const nextDeposited = toFixed6(Number(row.total_deposited_usd) + paidAmount);
       const nextBalance = toFixed6(Number(row.balance_usd) + creditedAmount);
-      const nextTier = resolvePricingTier(nextDeposited);
 
       await client.query(
         `update users
            set balance_usd=$2,
                total_deposited_usd=$3,
-               pricing_tier=$4,
                gateway_locked=false,
                gateway_lock_reason=null,
                gateway_locked_at=null
          where id=$1`,
-        [userId, nextBalance, nextDeposited, nextTier],
+        [userId, nextBalance, nextDeposited],
       );
 
       await client.query(
@@ -1590,7 +1568,6 @@ export async function applyStripeDeposit(
         status: row.status,
         balanceUsd: nextBalance,
         totalDepositedUsd: nextDeposited,
-        pricingTier: nextTier,
         createdAt: new Date(row.created_at).toISOString(),
       };
     } catch (error) {
@@ -1606,7 +1583,6 @@ export async function applyStripeDeposit(
   if (!user) throw new Error(`User ${userId} not found for deposit`);
   user.balanceUsd = toFixed6(user.balanceUsd + creditedAmount);
   user.totalDepositedUsd = toFixed6(user.totalDepositedUsd + paidAmount);
-  user.pricingTier = resolvePricingTier(user.totalDepositedUsd);
   user.gatewayLocked = false;
   user.gatewayLockReason = null;
   return user;
@@ -1657,18 +1633,16 @@ export async function redeemBalanceCode(userId: string, code: string): Promise<{
 
       const nextDeposited = toFixed6(Number(userRow.total_deposited_usd) + amountUsd);
       const nextBalance = toFixed6(Number(userRow.balance_usd) + amountUsd);
-      const nextTier = resolvePricingTier(nextDeposited);
 
       await client.query(
         `update users
            set balance_usd=$2,
                total_deposited_usd=$3,
-               pricing_tier=$4,
                gateway_locked=false,
                gateway_lock_reason=null,
                gateway_locked_at=null
          where id=$1`,
-        [userId, nextBalance, nextDeposited, nextTier],
+        [userId, nextBalance, nextDeposited],
       );
 
       await client.query(
@@ -1686,7 +1660,6 @@ export async function redeemBalanceCode(userId: string, code: string): Promise<{
         status: userRow.status,
         balanceUsd: nextBalance,
         totalDepositedUsd: nextDeposited,
-        pricingTier: nextTier,
         gatewayLocked: false,
         gatewayLockReason: null,
         createdAt: new Date(userRow.created_at).toISOString(),
@@ -1712,7 +1685,6 @@ export async function getOrCreateUserById(userId: string): Promise<UserRecord> {
       `select id,email,name,coalesce(role,'user') as role,coalesce(status,'active') as status,
               coalesce(balance_usd,0)::float8 as balance_usd,
               coalesce(total_deposited_usd,0)::float8 as total_deposited_usd,
-              coalesce(pricing_tier,'tier_1') as pricing_tier,
               created_at
        from users where id=$1`,
       [userId],
@@ -1720,12 +1692,11 @@ export async function getOrCreateUserById(userId: string): Promise<UserRecord> {
     const row = res.rows[0];
     if (!row) {
       const insertRes = await pool.query(
-        `insert into users(id,email,name,role,status,balance_usd,total_deposited_usd,pricing_tier)
-         values ($1,$2,$3,'user','active',0,0,'tier_1')
+        `insert into users(id,email,name,role,status,balance_usd,total_deposited_usd)
+         values ($1,$2,$3,'user','active',0,0)
          returning id,email,name,role,status,
                    coalesce(balance_usd,0)::float8 as balance_usd,
                    coalesce(total_deposited_usd,0)::float8 as total_deposited_usd,
-                   coalesce(pricing_tier,'tier_1') as pricing_tier,
                    created_at`,
         [userId, `${userId}@arkagentic.local`, userId],
       );
@@ -1738,7 +1709,6 @@ export async function getOrCreateUserById(userId: string): Promise<UserRecord> {
         status: created.status,
         balanceUsd: Number(created.balance_usd),
         totalDepositedUsd: Number(created.total_deposited_usd),
-        pricingTier: created.pricing_tier,
         createdAt: new Date(created.created_at).toISOString(),
       };
     }
@@ -1750,7 +1720,6 @@ export async function getOrCreateUserById(userId: string): Promise<UserRecord> {
       status: row.status,
       balanceUsd: Number(row.balance_usd),
       totalDepositedUsd: Number(row.total_deposited_usd),
-      pricingTier: row.pricing_tier,
       createdAt: new Date(row.created_at).toISOString(),
     };
   }
@@ -1767,7 +1736,6 @@ export async function getOrCreateUserById(userId: string): Promise<UserRecord> {
     status: "active",
     balanceUsd: 0,
     totalDepositedUsd: 0,
-    pricingTier: "tier_1",
     createdAt: new Date().toISOString(),
   };
   mem.users.set(created.id, created);
@@ -2038,7 +2006,6 @@ export async function getAdminDashboard(): Promise<AdminDashboard> {
       `select id,email,created_at,
               coalesce(total_deposited_usd,0)::float8 as total_deposited_usd,
               coalesce(balance_usd,0)::float8 as balance_usd,
-              coalesce(pricing_tier,'tier_1') as pricing_tier,
               coalesce(status,'active') as status
        from users
        order by created_at desc`,
@@ -2077,7 +2044,6 @@ export async function getAdminDashboard(): Promise<AdminDashboard> {
         registeredAt: new Date(row.created_at).toISOString().slice(0, 10),
         totalDepositedUsd: Number(row.total_deposited_usd),
         currentBalanceUsd: Number(row.balance_usd),
-        pricingTier: row.pricing_tier,
         status: row.status,
       })),
       keyRecords: keyRes.rows.map((row) => ({
@@ -2116,7 +2082,6 @@ export async function getAdminDashboard(): Promise<AdminDashboard> {
       registeredAt: user.createdAt.slice(0, 10),
       totalDepositedUsd: user.totalDepositedUsd,
       currentBalanceUsd: user.balanceUsd,
-      pricingTier: user.pricingTier,
       status: user.status,
     })),
     keyRecords: keys.map((key) => ({
@@ -2289,7 +2254,6 @@ export type UserBillingSummary = {
   monthToDateUsd: number;
   avgDailyUsd: number;
   totalDepositedUsd: number;
-  pricingTier: PricingTier;
   dailyUsage: Array<{
     date: string;
     tokenCount: number;
@@ -2351,7 +2315,6 @@ export type UserModelRecord = {
 export type UserModelsSnapshot = {
   pricing: {
     totalDepositedUsd: number;
-    tier: PricingTier;
     multiplier: number;
   };
   models: UserModelRecord[];
@@ -2720,7 +2683,6 @@ export async function getUserBillingSummary(
       monthToDateUsd: Number(monthToDateUsd.toFixed(6)),
       avgDailyUsd: Number(avgDailyUsd.toFixed(6)),
       totalDepositedUsd: user.totalDepositedUsd,
-      pricingTier: user.pricingTier,
       dailyUsage: dailyRes.rows.map((row) => ({
         date: String(row.day),
         tokenCount: Number(row.token_total ?? 0),
@@ -2801,7 +2763,6 @@ export async function getUserBillingSummary(
     monthToDateUsd: Number(monthToDateUsd.toFixed(6)),
     avgDailyUsd: Number(avgDailyUsd.toFixed(6)),
     totalDepositedUsd: user.totalDepositedUsd,
-    pricingTier: resolvePricingTier(user.totalDepositedUsd),
     dailyUsage: [...dailyMap.entries()]
       .sort((a, b) => a[0].localeCompare(b[0]))
       .map(([date, v]) => ({ date, tokenCount: v.tokenCount, amountUsd: Number(v.amountUsd.toFixed(6)) })),
@@ -2856,14 +2817,12 @@ function inferModelGroup(provider?: string): "global" | "china" {
 export async function getUserModelsSnapshot(userId: string): Promise<UserModelsSnapshot> {
   const pool = await getPool();
   let totalDepositedUsd = 0;
-  let tier: PricingTier = "tier_1";
   let activeModelIds = new Set<string>();
   let activeModelMeta = new Map<string, { displayName?: string; deploymentType?: string; provider?: string }>();
 
   if (pool) {
     const user = await getOrCreateUserById(userId);
     totalDepositedUsd = user.totalDepositedUsd;
-    tier = user.pricingTier;
     activeModelIds = await getActiveModelIdSet();
     activeModelMeta = await getActiveModelMetadataMap();
   } else {
@@ -2871,7 +2830,6 @@ export async function getUserModelsSnapshot(userId: string): Promise<UserModelsS
     const user = mem.users.get(userId);
     if (!user) throw new Error(`User ${userId} not found`);
     totalDepositedUsd = user.totalDepositedUsd;
-    tier = resolvePricingTier(totalDepositedUsd);
   }
 
   const canonicalOrder = modelPricingTable.map((item) => item.modelId);
@@ -2922,8 +2880,7 @@ export async function getUserModelsSnapshot(userId: string): Promise<UserModelsS
   return {
     pricing: {
       totalDepositedUsd: Number(totalDepositedUsd.toFixed(6)),
-      tier,
-      multiplier: tierMultipliers[tier],
+      multiplier: 1,
     },
     models,
   };
