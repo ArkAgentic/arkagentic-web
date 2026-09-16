@@ -2852,12 +2852,7 @@ export async function getUserModelsSnapshot(userId: string): Promise<UserModelsS
           compliance: "Enterprise Privacy",
         };
 
-      const deploymentTypeLabel = formatDeploymentTypeLabel(syncedMeta?.deploymentType);
-      const finalName = syncedMeta?.displayName
-        ? deploymentTypeLabel
-          ? `${syncedMeta.displayName} (${deploymentTypeLabel})`
-          : syncedMeta.displayName
-        : fallbackMeta.name;
+      const finalName = modelId;
 
       return {
         id: modelId,
