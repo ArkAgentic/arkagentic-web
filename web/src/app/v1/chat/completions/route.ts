@@ -640,9 +640,11 @@ export async function POST(request: NextRequest) {
       ? "openai"
       : "generic";
 
+  const azureMaxInflight = Math.max(1, Number(process.env.AZURE_UPSTREAM_MAX_INFLIGHT ?? 120));
+  const otherMaxInflight = Math.max(1, Number(process.env.OTHER_UPSTREAM_MAX_INFLIGHT ?? 180));
   const queueSlot = await acquireUpstreamQueueSlot({
     provider: primaryProvider,
-    maxInflight: primaryProvider === "azure" ? 60 : 120,
+    maxInflight: primaryProvider === "azure" ? azureMaxInflight : otherMaxInflight,
     waitTimeoutMs: 3000,
     pollIntervalMs: 60,
   });

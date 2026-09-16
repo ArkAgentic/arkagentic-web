@@ -1,8 +1,15 @@
 import Redis from "ioredis";
 
 const WINDOW_SECONDS = 60;
-const REQUESTS_PER_MINUTE_LIMIT = 1000;
-const CONCURRENCY_LIMIT = 100;
+
+function envInt(name: string, fallback: number): number {
+  const raw = process.env[name];
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : fallback;
+}
+
+const REQUESTS_PER_MINUTE_LIMIT = envInt("RATE_LIMIT_RPM_PER_KEY", 5000);
+const CONCURRENCY_LIMIT = envInt("RATE_LIMIT_CONCURRENCY_PER_KEY", 300);
 
 type RateLimitResult = {
   allowed: boolean;
