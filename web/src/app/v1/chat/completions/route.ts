@@ -859,16 +859,37 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(responseJson, { status: upstreamResp.status, headers: fallbackHeaders });
-  } catch {
+  } catch (error) {
+    const latest = await getCurrentUserBalance(keyInfo.user.id);
+    if ((error as { code?: string })?.code === "balance_depleted" || latest.gatewayLocked) {
+      return NextResponse.json(
+        {
+          error: {
+            message: INSUFFICIENT_BALANCE_MESSAGE,
+            type: "insufficient_balance",
+            code: "balance_depleted",
+          },
+        },
+        { status: 402 },
+      );
+    }
+
+    console.error("chat_completions_unexpected_error", {
+      model: requestedModel,
+      userId: keyInfo.user.id,
+      apiKeyId: keyInfo.apiKeyId,
+      message: error instanceof Error ? error.message : String(error),
+    });
+
     return NextResponse.json(
       {
         error: {
-          message: INSUFFICIENT_BALANCE_MESSAGE,
-          type: "insufficient_balance",
-          code: "balance_depleted",
+          message: error instanceof Error ? error.message : "Internal server error",
+          type: "internal_error",
+          code: "internal_error",
         },
       },
-      { status: 402 },
+      { status: 500 },
     );
   } finally {
     await finalizeInflight();
