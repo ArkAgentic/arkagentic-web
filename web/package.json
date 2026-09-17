@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "prebuild": "node -e \"if (process.env.SKIP_BILLING_VERIFY==='1') { console.log('skip verify:billing/key-limit (SKIP_BILLING_VERIFY=1)'); process.exit(0);} const cp=require('child_process'); const run=(name,args)=>cp.spawnSync(name,args,{stdio:'inherit',shell:true}).status ?? 1; const a=run('npm',['run','verify:billing']); if (a!==0) process.exit(a); const b=run('npm',['run','verify:key-limit']); process.exit(b);\"",
+    "prebuild": "node scripts/prebuild-checks.mjs",
     "start": "next start",
     "lint": "eslint",
     "db:migrate": "node scripts/db/migrate.mjs",
@@ -18,6 +18,7 @@
     "loadtest:api": "node scripts/loadtest/api-gateway-loadtest.mjs",
     "e2e:all-models": "node scripts/e2e-all-models.mjs",
     "i18n:check": "node scripts/i18n-check.mjs",
+    "verify:session-recovery": "node scripts/tests/hermes-verify-session-recovery-layout.mjs",
     "verify:billing": "node scripts/tests/hermes-verify-billing-reservation.mjs",
     "verify:key-limit": "node scripts/tests/hermes-verify-key-limit-5.mjs",
     "sync:models": "node scripts/sync-azure-deployments.mjs",
