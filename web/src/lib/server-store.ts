@@ -1310,9 +1310,9 @@ export async function chargeUsage(input: {
       await client.query(
         `update users
            set balance_usd = $2,
-               gateway_locked = case when $3 then true else coalesce(gateway_locked,false) end,
-               gateway_lock_reason = case when $3 then 'negative_balance' else gateway_lock_reason end,
-               gateway_locked_at = case when $3 then now() else gateway_locked_at end
+               gateway_locked = case when $3::boolean then true else coalesce(gateway_locked,false) end,
+               gateway_lock_reason = case when $3::boolean then 'negative_balance' else gateway_lock_reason end,
+               gateway_locked_at = case when $3::boolean then now() else gateway_locked_at end
          where id = $1`,
         [input.userId, nextBalance, shouldLock],
       );
