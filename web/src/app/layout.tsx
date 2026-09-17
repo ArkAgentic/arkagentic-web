@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { I18nProvider, type LocaleCode } from "@/lib/i18n";
 import { AiChatWidget } from "@/components/ai-chat-widget";
+import { SessionRecovery } from "@/components/session-recovery";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <I18nProvider initialLocale={initialLocale}>
+          <SessionRecovery />
           {children}
           <AiChatWidget />
         </I18nProvider>
