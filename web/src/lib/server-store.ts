@@ -1291,15 +1291,16 @@ export async function chargeUsage(input: {
         shouldLock = rawNextBalance < 0;
         nextBalance = toFixed6(Math.max(0, rawNextBalance));
 
+        const reservationStatus = settleUsd > 0 ? "settled" : "released";
         await client.query(
           `update billing_reservations
              set settled_usd = $2,
                  released_usd = $3,
-                 status = case when $2::float8 > 0 then 'settled' else 'released' end,
+                 status = $4,
                  settled_at = now(),
                  updated_at = now()
            where id = $1`,
-          [reservationRow.id, settleUsd, releaseUsd],
+          [reservationRow.id, settleUsd.toFixed(6), releaseUsd.toFixed(6), reservationStatus],
         );
       } else {
         const rawNextBalance = Number(user.balance_usd) - tiered.userChargeUsd;
