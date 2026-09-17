@@ -99,7 +99,7 @@ export default function DocsPage() {
     "model": "ark-gpt-4o",
     "messages": [{"role":"user","content":"${prompt}"}],
     "temperature": 0.2,
-    "stream": false
+    "stream": true
   }'`,
       },
       python: {

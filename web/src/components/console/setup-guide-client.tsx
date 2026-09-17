@@ -49,7 +49,7 @@ export function SetupGuideClientPanel() {
       {"role": "system", "content": "You are a helpful assistant."},
       {"role": "user", "content": "Hello"}
     ],
-    "stream": false
+    "stream": true
   }'`,
       python: `from openai import OpenAI
 import os
@@ -65,7 +65,7 @@ resp = client.chat.completions.create(
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Hello"},
     ],
-    stream=False,
+    stream=True,
 )
 
 print(resp.choices[0].message.content)`,
@@ -82,7 +82,7 @@ const resp = await client.chat.completions.create({
     { role: "system", content: "You are a helpful assistant." },
     { role: "user", content: "Hello" },
   ],
-  stream: false,
+  stream: true,
 });
 
 console.log(resp.choices[0]?.message?.content);`,
