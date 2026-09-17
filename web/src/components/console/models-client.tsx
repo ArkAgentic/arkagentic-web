@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { apiClient, type ModelRecord, type ModelsSnapshot } from "@/lib/api-client";
 import { calculateTieredCost, formatPricePer1M } from "@/lib/pricing-engine";
-import { getPricingConfig } from "@/lib/pricing-schema";
 import { useI18n } from "@/lib/i18n";
 
 type ModelCategory = "all" | "chat" | "rag" | "audio";
@@ -96,7 +95,13 @@ function ModelPricingCard({
   const [audioSeconds, setAudioSeconds] = useState(30);
   const [ttsChars, setTtsChars] = useState(240);
   const [imageCount, setImageCount] = useState(2);
-  const pricing = getPricingConfig(model.id) ?? getPricingConfig("ark-kimi-k2");
+  const pricing =
+    model.inputPricePer1k != null && model.outputPricePer1k != null
+      ? {
+          costPer1kInputToken: Number(model.inputPricePer1k),
+          costPer1kOutputToken: Number(model.outputPricePer1k),
+        }
+      : null;
   const meta = MODEL_META[model.id] ?? { category: "chat", badgeKey: "console.models.badges.text", mode: "text" as const };
   const { t } = useI18n();
 

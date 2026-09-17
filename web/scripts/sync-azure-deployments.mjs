@@ -131,7 +131,68 @@ async function fetchDataPlaneDeployments({ baseUrl, apiKey }) {
   };
 }
 
+async function getArmBearerTokenFromManagedIdentity() {
+  const clientId = pickEnv("AZURE_CLIENT_ID");
+
+  const identityEndpoint = pickEnv("IDENTITY_ENDPOINT");
+  const identityHeader = pickEnv("IDENTITY_HEADER");
+  if (identityEndpoint && identityHeader) {
+    try {
+      const url = new URL(identityEndpoint);
+      url.searchParams.set("api-version", "2019-08-01");
+      url.searchParams.set("resource", "https://management.azure.com/");
+      if (clientId) url.searchParams.set("client_id", clientId);
+      const resp = await fetch(url.toString(), {
+        method: "GET",
+        headers: {
+          "X-IDENTITY-HEADER": identityHeader,
+          Metadata: "true",
+        },
+      });
+      const text = await resp.text();
+      const json = JSON.parse(text);
+      const token = String(json?.access_token || "").trim();
+      if (resp.ok && token) return token;
+    } catch {
+      // continue to IMDS fallback
+    }
+  }
+
+  try {
+    const params = new URLSearchParams({
+      "api-version": "2018-02-01",
+      resource: "https://management.azure.com/",
+    });
+    if (clientId) params.set("client_id", clientId);
+    const resp = await fetch(`http://169.254.169.254/metadata/identity/oauth2/token?${params.toString()}`, {
+      method: "GET",
+      headers: { Metadata: "true" },
+    });
+    const text = await resp.text();
+    const json = JSON.parse(text);
+    const token = String(json?.access_token || "").trim();
+    if (resp.ok && token) return token;
+  } catch {
+    // continue to Azure CLI fallback
+  }
+
+  return "";
+}
+
 function getArmBearerTokenFromAzureCli() {
+  const clientId = pickEnv("AZURE_CLIENT_ID");
+
+  if (clientId) {
+    try {
+      execSync(`az login --identity --username ${clientId} --allow-no-subscriptions -o none`, {
+        stdio: ["ignore", "ignore", "ignore"],
+        encoding: "utf8",
+      });
+    } catch {
+      // continue; token fetch below may still work in pre-authenticated environments
+    }
+  }
+
   try {
     const token = execSync("az account get-access-token --resource https://management.azure.com/ --query accessToken -o tsv", {
       stdio: ["ignore", "pipe", "ignore"],
@@ -430,7 +491,7 @@ async function main() {
     const tenantId = pickEnv("AZURE_TENANT_ID");
     const clientId = pickEnv("AZURE_CLIENT_ID");
     const clientSecret = pickEnv("AZURE_CLIENT_SECRET");
-    const bearerToken = pickEnv("AZURE_ARM_BEARER_TOKEN") || getArmBearerTokenFromAzureCli();
+    const bearerToken = pickEnv("AZURE_ARM_BEARER_TOKEN") || (await getArmBearerTokenFromManagedIdentity()) || getArmBearerTokenFromAzureCli();
 
     if (subscriptionId && resourceGroup && accountName && (bearerToken || (tenantId && clientId && clientSecret))) {
       try {

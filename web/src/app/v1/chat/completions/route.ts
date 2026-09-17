@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { chargeUsage, getApiKeyUsageGuard, getCurrentUserBalance, releaseQuotaHold, reserveQuotaHold, resolveApiKey } from "@/lib/server-store";
 import { acquireApiKeyConcurrencySlot, acquireUpstreamQueueSlot, enforceSlidingWindowRateLimit } from "@/lib/rate-limit";
-import { getPricingConfig } from "@/lib/pricing-schema";
+import { getRuntimePricing } from "@/lib/model-pricing-store";
 import { ensureGlobalHttpDispatcher } from "@/lib/http-dispatcher";
 import { getUpstreamCandidatesForModel, type UpstreamCandidate } from "@/lib/upstream-store";
 import { fetchViaResponsesAdapter, shouldUseResponsesAdapter } from "@/lib/upstream-adapters/azure-responses";
@@ -524,9 +524,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Model not supported" }, { status: 400 });
   }
 
-  const pricing = getPricingConfig(requestedModel);
+  const pricing = await getRuntimePricing(requestedModel);
   if (!pricing) {
-    return NextResponse.json({ error: "Model not supported" }, { status: 400 });
+    return NextResponse.json({
+      error: {
+        message: "Model pricing not configured in DB",
+        type: "pricing_not_configured",
+      },
+    }, { status: 503 });
   }
 
   const candidates = await getUpstreamCandidatesForModel(requestedModel);
@@ -678,8 +683,8 @@ export async function POST(request: NextRequest) {
     const reservedCostUsd = estimateReservationCostUsd({
       promptMessages: body.messages,
       maxTokens,
-      inputPricePer1k: pricing.costPer1kInputToken,
-      outputPricePer1k: pricing.costPer1kOutputToken,
+      inputPricePer1k: pricing.inputPricePer1k,
+      outputPricePer1k: pricing.outputPricePer1k,
     });
 
     const reservation = await reserveQuotaHold({
@@ -748,8 +753,8 @@ export async function POST(request: NextRequest) {
           modelId: effectiveModel,
           userId: keyInfo.user.id,
           apiKeyId: keyInfo.apiKeyId,
-          inputPricePer1k: pricing.costPer1kInputToken,
-          outputPricePer1k: pricing.costPer1kOutputToken,
+          inputPricePer1k: pricing.inputPricePer1k,
+          outputPricePer1k: pricing.outputPricePer1k,
           promptMessages: body.messages,
           streamBudgetUsd: Math.max(0, liveBalance.balanceUsd),
           reservationId: reservationId || undefined,
@@ -825,8 +830,8 @@ export async function POST(request: NextRequest) {
           promptTokens,
           completionTokens,
           statusCode: upstreamResp.status,
-          inputPricePer1k: pricing.costPer1kInputToken,
-          outputPricePer1k: pricing.costPer1kOutputToken,
+          inputPricePer1k: pricing.inputPricePer1k,
+          outputPricePer1k: pricing.outputPricePer1k,
           reservationId: reservationId || undefined,
         });
       } catch (error) {

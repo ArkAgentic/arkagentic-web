@@ -1,7 +1,8 @@
 import { createHash, randomBytes, randomUUID, scryptSync, timingSafeEqual } from "crypto";
 import type { Pool } from "pg";
 import { calculateTieredCost } from "./pricing-engine";
-import { getPricingConfig, modelPricingTable } from "./pricing-schema";
+import { modelPricingTable } from "./pricing-schema";
+import { getRuntimePricing, getRuntimePricingMap } from "./model-pricing-store";
 import { getActiveModelIdSet, getActiveModelMetadataMap } from "./upstream-store";
 import { decryptApiKey, encryptApiKey } from "./upstream-crypto";
 
@@ -1232,10 +1233,12 @@ export async function chargeUsage(input: {
       const user = userRes.rows[0];
       if (!user) throw new Error("User not found for billing charge");
 
-      const config = getPricingConfig(input.modelId) ?? getPricingConfig("ark-kimi-k2");
-      const inputCostPer1k = input.inputPricePer1k ?? config?.costPer1kInputToken;
-      const outputCostPer1k = input.outputPricePer1k ?? config?.costPer1kOutputToken;
-      if (inputCostPer1k == null || outputCostPer1k == null) throw new Error("Pricing config missing for billing charge");
+      const config = await getRuntimePricing(input.modelId);
+      const inputCostPer1k = input.inputPricePer1k ?? config?.inputPricePer1k;
+      const outputCostPer1k = input.outputPricePer1k ?? config?.outputPricePer1k;
+      if (inputCostPer1k == null || outputCostPer1k == null) {
+        throw new Error("DB pricing missing for billing charge");
+      }
 
       const tiered = calculateTieredCost({
         promptTokens: input.promptTokens,
@@ -1372,10 +1375,10 @@ export async function chargeUsage(input: {
   const user = mem.users.get(input.userId);
   if (!user) throw new Error("User not found");
 
-  const config = getPricingConfig(input.modelId) ?? getPricingConfig("ark-kimi-k2");
-  const inputCostPer1k = input.inputPricePer1k ?? config?.costPer1kInputToken;
-  const outputCostPer1k = input.outputPricePer1k ?? config?.costPer1kOutputToken;
-  if (inputCostPer1k == null || outputCostPer1k == null) throw new Error("Pricing config missing");
+  const config = await getRuntimePricing(input.modelId);
+  const inputCostPer1k = input.inputPricePer1k ?? config?.inputPricePer1k;
+  const outputCostPer1k = input.outputPricePer1k ?? config?.outputPricePer1k;
+  if (inputCostPer1k == null || outputCostPer1k == null) throw new Error("DB pricing missing");
 
   const tiered = calculateTieredCost({
     promptTokens: input.promptTokens,
@@ -2310,6 +2313,9 @@ export type UserModelRecord = {
   active: boolean;
   region: string;
   compliance: string;
+  inputPricePer1k: number | null;
+  outputPricePer1k: number | null;
+  pricingSource: "db" | "static" | "none";
 };
 
 export type UserModelsSnapshot = {
@@ -2835,12 +2841,12 @@ export async function getUserModelsSnapshot(userId: string): Promise<UserModelsS
   const canonicalOrder = modelPricingTable.map((item) => item.modelId);
   const modelIds = Array.from(new Set([...canonicalOrder, ...Array.from(activeModelIds)]));
   const modelOrder = new Map(modelIds.map((id, index) => [id, index]));
-  const pricingConfigById = new Map(modelPricingTable.map((item) => [item.modelId, item]));
+  const runtimePricingById = await getRuntimePricingMap(modelIds);
 
   const models: UserModelRecord[] = modelIds
     .map((modelId) => {
-      const pricing = pricingConfigById.get(modelId);
-      const providerHint = pricing?.provider;
+      const pricing = runtimePricingById.get(modelId);
+      const providerHint = pricing ? "openai_standard" : undefined;
       const syncedMeta = activeModelMeta.get(modelId);
       const fallbackMeta =
         MODEL_META[modelId] ?? {
@@ -2863,6 +2869,9 @@ export async function getUserModelsSnapshot(userId: string): Promise<UserModelsS
         active: activeModelIds.has(modelId),
         region: fallbackMeta.region,
         compliance: fallbackMeta.compliance,
+        inputPricePer1k: pricing ? Number(pricing.inputPricePer1k) : null,
+        outputPricePer1k: pricing ? Number(pricing.outputPricePer1k) : null,
+        pricingSource: (pricing ? "db" : "none") as UserModelRecord["pricingSource"],
       };
     })
     .sort((a, b) => {

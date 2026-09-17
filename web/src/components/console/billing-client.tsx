@@ -262,8 +262,9 @@ export function BillingClientPanel({
   };
 
   useEffect(() => {
-    void apiClient.getBilling({ mode: resolvedTableMode, page: tablePage }).then(setSummary);
+    void apiClient.getBilling({ mode: resolvedTableMode, page: tablePage }).then(setSummary).catch(() => null);
   }, [resolvedTableMode, tablePage]);
+
 
   const selectedPlan = useMemo(() => topupPlans.find((item) => item.amount === selectedTopup) ?? topupPlans[0], [selectedTopup]);
   const checkoutCurrency = useMemo(() => resolveCheckoutCurrencyByLocale(locale), [locale]);

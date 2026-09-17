@@ -86,6 +86,9 @@ export type ModelRecord = {
   active: boolean;
   region: string;
   compliance: string;
+  inputPricePer1k?: number | null;
+  outputPricePer1k?: number | null;
+  pricingSource?: "db" | "static" | "none";
   isNew?: boolean;
   autoAdded?: boolean;
 };

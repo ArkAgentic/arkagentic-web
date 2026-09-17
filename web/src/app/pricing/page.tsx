@@ -3,9 +3,16 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { MarketingShell } from "@/components/marketing-shell";
-import { modelPricingTable, tierMultipliers } from "@/lib/pricing-schema";
+import { tierMultipliers } from "@/lib/pricing-schema";
 import { calculateTieredCost } from "@/lib/pricing-engine";
 import { useI18n } from "@/lib/i18n";
+
+type RuntimePricingRow = {
+  modelId: string;
+  inputPricePer1k: number;
+  outputPricePer1k: number;
+  source: "db" | "static";
+};
 
 type ModelCategory = "all" | "chat" | "rag" | "audio";
 type EstimatorMode = "text" | "audio_stt" | "audio_tts" | "image";
@@ -276,6 +283,7 @@ export default function PricingPage() {
   const [category, setCategory] = useState<ModelCategory>("all");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [runtimePricingRows, setRuntimePricingRows] = useState<RuntimePricingRow[]>([]);
   const { t } = useI18n();
 
   const categoryLabel = (key: ModelCategory): string => {
@@ -285,27 +293,63 @@ export default function PricingPage() {
     return t("pricing.page.filters.all");
   };
 
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/pricing/models", { cache: "no-store" });
+        if (!res.ok) return;
+        const data = (await res.json()) as { pricing?: RuntimePricingRow[] };
+        if (!cancelled && Array.isArray(data.pricing)) {
+          setRuntimePricingRows(data.pricing);
+        }
+      } catch {
+        // DB is required for pricing page in production path; keep empty on failure
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const modelRows = useMemo(() => {
-    return modelPricingTable
-      .map((item) => {
-        const meta = MODEL_META[item.modelId];
-        if (!meta) return null;
+    const runtimeMap = new Map(runtimePricingRows.map((x) => [x.modelId, x]));
+    const modelIds = Array.from(runtimeMap.keys()).sort((a, b) => a.localeCompare(b));
+
+    return modelIds
+      .map((modelId) => {
+        const runtime = runtimeMap.get(modelId);
+        if (!runtime) return null;
+
+        const meta = MODEL_META[modelId] ?? {
+          nameKey: "",
+          category: "chat" as const,
+          badgeKey: "console.models.badges.text",
+          mode: "text" as const,
+          contextWindow: "128k",
+          latencyMs: 180,
+          region: "Global Cluster",
+        };
+
         const tierMultiplier = tierMultipliers.tier_1;
+        const name = meta.nameKey ? t(meta.nameKey) : modelId;
+
         return {
-          id: item.modelId,
-          name: t(meta.nameKey),
+          id: modelId,
+          name,
           category: meta.category,
           badgeKey: meta.badgeKey,
           mode: meta.mode,
           contextWindow: meta.contextWindow,
           latencyMs: meta.latencyMs,
           region: meta.region,
-          inputPer1M: item.costPer1kInputToken * tierMultiplier * 1000,
-          outputPer1M: item.costPer1kOutputToken * tierMultiplier * 1000,
+          inputPer1M: runtime.inputPricePer1k * tierMultiplier * 1000,
+          outputPer1M: runtime.outputPricePer1k * tierMultiplier * 1000,
         };
       })
       .filter((x): x is NonNullable<typeof x> => Boolean(x));
-  }, [t]);
+  }, [runtimePricingRows, t]);
+
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -354,7 +398,7 @@ export default function PricingPage() {
         <section className="mt-10 rounded-3xl border border-amber-100/80 bg-white/90 p-8 shadow-[0_16px_40px_rgba(123,75,28,0.08)] md:p-10">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-2xl font-semibold text-stone-900">{t("pricing.page.modelCenter.title")}</h2>
-            <Link href="/llmapigateway/console/models" className="inline-flex rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-stone-800">
+            <Link href="/console/models" className="inline-flex rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-stone-800">
               {t("pricing.page.modelCenter.cta")}
             </Link>
           </div>
