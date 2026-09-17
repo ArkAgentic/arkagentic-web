@@ -84,7 +84,7 @@ export default function DocsPage() {
   const { t } = useI18n();
 
   const isAuthenticated = getAuthSessionState().status === "authenticated";
-  const apiKeyHref = isAuthenticated ? "/llmapigateway/console/keys" : "/login";
+  const apiKeyHref = isAuthenticated ? "/console/keys" : "/login";
 
   const codeSamples: Record<CodeTab, CodeSample> = useMemo(() => {
     const prompt = t("docs.page.samplePrompt");
@@ -93,7 +93,7 @@ export default function DocsPage() {
         label: t("docs.page.quickstart.tab.curl"),
         language: "bash",
         code: `curl https://arkagentic.com/v1/chat/completions \\
-  -H "Authorization: Bearer ***" \\
+  -H "Authorization: Bearer <YOUR_API_KEY>" \\\\
   -H "Content-Type: application/json" \\
   -d '{
     "model": "ark-gpt-4o",
@@ -293,7 +293,7 @@ console.log(resp.choices[0]?.message?.content);`,
                   </Link>
                   {t("docs.page.routing.pricingHint.post")}
                 </p>
-                <Link href="/llmapigateway/console/models" className="text-sm font-medium text-amber-900 underline-offset-4 hover:underline">
+                <Link href="/console/models" className="text-sm font-medium text-amber-900 underline-offset-4 hover:underline">
                   {t("docs.page.routing.viewAllPrefix")} {allRoutingRows.length} {t("docs.page.routing.viewAllSuffix")}
                 </Link>
 
