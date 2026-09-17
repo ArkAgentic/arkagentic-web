@@ -17,9 +17,10 @@ type ConsoleApiKey = {
   createdAt: string;
 };
 
-function toMaskedValue(keyPrefix: string, keyHash: string): string {
+function toMaskedValue(keyPrefix: string, keyHash: string, rawKey?: string): string {
   const prefix = keyPrefix.replace(/\.{3,}$/g, "").slice(0, 7);
-  const suffix = keyHash.slice(-4);
+  const rawSuffix = typeof rawKey === "string" ? rawKey.trim().slice(-4) : "";
+  const suffix = rawSuffix || keyHash.slice(-4);
   return `${prefix}***${suffix}`;
 }
 
@@ -27,7 +28,7 @@ function mapRecord(record: Awaited<ReturnType<typeof listUserApiKeys>>[number]):
   return {
     id: record.id,
     name: record.name,
-    maskedValue: toMaskedValue(record.keyPrefix, record.keyHash),
+    maskedValue: toMaskedValue(record.keyPrefix, record.keyHash, record.rawKey),
     revealedValue: record.rawKey,
     keyHash: record.keyHash,
     keyPrefix: record.keyPrefix,

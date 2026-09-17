@@ -31,7 +31,11 @@ function toSpendInput(value: number | null): string {
 function getErrorCode(error: unknown): string | null {
   if (!(error instanceof ApiClientError)) return null;
   const details = error.details as Record<string, unknown> | null;
-  return typeof details?.code === "string" ? details.code : null;
+  if (typeof details?.code === "string") return details.code;
+  if (typeof details?.error === "object" && details.error && typeof (details.error as Record<string, unknown>).code === "string") {
+    return (details.error as Record<string, unknown>).code as string;
+  }
+  return null;
 }
 
 function parseLimitInput(raw: string): { ok: true; value: number | null } | { ok: false } {
