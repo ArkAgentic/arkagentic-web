@@ -497,20 +497,18 @@ function HomePageContent() {
                     <p className="whitespace-nowrap text-sm font-semibold text-stone-900">
                       {t(`home.map.region.${region.key}.short`)}
                     </p>
+                    <p className="mt-1 inline-flex items-center gap-1.5 text-[11px] text-stone-600">
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500">
+                        <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/60" />
+                      </span>
+                      {t("home.map.region.active")}
+                    </p>
                   </div>
                   <span className="shrink-0 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700">
                     {region.latency}
                   </span>
                 </div>
                 <p className="mt-1 text-xs text-neutral-500">{t(`home.map.region.${region.key}.full`)}</p>
-                <p className="mt-2 inline-flex items-center gap-1.5 text-[11px] text-stone-600">
-                  {t("home.map.region.cluster")}
-                  <span>·</span>
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500">
-                    <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/60" />
-                  </span>
-                  {t("home.map.region.active")}
-                </p>
               </article>
             ))}
           </div>
