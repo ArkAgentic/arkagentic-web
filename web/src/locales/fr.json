@@ -1017,13 +1017,13 @@
   "home.map.region.euc.short": "EU-Central",
   "home.map.region.aps.short": "Singapour",
   "home.map.region.ape.short": "Tokyo",
-  "home.map.region.usw.full": "Via cluster Azure Global / trajet utilisateur côte ouest",
-  "home.map.region.use.full": "Via trajet principal Azure US East",
-  "home.map.region.euc.full": "Trajet Europe vers upstream US East/Global",
-  "home.map.region.aps.full": "Trajet Singapour vers upstream US East/Global",
-  "home.map.region.ape.full": "Trajet Tokyo vers upstream US East/Global",
+  "home.map.region.usw.full": "Profil de route utilisateur côte ouest",
+  "home.map.region.use.full": "Profil de route utilisateur côte est",
+  "home.map.region.euc.full": "Profil de route utilisateur Europe",
+  "home.map.region.aps.full": "Profil de route utilisateur Singapour",
+  "home.map.region.ape.full": "Profil de route utilisateur Tokyo",
   "home.map.region.overhead": "Surcharge passerelle",
-  "home.map.footnote": "Les plages ci-dessus sont des latences aller-retour observées depuis les probes edge de la passerelle vers la capacité upstream actuelle; ce ne sont pas des mesures en temps réel par requête. Pour une requête donnée, utilisez API usage.latency_checkpoint.",
+  "home.map.footnote": "Les chiffres varient dans la plage observée à des fins visuelles; ce ne sont pas des latences temps réel par requête. Pour une requête réelle, utilisez API usage.latency_checkpoint.",
   "home.contact.title": "Contacter les ventes et le support",
   "home.contact.subtitle": "Besoin d’aide pour l’architecture, la personnalisation entreprise ou la conformité ? Notre équipe vous répond sous 24 heures.",
   "home.contact.name": "Nom",
@@ -1227,5 +1227,5 @@
     }
   },
   "home.map.region.shg.short": "Shanghai",
-  "home.map.region.shg.full": "Trajet Shanghai vers upstream US East/Global"
+  "home.map.region.shg.full": "Profil de route utilisateur Shanghai"
 }

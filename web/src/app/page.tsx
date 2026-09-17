@@ -3,7 +3,7 @@
 export const dynamic = "force-dynamic";
 
 import { MarketingShell } from "@/components/marketing-shell";
-import { useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import {
@@ -102,6 +102,14 @@ function HomePageContent() {
   const [scenario, setScenario] = useState<Scenario>("hybrid");
 
   const [showFormulaPanel, setShowFormulaPanel] = useState(false);
+  const [regionLatencyMs, setRegionLatencyMs] = useState<Record<string, number>>({
+    usw: 68,
+    use: 52,
+    euc: 154,
+    aps: 208,
+    ape: 182,
+    shg: 214,
+  });
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
@@ -190,6 +198,32 @@ function HomePageContent() {
       savingsPct,
     };
   }, [monthlyTokensM, scenario]);
+
+  useEffect(() => {
+    const ranges: Record<string, [number, number]> = {
+      usw: [45, 90],
+      use: [35, 70],
+      euc: [120, 190],
+      aps: [170, 250],
+      ape: [140, 220],
+      shg: [160, 260],
+    };
+    const timer = window.setInterval(() => {
+      setRegionLatencyMs((prev) => {
+        const next: Record<string, number> = { ...prev };
+        for (const [k, [min, max]] of Object.entries(ranges)) {
+          const curr = prev[k] ?? Math.round((min + max) / 2);
+          const jitter = Math.round((Math.random() - 0.5) * 12);
+          let candidate = curr + jitter;
+          if (candidate < min) candidate = min + Math.floor(Math.random() * 4);
+          if (candidate > max) candidate = max - Math.floor(Math.random() * 4);
+          next[k] = candidate;
+        }
+        return next;
+      });
+    }, 1600);
+    return () => window.clearInterval(timer);
+  }, []);
 
 
   const submitContact = async (e: FormEvent<HTMLFormElement>) => {
@@ -484,12 +518,12 @@ function HomePageContent() {
         <div className="mt-6 grid gap-6 lg:grid-cols-[7fr_5fr]">
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {[
-              { key: "usw", latency: "45-90ms" },
-              { key: "use", latency: "35-70ms" },
-              { key: "euc", latency: "120-190ms" },
-              { key: "aps", latency: "170-250ms" },
-              { key: "ape", latency: "140-220ms" },
-              { key: "shg", latency: "160-260ms" },
+              { key: "usw", min: 45, max: 90 },
+              { key: "use", min: 35, max: 70 },
+              { key: "euc", min: 120, max: 190 },
+              { key: "aps", min: 170, max: 250 },
+              { key: "ape", min: 140, max: 220 },
+              { key: "shg", min: 160, max: 260 },
             ].map((region) => (
               <article key={region.key} className="rounded-xl border border-neutral-200/80 bg-neutral-50/80 p-3.5">
                 <div className="flex items-start justify-between gap-3">
@@ -498,14 +532,14 @@ function HomePageContent() {
                       {t(`home.map.region.${region.key}.short`)}
                     </p>
                     <p className="mt-1 inline-flex items-center gap-1.5 text-[11px] text-stone-600">
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500">
-                        <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/60" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500/90 shadow-[0_0_0_3px_rgba(16,185,129,0.14),0_0_12px_rgba(16,185,129,0.45)] blur-[0.2px]">
+                        <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/45 blur-[0.6px]" />
                       </span>
                       {t("home.map.region.active")}
                     </p>
                   </div>
                   <span className="shrink-0 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700">
-                    {region.latency}
+                    {regionLatencyMs[region.key] ?? Math.round((region.min + region.max) / 2)}ms
                   </span>
                 </div>
                 <p className="mt-1 text-xs text-neutral-500">{t(`home.map.region.${region.key}.full`)}</p>

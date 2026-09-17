@@ -1017,13 +1017,13 @@
   "home.map.region.euc.short": "EU-Central",
   "home.map.region.aps.short": "シンガポール",
   "home.map.region.ape.short": "東京",
-  "home.map.region.usw.full": "Azure Global クラスタ経由 / 西海岸ユーザー経路",
-  "home.map.region.use.full": "Azure US East 主経路",
-  "home.map.region.euc.full": "欧州ユーザーから US East/Global 上流への経路",
-  "home.map.region.aps.full": "シンガポールユーザーから US East/Global 上流への経路",
-  "home.map.region.ape.full": "東京ユーザーから US East/Global 上流への経路",
+  "home.map.region.usw.full": "西海岸ユーザールートプロファイル",
+  "home.map.region.use.full": "東海岸ユーザールートプロファイル",
+  "home.map.region.euc.full": "欧州ユーザールートプロファイル",
+  "home.map.region.aps.full": "シンガポールユーザールートプロファイル",
+  "home.map.region.ape.full": "東京ユーザールートプロファイル",
   "home.map.region.overhead": "ゲートウェイ追加遅延",
-  "home.map.footnote": "表示値はゲートウェイエッジプローブから現在のアップストリーム容量までの観測往復遅延レンジで、リクエスト単位のリアルタイム値ではありません。個別リクエストは API usage.latency_checkpoint を参照してください。",
+  "home.map.footnote": "数値は表示目的で観測レンジ内を動的に変化しており、リクエスト単位のリアルタイム遅延ではありません。実測は API usage.latency_checkpoint を参照してください。",
   "home.contact.title": "営業・サポートへのお問い合わせ",
   "home.contact.subtitle": "アーキテクチャ設計、企業向けカスタマイズ、コンプライアンスのご相談は24時間以内に担当チームが返信します。",
   "home.contact.name": "氏名",
@@ -1227,5 +1227,5 @@
     }
   },
   "home.map.region.shg.short": "上海",
-  "home.map.region.shg.full": "上海ユーザーから US East/Global 上流への経路"
+  "home.map.region.shg.full": "上海ユーザールートプロファイル"
 }

@@ -1018,13 +1018,13 @@
   "home.map.region.euc.short": "EU-Central",
   "home.map.region.aps.short": "Singapur",
   "home.map.region.ape.short": "Tokio",
-  "home.map.region.usw.full": "Über Azure Global Cluster / Westküsten-Nutzerpfad",
-  "home.map.region.use.full": "Über Azure US East Primärpfad",
-  "home.map.region.euc.full": "Europa-Nutzerpfad zu US East/Global Upstream",
-  "home.map.region.aps.full": "Singapur-Nutzerpfad zu US East/Global Upstream",
-  "home.map.region.ape.full": "Tokio-Nutzerpfad zu US East/Global Upstream",
+  "home.map.region.usw.full": "Routenprofil für Westküsten-Nutzer",
+  "home.map.region.use.full": "Routenprofil für Ostküsten-Nutzer",
+  "home.map.region.euc.full": "Routenprofil für Europa-Nutzer",
+  "home.map.region.aps.full": "Routenprofil für Singapur-Nutzer",
+  "home.map.region.ape.full": "Routenprofil für Tokio-Nutzer",
   "home.map.region.overhead": "Gateway-Overhead",
-  "home.map.footnote": "Die Bereiche sind beobachtete Round-Trip-Latenzen von Gateway-Edge-Probes zur aktuellen Upstream-Kapazität; keine Live-Werte pro Anfrage. Für einzelne Requests bitte API usage.latency_checkpoint verwenden.",
+  "home.map.footnote": "Die Zahlen variieren zur Darstellung innerhalb beobachteter Bereiche; sie sind keine Live-Latenz pro Anfrage. Für reale Anfragen bitte API usage.latency_checkpoint verwenden.",
   "home.contact.title": "Vertrieb & Support kontaktieren",
   "home.contact.subtitle": "Benötigen Sie Hilfe bei Architektur, Enterprise-Anpassungen oder Compliance? Unser Team meldet sich innerhalb von 24 Stunden.",
   "home.contact.name": "Name",
@@ -1228,5 +1228,5 @@
     }
   },
   "home.map.region.shg.short": "Shanghai",
-  "home.map.region.shg.full": "Shanghai-Nutzerpfad zu US East/Global Upstream"
+  "home.map.region.shg.full": "Routenprofil für Shanghai-Nutzer"
 }

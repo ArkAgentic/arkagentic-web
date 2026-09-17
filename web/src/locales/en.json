@@ -1032,13 +1032,13 @@
   "home.map.region.euc.short": "EU-Central",
   "home.map.region.aps.short": "Singapore",
   "home.map.region.ape.short": "Tokyo",
-  "home.map.region.usw.full": "Via Azure Global cluster / West-coast user path",
-  "home.map.region.use.full": "Via Azure US East primary path",
-  "home.map.region.euc.full": "Europe user path to US East/Global upstream",
-  "home.map.region.aps.full": "Singapore user path to US East/Global upstream",
-  "home.map.region.ape.full": "Tokyo user path to US East/Global upstream",
+  "home.map.region.usw.full": "West-coast user route profile",
+  "home.map.region.use.full": "East-coast user route profile",
+  "home.map.region.euc.full": "Europe user route profile",
+  "home.map.region.aps.full": "Singapore user route profile",
+  "home.map.region.ape.full": "Tokyo user route profile",
   "home.map.region.overhead": "Gateway Overhead",
-  "home.map.footnote": "Ranges are observed round-trip latency from gateway edge probes to current upstream capacity; not per-request live timing. Use API usage.latency_checkpoint for real request latency.",
+  "home.map.footnote": "Numbers animate within observed range for visual reference; they are not per-request live latency. Use API usage.latency_checkpoint for real request latency.",
   "home.contact.title": "Contact Sales & Support",
   "home.contact.subtitle": "Need help with architecture, enterprise customization, or compliance? Our team will get back to you within 24 hours.",
   "home.contact.name": "Name",
@@ -1242,5 +1242,5 @@
     }
   },
   "home.map.region.shg.short": "Shanghai",
-  "home.map.region.shg.full": "Shanghai user path to US East/Global upstream"
+  "home.map.region.shg.full": "Shanghai user route profile"
 }

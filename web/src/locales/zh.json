@@ -1029,13 +1029,13 @@
   "home.map.region.euc.short": "EU-Central",
   "home.map.region.aps.short": "新加坡",
   "home.map.region.ape.short": "东京",
-  "home.map.region.usw.full": "经 Azure Global 集群（西海岸用户路径）",
-  "home.map.region.use.full": "经 Azure US East 主路径",
-  "home.map.region.euc.full": "欧洲用户到 US East/Global 上游路径",
-  "home.map.region.aps.full": "新加坡用户到 US East/Global 上游路径",
-  "home.map.region.ape.full": "东京用户到 US East/Global 上游路径",
+  "home.map.region.usw.full": "西海岸用户路由画像",
+  "home.map.region.use.full": "东海岸用户路由画像",
+  "home.map.region.euc.full": "欧洲用户路由画像",
+  "home.map.region.aps.full": "新加坡用户路由画像",
+  "home.map.region.ape.full": "东京用户路由画像",
   "home.map.region.overhead": "网关中转开销",
-  "home.map.footnote": "以上为网关边缘探针到当前上游容量的观测往返延迟区间，并非每次请求实时值。单次请求请以 API usage.latency_checkpoint 为准。",
+  "home.map.footnote": "数字在观测区间内动态变化用于展示，不代表单次请求实时延迟。真实请求请以 API usage.latency_checkpoint 为准。",
   "home.contact.title": "联系销售与支持",
   "home.contact.subtitle": "如需架构方案、企业定制或合规咨询，我们将在 24 小时内回复。",
   "home.contact.name": "姓名",
@@ -1239,5 +1239,5 @@
     }
   },
   "home.map.region.shg.short": "上海",
-  "home.map.region.shg.full": "上海用户到 US East/Global 上游路径"
+  "home.map.region.shg.full": "上海用户路由画像"
 }
