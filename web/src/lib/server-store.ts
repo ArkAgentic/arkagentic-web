@@ -1295,7 +1295,7 @@ export async function chargeUsage(input: {
           `update billing_reservations
              set settled_usd = $2,
                  released_usd = $3,
-                 status = case when $2 > 0 then 'settled' else 'released' end,
+                 status = case when $2::float8 > 0 then 'settled' else 'released' end,
                  settled_at = now(),
                  updated_at = now()
            where id = $1`,
