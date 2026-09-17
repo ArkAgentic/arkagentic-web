@@ -1226,7 +1226,7 @@ export async function chargeUsage(input: {
       await client.query("begin");
       const userRes = await client.query(
         `select coalesce(balance_usd,0)::float8 as balance_usd,
-                coalesce(total_deposited_usd,0)::float8 as total_deposited_usd,
+                coalesce(total_deposited_usd,0)::float8 as total_deposited_usd
          from users where id=$1 for update`,
         [input.userId],
       );
