@@ -208,21 +208,56 @@ function HomePageContent() {
       ape: [140, 220],
       shg: [160, 260],
     };
+    const phases: Record<string, number> = {
+      usw: 0.7,
+      use: 1.4,
+      euc: 2.1,
+      aps: 2.9,
+      ape: 3.8,
+      shg: 4.6,
+    };
+
+    const trendBase: Record<string, number> = Object.fromEntries(
+      Object.entries(ranges).map(([k, [min, max]]) => [k, Math.round((min + max) / 2)]),
+    );
+    const trend: Record<string, number> = { ...trendBase };
+
+    const driftTimer = window.setInterval(() => {
+      for (const [k, [min, max]] of Object.entries(ranges)) {
+        const span = max - min;
+        const center = trendBase[k];
+        const drift = (Math.random() - 0.5) * span * 0.14;
+        let nextTrend = trend[k] + drift;
+        const lowerSoft = Math.max(min, center - span * 0.3);
+        const upperSoft = Math.min(max, center + span * 0.3);
+        if (nextTrend < lowerSoft) nextTrend = lowerSoft + Math.random() * span * 0.06;
+        if (nextTrend > upperSoft) nextTrend = upperSoft - Math.random() * span * 0.06;
+        trend[k] = nextTrend;
+      }
+    }, 8000);
+
     const timer = window.setInterval(() => {
-      setRegionLatencyMs((prev) => {
-        const next: Record<string, number> = { ...prev };
+      const tSec = Date.now() / 1000;
+      setRegionLatencyMs(() => {
+        const next: Record<string, number> = {};
         for (const [k, [min, max]] of Object.entries(ranges)) {
-          const curr = prev[k] ?? Math.round((min + max) / 2);
-          const jitter = Math.round((Math.random() - 0.5) * 12);
-          let candidate = curr + jitter;
-          if (candidate < min) candidate = min + Math.floor(Math.random() * 4);
-          if (candidate > max) candidate = max - Math.floor(Math.random() * 4);
-          next[k] = candidate;
+          const span = max - min;
+          const lowFreq = Math.sin(tSec / 14 + phases[k]) * span * 0.08;
+          const highFreq = Math.sin(tSec / 2.1 + phases[k] * 1.7) * span * 0.03;
+          const microJitter = (Math.random() - 0.5) * span * 0.02;
+          let value = trend[k] + lowFreq + highFreq + microJitter;
+          if (value < min) value = min + Math.random() * span * 0.03;
+          if (value > max) value = max - Math.random() * span * 0.03;
+          next[k] = Math.round(value);
         }
         return next;
       });
-    }, 1600);
-    return () => window.clearInterval(timer);
+    }, 900);
+
+    return () => {
+      window.clearInterval(timer);
+      window.clearInterval(driftTimer);
+    };
   }, []);
 
 
@@ -532,8 +567,9 @@ function HomePageContent() {
                       {t(`home.map.region.${region.key}.short`)}
                     </p>
                     <p className="mt-1 inline-flex items-center gap-1.5 text-[11px] text-stone-600">
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500/90 shadow-[0_0_0_3px_rgba(16,185,129,0.14),0_0_12px_rgba(16,185,129,0.45)] blur-[0.2px]">
-                        <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/45 blur-[0.6px]" />
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
                       </span>
                       {t("home.map.region.active")}
                     </p>
