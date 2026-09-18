@@ -126,10 +126,11 @@ function HomePageContent() {
       .map((line) => line.trim())
       .filter(Boolean);
   }, [t]);
-  const heroSubtitleLine1Words = useMemo(
-    () => toTypewriterWords(heroSubtitleLines[0] ?? ""),
+  const heroSubtitleWordLines = useMemo(
+    () => heroSubtitleLines.map((line) => toTypewriterWords(line)),
     [heroSubtitleLines],
   );
+  const heroSubtitleLine1Words = heroSubtitleWordLines[0] ?? [];
   const heroSubtitleLine1Duration = useMemo(
     () =>
       estimateTypewriterDurationMs(heroSubtitleLine1Words, {
@@ -387,7 +388,7 @@ function HomePageContent() {
               {heroSubtitleLines.map((line, index) => (
                 <span key={`hero-subtitle-line-${index}`} className="block whitespace-nowrap">
                   <TypewriterEffect
-                    words={toTypewriterWords(line)}
+                    words={heroSubtitleWordLines[index] ?? []}
                     charDelayMs={40}
                     startDelayMs={index === 0 ? 100 : 100 + heroSubtitleLine1Duration + 80}
                     pauseEveryChars={10}
@@ -606,10 +607,10 @@ function HomePageContent() {
       <section className="mt-20">
         <h2 className="text-2xl font-semibold text-stone-900">{t("home.contact.title")}</h2>
         <p className="mt-2 text-sm text-stone-700">{t("home.contact.subtitle")}</p>
-        <div className="mt-6 grid gap-6 lg:grid-cols-[40%_60%]">
-          <article className="rounded-xl border border-stone-200/70 bg-white/80 p-5 shadow-[0_8px_20px_rgba(15,23,42,0.08)]">
+        <div className="mt-5 grid gap-5 lg:grid-cols-[36%_64%]">
+          <article className="rounded-xl border border-stone-200/70 bg-white/80 p-4 shadow-[0_8px_20px_rgba(15,23,42,0.08)]">
             <h3 className="text-sm font-semibold text-stone-900">{t("home.contact.directChannels")}</h3>
-            <div className="mt-4 space-y-6">
+            <div className="mt-3.5 space-y-4">
               <div className="rounded-lg border border-stone-200 bg-white px-4 py-4">
                 <p className="inline-flex items-center gap-2.5 text-xs font-semibold text-stone-900">
                   <span className="inline-flex items-center justify-center rounded-lg bg-stone-100/80 p-2.5 text-stone-600">
@@ -646,7 +647,7 @@ function HomePageContent() {
             </div>
           </article>
 
-          <article className="rounded-xl border border-stone-200/70 bg-white/80 p-4 shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
+          <article className="rounded-xl border border-stone-200/70 bg-white/80 p-3.5 shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
             <form className="grid gap-4 md:grid-cols-2" onSubmit={submitContact}>
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-stone-600">{t("home.contact.name")}</label>
@@ -673,7 +674,7 @@ function HomePageContent() {
                 <label className="mb-1.5 block text-xs font-medium text-stone-600">{t("home.contact.message")}</label>
                 <textarea
                   required
-                  rows={6}
+                  rows={5}
                   value={contactMessage}
                   onChange={(e) => setContactMessage(e.target.value)}
                   className="min-h-[160px] w-full rounded-xl border border-stone-300/70 bg-white px-3 py-2.5 text-sm text-stone-800"
