@@ -178,13 +178,21 @@ function ModelPricingCard({
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-1">
+          <div className="flex flex-wrap items-center gap-1.5">
             <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${badgeColorByKey(meta.badgeKey)}`}>{t(meta.badgeKey)}</span>
-            <span
-              className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
-                model.active ? "bg-emerald-100 text-emerald-700" : "bg-stone-100 text-stone-600"
-              }`}
-            >
+            <span className={`inline-flex items-center gap-1.5 text-xs font-semibold ${model.active ? "text-emerald-700" : "text-stone-600"}`}>
+              <span className="relative flex h-2 w-2">
+                <span
+                  className={`absolute inline-flex h-full w-full rounded-full ${
+                    model.active ? "animate-ping bg-emerald-400 opacity-75" : "bg-stone-300 opacity-70"
+                  }`}
+                />
+                <span
+                  className={`relative inline-flex h-2 w-2 rounded-full ${
+                    model.active ? "bg-emerald-500 shadow-[0_0_8px_#10b981]" : "bg-stone-400"
+                  }`}
+                />
+              </span>
               {model.active ? t("console.models.active") : t("admin.common.disabled")}
             </span>
           </div>
