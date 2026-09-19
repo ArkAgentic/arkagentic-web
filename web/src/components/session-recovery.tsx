@@ -25,10 +25,9 @@ export function SessionRecovery() {
   const pathname = usePathname();
   const router = useRouter();
   const inFlightRef = useRef(false);
-  const lastRunRef = useRef(0);
+  const lastRunRef = useRef(Date.now());
   const lastHardReloadRef = useRef(0);
   const hiddenAtRef = useRef<number | null>(null);
-  const interactionTriggeredRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -36,8 +35,6 @@ export function SessionRecovery() {
     const hardReloadIfLikelyStale = (reason: string) => {
       const now = Date.now();
       if (now - lastHardReloadRef.current < HARD_RELOAD_COOLDOWN_MS) return;
-      if (!interactionTriggeredRef.current) return;
-      interactionTriggeredRef.current = false;
       lastHardReloadRef.current = now;
       window.location.reload();
     };
@@ -125,15 +122,19 @@ export function SessionRecovery() {
     };
 
     const onPointerDown = () => {
-      interactionTriggeredRef.current = true;
+      const hiddenFor = hiddenAtRef.current ? Date.now() - hiddenAtRef.current : 0;
+      if (hiddenFor >= HARD_RELOAD_IDLE_MS) {
+        hardReloadIfLikelyStale("pointerdown");
+      }
     };
 
     const onClickCapture = () => {
-      interactionTriggeredRef.current = true;
       const hiddenFor = hiddenAtRef.current ? Date.now() - hiddenAtRef.current : 0;
       if (hiddenFor >= HARD_RELOAD_IDLE_MS) {
         hardReloadIfLikelyStale("click-capture");
+        return;
       }
+      void revalidateSession("click-capture");
     };
 
     document.addEventListener("visibilitychange", onVisibilityChange);
