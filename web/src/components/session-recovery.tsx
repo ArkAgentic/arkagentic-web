@@ -6,6 +6,9 @@ import { clearSessionUser } from "@/lib/auth-session";
 import { clearAuthToken } from "@/lib/auth-provider";
 
 const MIN_REVALIDATE_INTERVAL_MS = 60_000;
+const SESSION_CHECK_TIMEOUT_MS = 8_000;
+const HARD_RELOAD_IDLE_MS = 20 * 60_000;
+const HARD_RELOAD_COOLDOWN_MS = 5 * 60_000;
 
 function healInteractionLocks() {
   if (typeof document === "undefined") return;
@@ -23,9 +26,21 @@ export function SessionRecovery() {
   const router = useRouter();
   const inFlightRef = useRef(false);
   const lastRunRef = useRef(0);
+  const lastHardReloadRef = useRef(0);
+  const hiddenAtRef = useRef<number | null>(null);
+  const interactionTriggeredRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    const hardReloadIfLikelyStale = (reason: string) => {
+      const now = Date.now();
+      if (now - lastHardReloadRef.current < HARD_RELOAD_COOLDOWN_MS) return;
+      if (!interactionTriggeredRef.current) return;
+      interactionTriggeredRef.current = false;
+      lastHardReloadRef.current = now;
+      window.location.reload();
+    };
 
     const revalidateSession = async (reason: string) => {
       const now = Date.now();
@@ -36,11 +51,15 @@ export function SessionRecovery() {
       lastRunRef.current = now;
       healInteractionLocks();
 
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), SESSION_CHECK_TIMEOUT_MS);
+
       try {
         const resp = await fetch("/api/auth/session", {
           method: "GET",
           credentials: "include",
           cache: "no-store",
+          signal: controller.signal,
           headers: {
             "x-ark-session-revalidate": reason,
           },
@@ -71,12 +90,22 @@ export function SessionRecovery() {
       } catch {
         // Keep current UI state on transient network errors.
       } finally {
+        window.clearTimeout(timeout);
         inFlightRef.current = false;
       }
     };
 
     const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        hiddenAtRef.current = Date.now();
+        return;
+      }
       if (document.visibilityState === "visible") {
+        const hiddenFor = hiddenAtRef.current ? Date.now() - hiddenAtRef.current : 0;
+        if (hiddenFor >= HARD_RELOAD_IDLE_MS) {
+          hardReloadIfLikelyStale("visibilitychange");
+          return;
+        }
         void revalidateSession("visibilitychange");
       }
     };
@@ -95,16 +124,32 @@ export function SessionRecovery() {
       }
     };
 
+    const onPointerDown = () => {
+      interactionTriggeredRef.current = true;
+    };
+
+    const onClickCapture = () => {
+      interactionTriggeredRef.current = true;
+      const hiddenFor = hiddenAtRef.current ? Date.now() - hiddenAtRef.current : 0;
+      if (hiddenFor >= HARD_RELOAD_IDLE_MS) {
+        hardReloadIfLikelyStale("click-capture");
+      }
+    };
+
     document.addEventListener("visibilitychange", onVisibilityChange);
     window.addEventListener("focus", onFocus);
     window.addEventListener("online", onOnline);
     window.addEventListener("pageshow", onPageShow);
+    document.addEventListener("pointerdown", onPointerDown, true);
+    document.addEventListener("click", onClickCapture, true);
 
     return () => {
       document.removeEventListener("visibilitychange", onVisibilityChange);
       window.removeEventListener("focus", onFocus);
       window.removeEventListener("online", onOnline);
       window.removeEventListener("pageshow", onPageShow);
+      document.removeEventListener("pointerdown", onPointerDown, true);
+      document.removeEventListener("click", onClickCapture, true);
     };
   }, [pathname, router]);
 
